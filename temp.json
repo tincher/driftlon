@@ -1,0 +1,3006 @@
+{
+    "limits": {
+        "cargoquery": 500
+    },
+    "cargoquery": [{
+        "title": {
+            "TotalGames": "702",
+            "Player": "WildTurtle",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "689",
+            "Player": "ZionSpartan",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "681",
+            "Player": "Xmithie",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "677",
+            "Player": "Aphromoo",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "651",
+            "Player": "Doublelift",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "644",
+            "Player": "Sneaky",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "609",
+            "Player": "Pobelter",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "600",
+            "Player": "Bjergsen",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "590",
+            "Player": "SOAZ",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "555",
+            "Player": "Apollo (Apollo Price)",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "544",
+            "Player": "Jankos",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "540",
+            "Player": "Xpecial",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "523",
+            "Player": "Rekkles",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "505",
+            "Player": "Hauntzer",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "504",
+            "Player": "Score",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "492",
+            "Player": "Nukeduck",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "485",
+            "Player": "Faker",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "470",
+            "Player": "Vander",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "466",
+            "Player": "Hai",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "460",
+            "Player": "Meteos",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "460",
+            "Player": "Jensen",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "454",
+            "Player": "LemonNation",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "454",
+            "Player": "Balls",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "450",
+            "Player": "Impact",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "444",
+            "Player": "PraY",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "441",
+            "Player": "Flandre",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "440",
+            "Player": "JaVaaa",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "438",
+            "Player": "CuVee",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "438",
+            "Player": "Hylissang",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "435",
+            "Player": "Cabochard",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "432",
+            "Player": "Homi",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "429",
+            "Player": "Odoamne",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "427",
+            "Player": "Stixxay",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "425",
+            "Player": "Rookie",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "425",
+            "Player": "GorillA",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "423",
+            "Player": "Vizicsacsi",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "421",
+            "Player": "Meiko",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "421",
+            "Player": "Xiaohu",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "421",
+            "Player": "Hakuho",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "415",
+            "Player": "Smeb",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "415",
+            "Player": "Pyl",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "412",
+            "Player": "Smlz",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "410",
+            "Player": "Huhi",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "409",
+            "Player": "Xiye",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "408",
+            "Player": "Uzi (Jian Zi-Hao)",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "408",
+            "Player": "Keane",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "403",
+            "Player": "Kuro",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "402",
+            "Player": "Svenskeren",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "386",
+            "Player": "Ambition",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "386",
+            "Player": "Dardoch",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "386",
+            "Player": "Bang",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "385",
+            "Player": "TusiN",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "385",
+            "Player": "Biofrost",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "384",
+            "Player": "Smoothie",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "382",
+            "Player": "Lourlo",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "374",
+            "Player": "YellOwStaR",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "372",
+            "Player": "Altec",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "372",
+            "Player": "Seraph",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "372",
+            "Player": "Razork",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "372",
+            "Player": "Deadly",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "371",
+            "Player": "Mystic",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "366",
+            "Player": "PERKZ",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "364",
+            "Player": "Betsy",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "363",
+            "Player": "Deft",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "358",
+            "Player": "Wunder",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "357",
+            "Player": "Zz1tai",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "356",
+            "Player": "Matt",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "356",
+            "Player": "XPeke",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "350",
+            "Player": "Shook",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "348",
+            "Player": "Mithy",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "347",
+            "Player": "Clearlove",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "346",
+            "Player": "Reignover",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "344",
+            "Player": "Cold",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "342",
+            "Player": "Steeelback",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "342",
+            "Player": "Febiven",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "338",
+            "Player": "Adrian",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "336",
+            "Player": "Kobbe",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "334",
+            "Player": "Doinb",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "334",
+            "Player": "Kold",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "333",
+            "Player": "Imp",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "332",
+            "Player": "Lamabear",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "329",
+            "Player": "Ruler",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "329",
+            "Player": "Mata",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "328",
+            "Player": "Falco (Jes\u00fas P\u00e9rez)",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "328",
+            "Player": "Froggen",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "326",
+            "Player": "Wolf (Lee Jae-wan)",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "324",
+            "Player": "Yoppa",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "322",
+            "Player": "Piglet",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "320",
+            "Player": "Nixerino",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "318",
+            "Player": "Gate",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "318",
+            "Player": "Hjarnan",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "316",
+            "Player": "Sencux",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "315",
+            "Player": "Cool",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "315",
+            "Player": "AmazingJ",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "312",
+            "Player": "Condi",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "311",
+            "Player": "Xiyang",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "310",
+            "Player": "Mikyx",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "309",
+            "Player": "Jinjiao",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "308",
+            "Player": "Ssumday",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "308",
+            "Player": "Pretty",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "307",
+            "Player": "Kid",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "307",
+            "Player": "SofM",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "307",
+            "Player": "SnowFlower",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "303",
+            "Player": "Peanut",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "302",
+            "Player": "Tak (Vong Tak Seng)",
+            "League": "ECS"
+        }
+    }, {
+        "title": {
+            "TotalGames": "302",
+            "Player": "Amazing (Maurice St\u00fcckenschneider)",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "302",
+            "Player": "Froggen",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "301",
+            "Player": "Keith",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "301",
+            "Player": "Scout",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "300",
+            "Player": "Diamondprox",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "300",
+            "Player": "Icon",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "298",
+            "Player": "KaSing",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "298",
+            "Player": "PowerOfEvil",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "298",
+            "Player": "Teddy",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "297",
+            "Player": "Bdd",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "297",
+            "Player": "Key",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "296",
+            "Player": "Werlyb",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "296",
+            "Player": "Dyrus",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "296",
+            "Player": "Ziv (Chen Yi)",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "293",
+            "Player": "Maxlore",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "293",
+            "Player": "GimGoon",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "293",
+            "Player": "MadLife",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "293",
+            "Player": "Tempt",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "292",
+            "Player": "Prodigy (Javier Agust\u00edn Ju\u00e1rez)",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "290",
+            "Player": "Slow",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "290",
+            "Player": "Acce",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "290",
+            "Player": "Mash",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "288",
+            "Player": "Contractz",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "288",
+            "Player": "Prime (Olivier Payet)",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "284",
+            "Player": "Exile (Fabian Schubert)",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "284",
+            "Player": "Tabzz",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "284",
+            "Player": "Lira",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "281",
+            "Player": "Olleh",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "280",
+            "Player": "Carbono",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "280",
+            "Player": "Arrow",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "280",
+            "Player": "Shiphtur",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "280",
+            "Player": "Hatrixx",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "276",
+            "Player": "Fredy122",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "276",
+            "Player": "Zven",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "274",
+            "Player": "Zig",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "274",
+            "Player": "Fenix",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "270",
+            "Player": "Trick",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "268",
+            "Player": "Crumbz",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "268",
+            "Player": "SIUSIU",
+            "League": "ECS"
+        }
+    }, {
+        "title": {
+            "TotalGames": "266",
+            "Player": "Nyph",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "265",
+            "Player": "Ming (Shi Sen-Ming)",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "264",
+            "Player": "Emp",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "264",
+            "Player": "Swift",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "262",
+            "Player": "CandyPanda",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "260",
+            "Player": "Xerxe",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "260",
+            "Player": "NRated",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "260",
+            "Player": "Cop",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "260",
+            "Player": "Akaadian",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "260",
+            "Player": "Newbie",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "258",
+            "Player": "Wickd",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "258",
+            "Player": "Promisq",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "258",
+            "Player": "Mlxg",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "258",
+            "Player": "Big",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "256",
+            "Player": "Huni",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "256",
+            "Player": "Link",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "256",
+            "Player": "Svenskeren",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "256",
+            "Player": "Roison",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "256",
+            "Player": "957",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "256",
+            "Player": "Caps",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "254",
+            "Player": "Flame",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "253",
+            "Player": "FoFo",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "253",
+            "Player": "Ryu",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "252",
+            "Player": "Badmilk",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "252",
+            "Player": "Alphari",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "252",
+            "Player": "Rakyz",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "251",
+            "Player": "Santorin",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "249",
+            "Player": "Lwx",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "249",
+            "Player": "Baolan",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "248",
+            "Player": "Zeicro",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "248",
+            "Player": "Coool",
+            "League": "ECS"
+        }
+    }, {
+        "title": {
+            "TotalGames": "248",
+            "Player": "K",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "246",
+            "Player": "Nipphu",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "246",
+            "Player": "Edward",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "246",
+            "Player": "Jesiz",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "246",
+            "Player": "Hans sama",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "246",
+            "Player": "CDD",
+            "League": "ECS"
+        }
+    }, {
+        "title": {
+            "TotalGames": "244",
+            "Player": "Samux",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "243",
+            "Player": "Shy",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "243",
+            "Player": "Breeze",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "240",
+            "Player": "Eimy",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "238",
+            "Player": "Expect",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "238",
+            "Player": "Woody",
+            "League": "ECS"
+        }
+    }, {
+        "title": {
+            "TotalGames": "238",
+            "Player": "Wako",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "234",
+            "Player": "Kev1n",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "233",
+            "Player": "Stomaged",
+            "League": "Turkish Championship League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "233",
+            "Player": "Kiin",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "232",
+            "Player": "Pride (Franco Sanzana)",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "232",
+            "Player": "LvMao",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "230",
+            "Player": "Maple (Huang Yi-Tang)",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "229",
+            "Player": "3z",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "228",
+            "Player": "Cyanide",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "228",
+            "Player": "Th3Antonio",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "227",
+            "Player": "Kramer",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "227",
+            "Player": "Yutapon",
+            "League": "League of Legends Japan League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "226",
+            "Player": "Lauva",
+            "League": "ECS"
+        }
+    }, {
+        "title": {
+            "TotalGames": "226",
+            "Player": "Imaqtpie",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "226",
+            "Player": "An",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "225",
+            "Player": "Zeitnot",
+            "League": "Turkish Championship League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "224",
+            "Player": "Karakal Jr",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "224",
+            "Player": "Monk (Joosep Kivilaan)",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "224",
+            "Player": "Hero (Miguel Fern\u00e1ndez)",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "224",
+            "Player": "Langx",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "224",
+            "Player": "Khynm",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "224",
+            "Player": "Genja",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "224",
+            "Player": "Crownshot",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "224",
+            "Player": "SwordArt",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "224",
+            "Player": "Moryo",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "224",
+            "Player": "Kashtelan",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "224",
+            "Player": "Sedrion",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "224",
+            "Player": "Crisp",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "224",
+            "Player": "Nemesis",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "224",
+            "Player": "Selfmade",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "224",
+            "Player": "Voyboy",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "224",
+            "Player": "Benji (Benjamin deMunck)",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "222",
+            "Player": "Arrow",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "220",
+            "Player": "Xico",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "220",
+            "Player": "Orome",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "220",
+            "Player": "Rafa",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "220",
+            "Player": "Denyk",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "219",
+            "Player": "Ssumday",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "219",
+            "Player": "Ceros",
+            "League": "League of Legends Japan League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "219",
+            "Player": "Wraith",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "219",
+            "Player": "Moon (Galen Holgate)",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "219",
+            "Player": "Swip3rR",
+            "League": "Oceanic Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "218",
+            "Player": "KRYST4L",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "218",
+            "Player": "Wadid",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "217",
+            "Player": "Duan",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "217",
+            "Player": "Jinoo",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "217",
+            "Player": "Enty",
+            "League": "League of Legends Japan League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "217",
+            "Player": "Crazy (Kim Jae-hee)",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "216",
+            "Player": "Rayito",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "216",
+            "Player": "Broxah",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "216",
+            "Player": "Koldo",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "215",
+            "Player": "Apex (Hsieh Chia-Wei)",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "215",
+            "Player": "Dreamer",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "214",
+            "Player": "Kikis",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "214",
+            "Player": "HeaQ",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "214",
+            "Player": "Yutorimoyashi",
+            "League": "League of Legends Japan League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "213",
+            "Player": "Rogue (Jake Sharwood)",
+            "League": "Oceanic Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "213",
+            "Player": "Corn (Lei Wen)",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "213",
+            "Player": "Tally",
+            "League": "Oceanic Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "212",
+            "Player": "Kaiwing",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "212",
+            "Player": "Plugo",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "212",
+            "Player": "Siler",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "212",
+            "Player": "Cola (Cheng Nien-En)",
+            "League": "ECS"
+        }
+    }, {
+        "title": {
+            "TotalGames": "212",
+            "Player": "Baca",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "212",
+            "Player": "Klaj",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "212",
+            "Player": "Aziado",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "212",
+            "Player": "Jeskla",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "211",
+            "Player": "Chippys",
+            "League": "Oceanic Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "210",
+            "Player": "PawN",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "210",
+            "Player": "KiWiKiD",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "210",
+            "Player": "Max (Jeong Jong-bin)",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "209",
+            "Player": "Lindarang",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "209",
+            "Player": "Khan",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "209",
+            "Player": "MaRin",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "208",
+            "Player": "K1ng",
+            "League": "Oceanic Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "208",
+            "Player": "Ning",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "208",
+            "Player": "Tierwulf",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "207",
+            "Player": "Spookz",
+            "League": "Oceanic Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "207",
+            "Player": "Ikssu",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "206",
+            "Player": "Albis",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "206",
+            "Player": "Madness",
+            "League": "Turkish Championship League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "204",
+            "Player": "Mickey (Son Young-min)",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "204",
+            "Player": "ApaMen",
+            "League": "League of Legends Japan League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "204",
+            "Player": "ADD",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "204",
+            "Player": "Evi",
+            "League": "League of Legends Japan League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "204",
+            "Player": "M1ssion",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "204",
+            "Player": "CoreJJ",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "204",
+            "Player": "Helior",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "204",
+            "Player": "LokeN",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "203",
+            "Player": "Tussle",
+            "League": "League of Legends Japan League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "203",
+            "Player": "FabFabulous",
+            "League": "Turkish Championship League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "202",
+            "Player": "Ninja",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "202",
+            "Player": "Letme",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "201",
+            "Player": "Naru",
+            "League": "Turkish Championship League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "199",
+            "Player": "Zero (Yoon Kyung-sup)",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "199",
+            "Player": "Yagao",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "198",
+            "Player": "TrAce",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "198",
+            "Player": "GodV (Wei Zhen)",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "198",
+            "Player": "Sheep (Yen Shao-Jung)",
+            "League": "ECS"
+        }
+    }, {
+        "title": {
+            "TotalGames": "198",
+            "Player": "Darien",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "198",
+            "Player": "BOSS (Vladislav Fomin)",
+            "League": "League of Legends Continental League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "198",
+            "Player": "Mancloud",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "196",
+            "Player": "Duke (Lee Ho-seong)",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "196",
+            "Player": "Wardain",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "196",
+            "Player": "Xixauxas",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "195",
+            "Player": "IBoy",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "195",
+            "Player": "Goldenglue",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "194",
+            "Player": "Djoko",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "194",
+            "Player": "Paz",
+            "League": "League of Legends Japan League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "193",
+            "Player": "2188",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "193",
+            "Player": "ViviD",
+            "League": "League of Legends Japan League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "192",
+            "Player": "Nien",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "192",
+            "Player": "Road",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "192",
+            "Player": "Jayke",
+            "League": "Oceanic Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "192",
+            "Player": "Nandisko",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "192",
+            "Player": "SoHwan",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "192",
+            "Player": "DuaLL",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "191",
+            "Player": "Raes",
+            "League": "Oceanic Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "190",
+            "Player": "IWDominate",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "188",
+            "Player": "Scarface (Daniel Aitbelkacem)",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "188",
+            "Player": "Shrimp",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "187",
+            "Player": "Swiffer",
+            "League": "Oceanic Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "186",
+            "Player": "Yuyanjia",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "186",
+            "Player": "Mouse",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "185",
+            "Player": "Clx",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "184",
+            "Player": "Dumbledoge",
+            "League": "Turkish Championship League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "184",
+            "Player": "HolyPhoenix",
+            "League": "Turkish Championship League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "184",
+            "Player": "FORG1VEN",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "184",
+            "Player": "Kitties",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "184",
+            "Player": "Anthrax",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "184",
+            "Player": "Unified",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "184",
+            "Player": "QQMore",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "184",
+            "Player": "Barcode (Sander Laidre)",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "182",
+            "Player": "Fox (Hampus Myhre)",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "182",
+            "Player": "Elwind",
+            "League": "Turkish Championship League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "182",
+            "Player": "Betty",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "180",
+            "Player": "Freeze",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "180",
+            "Player": "Moonlight",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "180",
+            "Player": "Gilius",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "179",
+            "Player": "Memento",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "179",
+            "Player": "Destiny (Mitchell Shaw)",
+            "League": "Oceanic Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "179",
+            "Player": "Assassin",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "178",
+            "Player": "ZBB",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "178",
+            "Player": "Trix",
+            "League": "Turkish Championship League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "178",
+            "Player": "Coco",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "177",
+            "Player": "Yuuki (Hu Hao-Ming)",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "177",
+            "Player": "Korol",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "177",
+            "Player": "NaMei",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "176",
+            "Player": "Cuzz",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "176",
+            "Player": "Rhuckz",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "176",
+            "Player": "Flakked",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "176",
+            "Player": "Mor",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "176",
+            "Player": "Zoom",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "176",
+            "Player": "Bengi",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "175",
+            "Player": "Triple",
+            "League": "Oceanic Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "174",
+            "Player": "Loong",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "174",
+            "Player": "Gengar",
+            "League": "ECS"
+        }
+    }, {
+        "title": {
+            "TotalGames": "174",
+            "Player": "Tbq",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "174",
+            "Player": "Doge (Chan Yun-Shang)",
+            "League": "ECS"
+        }
+    }, {
+        "title": {
+            "TotalGames": "173",
+            "Player": "LoveLing",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "173",
+            "Player": "PK",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "172",
+            "Player": "Benny (Benny Hung)",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "172",
+            "Player": "Kindless",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "172",
+            "Player": "Padden",
+            "League": "Turkish Championship League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "172",
+            "Player": "Czekolad",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "172",
+            "Player": "Buggax",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "172",
+            "Player": "Selfie",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "171",
+            "Player": "Panky (U\u011fur Ta\u015f)",
+            "League": "Turkish Championship League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "170",
+            "Player": "Kerp",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "170",
+            "Player": "Alex Ich",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "170",
+            "Player": "Juliostito",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "170",
+            "Player": "Mountain (Xue Zhao-Hong)",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "170",
+            "Player": "Ryu",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "170",
+            "Player": "Cogcog",
+            "League": "League of Legends Japan League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "170",
+            "Player": "Jree",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "170",
+            "Player": "Pirean",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "170",
+            "Player": "MicaO",
+            "League": "Circuit Brazilian League of Legends"
+        }
+    }, {
+        "title": {
+            "TotalGames": "169",
+            "Player": "Bigkoro",
+            "League": "Vietnam Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "169",
+            "Player": "Zergsting",
+            "League": "Turkish Championship League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "169",
+            "Player": "Koala (Lin Chih-Chiang)",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "169",
+            "Player": "Ruvelius",
+            "League": "Turkish Championship League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "169",
+            "Player": "Yang (Felipe Zhao)",
+            "League": "Circuit Brazilian League of Legends"
+        }
+    }, {
+        "title": {
+            "TotalGames": "169",
+            "Player": "Naul",
+            "League": "Vietnam Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "168",
+            "Player": "Focho",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "168",
+            "Player": "Holo (Tsang Dek Lam)",
+            "League": "ECS"
+        }
+    }, {
+        "title": {
+            "TotalGames": "168",
+            "Player": "NintendudeX",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "168",
+            "Player": "TheOddOne",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "168",
+            "Player": "Watch",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "168",
+            "Player": "Zuna",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "168",
+            "Player": "Unlimited (Petar Georgiev)",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "168",
+            "Player": "MANTARRAYA",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "168",
+            "Player": "Uri",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "168",
+            "Player": "YoungBuck",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "167",
+            "Player": "Expession",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "167",
+            "Player": "H4cker",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "167",
+            "Player": "Palette",
+            "League": "Vietnam Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "167",
+            "Player": "Ysera",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "166",
+            "Player": "Celebrity",
+            "League": "Vietnam Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "166",
+            "Player": "Warangelus",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "165",
+            "Player": "Yanxuan",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "165",
+            "Player": "Aluka",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "165",
+            "Player": "DanDy",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "165",
+            "Player": "Clowz",
+            "League": "LoL Secondary Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "165",
+            "Player": "YiJin",
+            "League": "Vietnam Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "165",
+            "Player": "Zoom",
+            "League": "LoL Secondary Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "164",
+            "Player": "Ucal",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "164",
+            "Player": "Xintai",
+            "League": "LoL Secondary Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "164",
+            "Player": "Lukezy",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "164",
+            "Player": "Fortunate (Liang Jian)",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "164",
+            "Player": "Looper",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "164",
+            "Player": "Saintvicious",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "164",
+            "Player": "Mata",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "163",
+            "Player": "Viod (Lu Fan)",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "163",
+            "Player": "IgNar",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "163",
+            "Player": "Ben",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "163",
+            "Player": "JackeyLove",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "163",
+            "Player": "Happy",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "162",
+            "Player": "V",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "162",
+            "Player": "Cody Sun",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "162",
+            "Player": "Jockster",
+            "League": "Circuit Brazilian League of Legends"
+        }
+    }, {
+        "title": {
+            "TotalGames": "162",
+            "Player": "Juves",
+            "League": "Oceanic Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "161",
+            "Player": "Aiming",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "160",
+            "Player": "Eason",
+            "League": "ECS"
+        }
+    }, {
+        "title": {
+            "TotalGames": "160",
+            "Player": "Lilv",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "160",
+            "Player": "Zest (Hsieh Ming-Hsuan)",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "160",
+            "Player": "Artifact",
+            "League": "Vietnam Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "160",
+            "Player": "Flawless",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "160",
+            "Player": "Karsa",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "160",
+            "Player": "Morning",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "160",
+            "Player": "Xx (Xiong Yu-Long)",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "160",
+            "Player": "Thaldrin",
+            "League": "Turkish Championship League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "159",
+            "Player": "Truth",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "159",
+            "Player": "Chei",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "159",
+            "Player": "Jay (Li Chieh)",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "158",
+            "Player": "Scarra",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "158",
+            "Player": "Praedyth",
+            "League": "Oceanic Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "158",
+            "Player": "TheShy",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "158",
+            "Player": "Raid",
+            "League": "Oceanic Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "158",
+            "Player": "Tarzan (Lee Seung-yong)",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "158",
+            "Player": "Deft",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "158",
+            "Player": "Viper (Park Do-hyeon)",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "157",
+            "Player": "Lehends",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "157",
+            "Player": "Alu",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "157",
+            "Player": "Ronop",
+            "League": "Vietnam Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "156",
+            "Player": "Creaton",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "156",
+            "Player": "Catjug",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "156",
+            "Player": "Cyeol",
+            "League": "LoL Secondary Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "156",
+            "Player": "Karsa",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "156",
+            "Player": "Fadeaway",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "155",
+            "Player": "Space",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "155",
+            "Player": "Rogu",
+            "League": "Turkish Championship League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "155",
+            "Player": "AK (Zhou Kun)",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "155",
+            "Player": "Y4",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "155",
+            "Player": "Sora (Liu Zhi-Long)",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "154",
+            "Player": "Profit",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "154",
+            "Player": "Claire",
+            "League": "Oceanic Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "154",
+            "Player": "L1n",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "154",
+            "Player": "Ley",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "154",
+            "Player": "Haru",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "153",
+            "Player": "Easyhoon",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "153",
+            "Player": "Robo",
+            "League": "Circuit Brazilian League of Legends"
+        }
+    }, {
+        "title": {
+            "TotalGames": "153",
+            "Player": "Venus",
+            "League": "Vietnam Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "153",
+            "Player": "Hachani",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "153",
+            "Player": "SeongHwan",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "152",
+            "Player": "Chaser",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "152",
+            "Player": "Mimer",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "152",
+            "Player": "Tulz",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "152",
+            "Player": "Mystiques",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "152",
+            "Player": "Cpt Jack",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "152",
+            "Player": "Photic",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "152",
+            "Player": "Sybol",
+            "League": "Oceanic Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "152",
+            "Player": "Cinkrof",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "152",
+            "Player": "Smittyj",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "152",
+            "Player": "Sanchez",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "151",
+            "Player": "Chovy",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "151",
+            "Player": "Sorn",
+            "League": "Vietnam Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "151",
+            "Player": "Gogoing",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "151",
+            "Player": "Hollow",
+            "League": "Challengers Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "150",
+            "Player": "Dee",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "150",
+            "Player": "Knight (Zhuo Ding)",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "150",
+            "Player": "Haretti",
+            "League": "League of Legends Japan League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "150",
+            "Player": "ThintoN",
+            "League": "League of Legends Japan League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "149",
+            "Player": "Tinowns",
+            "League": "Circuit Brazilian League of Legends"
+        }
+    }, {
+        "title": {
+            "TotalGames": "149",
+            "Player": "Athena",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "148",
+            "Player": "Lilv",
+            "League": "ECS"
+        }
+    }, {
+        "title": {
+            "TotalGames": "148",
+            "Player": "Laba",
+            "League": "ECS"
+        }
+    }, {
+        "title": {
+            "TotalGames": "148",
+            "Player": "Milica",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "148",
+            "Player": "Cboi",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "148",
+            "Player": "GuGer",
+            "League": "Challengers Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "148",
+            "Player": "Innox",
+            "League": "League Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "148",
+            "Player": "Koala (Lin Chih-Chiang)",
+            "League": "ECS"
+        }
+    }, {
+        "title": {
+            "TotalGames": "148",
+            "Player": "QiuQiu (Zhang Ming)",
+            "League": "LoL Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "148",
+            "Player": "BrTT",
+            "League": "Circuit Brazilian League of Legends"
+        }
+    }, {
+        "title": {
+            "TotalGames": "148",
+            "Player": "Spunk",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "147",
+            "Player": "Secret",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "147",
+            "Player": "MaHa",
+            "League": "LoL Champions Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "146",
+            "Player": "Zealot",
+            "League": "Copa Latinoam\u00e9rica Sur"
+        }
+    }, {
+        "title": {
+            "TotalGames": "146",
+            "Player": "Gemini",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "146",
+            "Player": "Overpow",
+            "League": "LoL European Championship"
+        }
+    }, {
+        "title": {
+            "TotalGames": "146",
+            "Player": "Huanfeng",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "145",
+            "Player": "Goku",
+            "League": "Circuit Brazilian League of Legends"
+        }
+    }, {
+        "title": {
+            "TotalGames": "145",
+            "Player": "Frozen (Kim Tae-il)",
+            "League": "Turkish Championship League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "145",
+            "Player": "BeBe (Chang Bo-Wei)",
+            "League": "League of Legends Master Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "145",
+            "Player": "CBL",
+            "League": "Vietnam Championship Series"
+        }
+    }, {
+        "title": {
+            "TotalGames": "145",
+            "Player": "Sixsix9",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "145",
+            "Player": "SoaR",
+            "League": "Challengers Korea"
+        }
+    }, {
+        "title": {
+            "TotalGames": "145",
+            "Player": "Tockers",
+            "League": "Circuit Brazilian League of Legends"
+        }
+    }, {
+        "title": {
+            "TotalGames": "145",
+            "Player": "Only",
+            "League": "Oceanic Pro League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "145",
+            "Player": "Jirall",
+            "League": "Liga Latinoam\u00e9rica Norte"
+        }
+    }, {
+        "title": {
+            "TotalGames": "145",
+            "Player": "NerzhuL",
+            "League": "Liga Latinoam\u00e9rica Norte"
+        }
+    }, {
+        "title": {
+            "TotalGames": "144",
+            "Player": "Venzer",
+            "League": "LVP SuperLiga Orange"
+        }
+    }, {
+        "title": {
+            "TotalGames": "144",
+            "Player": "Wings (Wang Shu-Kai)",
+            "League": "League of Legends Development League"
+        }
+    }, {
+        "title": {
+            "TotalGames": "144",
+            "Player": "Tay",
+            "League": "Circuit Brazilian League of Legends"
+        }
+    }]
+}
