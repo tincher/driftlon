@@ -1,6 +1,7 @@
-import mwclient
-import json
 import html
+import json
+
+import mwclient
 import requests
 from bs4 import BeautifulSoup
 
@@ -10,11 +11,22 @@ site = mwclient.Site('lol.gamepedia.com', path='/')
 min_games = 20
 
 
-def get_eligible_players():
-	response = site.api('cargoquery', limit='max', tables="PlayerLeagueHistory=PLH",
-						fields="PLH.TotalGames, PLH.Player, PLH.League", order_by="PLH.TotalGames desc",
-						where="PLH.TotalGames>={}".format(min_games))
-	return response["cargoquery"]
+def get_next_player_batch(current_offset):
+	request = site.api('cargoquery', offset=current_offset, limit=500, tables="PlayerLeagueHistory=PLH",
+					   fields="PLH.TotalGames, PLH.Player, PLH.League", order_by="PLH.TotalGames desc",
+					   where="PLH.TotalGames>={}".format(min_games))['cargoquery']
+	return [(x['title']['TotalGames'], x['title']['Player'], x['title']['League']) for x in request['cargoquery']]
+
+
+def get_all_eligible_players():
+	current_offset = 0
+	result = []
+	player_batch = get_next_player_batch(current_offset)
+	while len(player_batch) > 0:
+		result.extend(player_batch)
+		current_offset += 500
+		player_batch = get_next_player_batch(current_offset)
+	return result
 
 
 def get_soloq_ids_from_trackingthepros(name):
@@ -27,12 +39,10 @@ def get_soloq_ids_from_trackingthepros(name):
 	card = [x for x in inner_info if x.find("h4", text='Accounts') is not None][0]
 	table = card.find("table")
 	element = table.find("tr")
-	while element is not None:
+	while not (element.has_attr('id') and 'inactive_link' in element['id']):
 		if element.has_attr('class') and 'inactive_account' in element['class']:
 			element = element.next_sibling
 			continue
-		if element.has_attr('id') and 'inactive_link' in element['id']:
-			break
 		td = element.find("td")
 		server = td.find("b").getText()
 		account_name = td.getText().split("]")[-1]
@@ -48,5 +58,5 @@ def get_soloq_ids_from_leaguepedie(name):
 	return response['cargoquery']
 
 
-players = get_eligible_players()
+players = get_all_eligible_players()
 print(get_soloq_ids_from_trackingthepros('PerkZ'))
