@@ -43,3 +43,4 @@ subdomain = 'euw1'
 account_id = get_account_id_for_name('bigmcjoe', subdomain)
 matchlist = get_full_match_list_for_account(account_id, subdomain)
 match = get_match_for_match_id(matchlist[0]['gameId'], server=subdomain)
+print(match)
