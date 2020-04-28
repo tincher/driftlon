@@ -1,4 +1,5 @@
 import json
+from datetime import datetime, timedelta
 
 import requests
 
@@ -39,8 +40,24 @@ def get_match_for_match_id(match_id, server):
 	return get_json_from_url(complete_url)
 
 
+def get_number_of_patches(patch_count):
+	patches = json.loads(open('./patches.json').read())
+	now = datetime.now()
+	for i in range(patch_count, len(patches)):
+		if datetime.strptime(patches[i]['date'], "%d. %B %Y") > now:
+			return patches[i - patch_count]
+	return patches[-1]
+
+
+def get_timestamp_for_last_number_of_patches(number_of_patches):
+	raw_date = get_number_of_patches(number_of_patches)['date']
+	patch_as_datetime = datetime.strptime(raw_date, "%d. %B %Y") + timedelta(hours=6)
+	return patch_as_datetime.timestamp()
+
+
 subdomain = 'euw1'
 account_id = get_account_id_for_name('bigmcjoe', subdomain)
 matchlist = get_full_match_list_for_account(account_id, subdomain)
 match = get_match_for_match_id(matchlist[0]['gameId'], server=subdomain)
-print(match)
+current_patch = get_timestamp_for_last_number_of_patches(3)
+print(current_patch)
