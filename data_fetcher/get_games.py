@@ -41,7 +41,7 @@ def get_match_for_match_id(match_id, server):
 
 
 def get_number_of_patches(patch_count):
-	patches = json.loads(open('./patches.json').read())
+	patches = json.loads(open('json_files/patches.json').read())
 	now = datetime.now()
 	for i in range(patch_count, len(patches)):
 		if datetime.strptime(patches[i]['date'], "%d. %B %Y") > now:
