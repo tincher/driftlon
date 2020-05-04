@@ -13,16 +13,10 @@ def get_connection_for_collection_name(collection_name):
 	return db, db['driftlon'][collection_name]
 
 
-def write_names_for_user(names_and_server, user, is_pro):
-	db, collection = get_connection_for_collection_name('user_soloq')
-	query, data = {'user': user}, {'user': user, 'data': names_and_server, 'is_pro': is_pro}
-	insert_or_update(collection, query, data)
-	db.close()
-
-
-def write_gamelist_for_user_to_db(games, name, server):
-	db, collection = get_connection_for_collection_name('match_list')
-	query, data = {'name': name}, {'name': name, 'server': server, 'games': games}
+def write_user(name, soloq_ids, pro_games_count):
+	db, collection = get_connection_for_collection_name('player')
+	query, data = {'id': hash(name)}, {'id': hash(name), 'name': name, 'soloq_ids': soloq_ids,
+									   'pro_games_count': pro_games_count}
 	insert_or_update(collection, query, data)
 
 
@@ -33,4 +27,4 @@ def write_game(game):
 
 
 # write_names_for_user(['moinsen'], 'bigmcjoe', False)
-write_game({'gameId': 'test'})
+# write_game({'gameId': 'test'})
