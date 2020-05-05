@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import pymongo
 
 
@@ -13,10 +15,13 @@ def get_connection_for_collection_name(collection_name):
 	return db, db['driftlon'][collection_name]
 
 
-def write_user(name, soloq_ids, pro_games_count):
+def write_user(player):
 	db, collection = get_connection_for_collection_name('player')
-	query, data = {'id': hash(name)}, {'id': hash(name), 'name': name, 'soloq_ids': soloq_ids,
-									   'pro_games_count': pro_games_count}
+	name, soloq_ids, pro_games = player['name'], player['soloq_ids'], player['pro_games']
+	hash_name = hash(name)
+	query = {'id': hash_name}
+	data = {'id': hash_name, 'name': name, 'soloq_ids': soloq_ids, 'pro_games': pro_games,
+			'timestamp': datetime.utcnow()}
 	insert_or_update(collection, query, data)
 
 
@@ -24,7 +29,3 @@ def write_game(game):
 	db, collection = get_connection_for_collection_name('matches')
 	query, data = {'gameId': game['gameId']}, game
 	insert_or_update(collection, query, data)
-
-
-# write_names_for_user(['moinsen'], 'bigmcjoe', False)
-# write_game({'gameId': 'test'})
