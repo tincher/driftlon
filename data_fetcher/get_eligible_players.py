@@ -15,9 +15,10 @@ top_leagues = {
 site = mwclient.Site('lol.gamepedia.com', path='/')
 min_games = 20
 
+
 # helper??? todo
 def get_abbreviated_league_player(player):
-	player['league']= top_leagues[player['league']]
+	player['league'] = top_leagues[player['league']]
 	return player
 
 
@@ -32,7 +33,7 @@ def get_next_player_batch(current_offset):
 					   where="PLH.TotalGames>={}".format(min_games))
 	result = []
 	for entry in request['cargoquery']:
-		player = {'total_games': entry['title']['TotalGames'],
+		player = {'pro_games': entry['title']['TotalGames'],
 				  'name': entry['title']['Player'],
 				  'league': entry['title']['League']}
 		result.append(player)
@@ -62,13 +63,13 @@ def get_soloq_ids_from_trackingthepros(name):
 	card = [x for x in inner_info if x.find("h4", text='Accounts') is not None][0]
 	table = card.find("table")
 	element = table.find("tr")
-	while not (element.has_attr('id') and 'inactive_link' in element['id']):
+	while element is not None and not (element.has_attr('id') and 'inactive_link' in element['id']):
 		if element.has_attr('class') and 'inactive_account' in element['class']:
 			element = element.next_sibling
 			continue
 		td = element.find("td")
-		server = td.find("b").getText()
-		account_name = td.getText().split("]")[-1]
+		server = td.find("b").getText().strip()
+		account_name = td.getText().split("]")[-1].strip()
 		result.append((server, account_name))
 		element = element.next_sibling
 	return result
