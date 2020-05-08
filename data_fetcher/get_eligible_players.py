@@ -16,7 +16,6 @@ site = mwclient.Site('lol.gamepedia.com', path='/')
 min_games = 20
 
 
-# helper? todo
 def get_abbreviated_league_player(player):
     player['league'] = top_leagues[player['league']]
     return player
