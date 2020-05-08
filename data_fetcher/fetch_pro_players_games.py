@@ -24,6 +24,20 @@ def fetch_user_batch(batch_size):
         write_user(player)
 
 
+# todo helperfor rate_limit_control!
+def fetch_games_wrt_rate_limit():
+    players = get_oldest_updated_batch_of_players(10)
+    for player in players:
+        for soloq_id in player['soloq_ids']:
+            account_id = get_account_id_for_name(soloq_id['account_name'], soloq_id['server'])
+            match_list = get_full_match_list_for_account(account_id, soloq_id['server'], player['timestamp'].timestamp())
+            for match in match_list:
+                result = get_match_for_match_id(match['gameId'], soloq_id['server'])
+                #todo restructure data
+                write_game(result)
+        # update lastupdated
+
+
 # fetch_user_batch(batch_size)
 # fetch_all_users()
-# fetch_games_wrt_rate_limit()
+fetch_games_wrt_rate_limit()
