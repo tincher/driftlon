@@ -17,9 +17,6 @@ def clean_collection(collection_name):
         query = {'data.gameId': duplicate["_id"]['gameId'], 'data.platformId': duplicate["_id"]['platformId']}
         for i in range(1, duplicate['count']):
             result = collection.delete_one(query)
-            # print(query)
-            # result = collection.find_one(query)
-            # print(result)
     db.close()
 
 

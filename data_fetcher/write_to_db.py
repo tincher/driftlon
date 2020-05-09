@@ -4,7 +4,7 @@ import hashlib
 import pymongo
 
 # todo db open und close zentralisieren
-# maybe: response von db?
+# maybe: response von db status
 
 
 def get_hash(value):
@@ -51,6 +51,7 @@ def write_game(game, player):
     db.close()
 
 
-# player = {'name': 'WildTurtle'}
-# # update_user_timestamp(player)
-# print(get_hash(player['name']))
+if __name__ == '__main__':
+    player = {'name': 'WildTurtle'}
+    update_user_timestamp(player)
+    print(get_hash(player['name']))
