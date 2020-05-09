@@ -34,6 +34,7 @@ def fetch_games_for_oldest_batch(batch_size):
         update_user_timestamp(player)
 
 
-# fetch_user_batch(batch_size)
-# fetch_all_users()
-fetch_games_for_oldest_batch(batch_size)
+if __name__ == '__main__':
+    fetch_user_batch(batch_size)
+    fetch_all_users()
+    fetch_games_for_oldest_batch(batch_size)
