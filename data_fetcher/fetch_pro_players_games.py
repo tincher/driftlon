@@ -4,10 +4,9 @@ from get_from_db import *
 from get_games import *
 from datetime import datetime
 
-batch_size = 10
+batch_size = 20
 patch_count = 2
-top_leagues = ["LoL European Championship",
-               "League Championship Series", "LoL Champions Korea", "LoL Pro League"]
+top_leagues = ["LoL European Championship", "League Championship Series", "LoL Champions Korea", "LoL Pro League"]
 
 
 def fetch_all_users():
@@ -24,8 +23,8 @@ def fetch_user_batch(batch_size):
         write_user(player)
 
 
-def fetch_games_wrt_rate_limit():
-    players = get_oldest_updated_batch_of_players(10)
+def fetch_games_for_oldest_batch(batch_size):
+    players = get_oldest_updated_batch_of_players(batch_size)
     for player in players:
         for soloq_id in player['soloq_ids']:
             match_list = get_matchlist_for_player_since_number_of_patches(soloq_id['account_name'], soloq_id['server'], 1)
@@ -36,5 +35,5 @@ def fetch_games_wrt_rate_limit():
 
 
 # fetch_user_batch(batch_size)
-fetch_all_users()
-fetch_games_wrt_rate_limit()
+# fetch_all_users()
+fetch_games_for_oldest_batch(batch_size)

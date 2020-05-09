@@ -7,7 +7,7 @@ import requests
 api_key = '?api_key=RGAPI-a35c93a9-3dc3-42da-8846-3149295755d7'
 api_url = 'https://{server}.api.riotgames.com{url_path}'
 
-subdomains = {'[NA]': 'na1', '[EU]': 'euw1', '[EUW]': 'euw1', '[KR]': 'kr'}
+subdomains = {'[NA]': 'na1', '[EU]': 'euw1', '[EUW]': 'euw1', '[KR]': 'kr', '[EUNE]': 'eun1'}
 
 
 def get_subdomain_for_region(region):

@@ -28,8 +28,6 @@ def update_user_timestamp(player):
     query = {'id': get_hash(player['name'])}
     new_timestamp = {"$set": {"timestamp": datetime.utcnow()}}
     answer = collection.update_one(query, new_timestamp)
-    print(query)
-    print(answer)
     db.close()
 
 
