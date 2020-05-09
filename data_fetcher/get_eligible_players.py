@@ -86,5 +86,7 @@ def get_random_batch_of_players(batch_size):
     random.shuffle(all_players)
     return all_players[:batch_size]
 
-# players = get_all_eligible_players()
-# print(get_soloq_ids_from_trackingthepros('PerkZ'))
+
+if __name__ == '__main__':
+    players = get_all_eligible_players()
+    print(get_soloq_ids_from_trackingthepros('PerkZ'))

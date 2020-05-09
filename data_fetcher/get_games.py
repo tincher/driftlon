@@ -95,10 +95,11 @@ def get_matchlist_for_player_since_number_of_patches(name, region, patch_count):
     return get_full_match_list_for_account(account_id, region, timestamp)
 
 
-# subdomain = '[EU]'
-# account_id = get_account_id_for_name('bigmcjoe', subdomain)
-# # matchlist = get_full_match_list_for_account(account_id, subdomain)
-# # match = get_match_for_match_id(matchlist[11]['gameId'], server=subdomain)
-# # current_patch = get_timestamp_for_last_number_of_patches(3)
-# my_matchlist = get_matchlist_for_player_since_number_of_patches('bigmcjoe', subdomain, 2)
-# print(json.dumps(my_matchlist))
+if __name__ == '__main__':
+    subdomain = '[EU]'
+    account_id = get_account_id_for_name('bigmcjoe', subdomain)
+    matchlist = get_full_match_list_for_account(account_id, subdomain)
+    match = get_match_for_match_id(matchlist[11]['gameId'], server=subdomain)
+    current_patch = get_timestamp_for_last_number_of_patches(3)
+    my_matchlist = get_matchlist_for_player_since_number_of_patches('bigmcjoe', subdomain, 2)
+    print(json.dumps(my_matchlist))
