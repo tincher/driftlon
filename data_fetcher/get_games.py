@@ -7,22 +7,29 @@ import requests
 api_key = '?api_key=RGAPI-a35c93a9-3dc3-42da-8846-3149295755d7'
 api_url = 'https://{server}.api.riotgames.com{url_path}'
 
-subdomains= {'[NA]': 'na1', '[EU]': 'euw1', '[KR]': 'kr'}
+subdomains = {'[NA]': 'na1', '[EU]': 'euw1', '[EUW]': 'euw1', '[KR]': 'kr'}
 
 
 def get_subdomain_for_region(region):
     return subdomains[region]
 
+
 def get_json_from_url(url):
+    # todo ratelimit_control
+    time_response_codes = [429, 504]
     r = requests.get(url)
     is_first_time = True
-    if r.status_code is not 200:
-        while r.status_code is 429:
+    while r.status_code != 200:
+        if r.status_code in time_response_codes:
             if is_first_time:
                 time.sleep(1)
             else:
-                time.sleep(60)
+                time.sleep(20)
             r = requests.get(url)
+        else:
+            if r.status_code == 404:
+                return {'matches': [], 'endIndex': 0, 'totalGames': 0}
+            raise Exception('Can not handle response code: ', r.text)
     return json.loads(r.text)
 
 
@@ -68,7 +75,7 @@ def get_match_for_match_id(match_id, region):
 
 
 def get_number_of_patches(patch_count):
-    patches = json.loads(open('json_files/patches.json').read())
+    patches = json.loads(open('./data_fetcher/json_files/patches.json').read())
     now = datetime.now()
     for i in range(patch_count, len(patches)):
         if datetime.strptime(patches[i]['date'], "%d. %B %Y") > now:
@@ -79,13 +86,13 @@ def get_number_of_patches(patch_count):
 def get_timestamp_for_last_number_of_patches(number_of_patches):
     raw_date = get_number_of_patches(number_of_patches)['date']
     patch_as_datetime = datetime.strptime(raw_date, "%d. %B %Y") + timedelta(hours=6)
-    return patch_as_datetime.timestamp()
+    return patch_as_datetime.timestamp() * 1000
 
 
 def get_matchlist_for_player_since_number_of_patches(name, region, patch_count):
     timestamp = int(get_timestamp_for_last_number_of_patches(patch_count))
-    account_id = get_account_id_for_name(name, get_subdomain_for_region(region))
-    return get_full_match_list_for_account(account_id, get_subdomain_for_region(region), timestamp)
+    account_id = get_account_id_for_name(name, region)
+    return get_full_match_list_for_account(account_id, region, timestamp)
 
 
 # subdomain = '[EU]'
