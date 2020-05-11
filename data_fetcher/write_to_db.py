@@ -19,6 +19,7 @@ def insert_or_update(collection, query, content):
 
 
 def get_connection_for_collection_name(collection_name):
+    # todo in extra file als utility?
     db = pymongo.MongoClient('mongodb://localhost:27017')
     return db, db['driftlon'][collection_name]
 
