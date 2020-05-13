@@ -1,3 +1,4 @@
+from driftlon_utils import get_connection_for_collection_name
 from datetime import datetime
 import hashlib
 
@@ -16,12 +17,6 @@ def insert_or_update(collection, query, content):
         collection.update_one(query, {'$set': content})
     else:
         collection.insert_one(content)
-
-
-def get_connection_for_collection_name(collection_name):
-    # todo in extra file als utility?
-    db = pymongo.MongoClient('mongodb://localhost:27017')
-    return db, db['driftlon'][collection_name]
 
 
 def update_user_timestamp(player):
