@@ -7,25 +7,42 @@ import requests
 api_key = '?api_key=RGAPI-a35c93a9-3dc3-42da-8846-3149295755d7'
 api_url = 'https://{server}.api.riotgames.com{url_path}'
 
-subdomains = {'[NA]': 'na1', '[EU]': 'euw1', '[EUW]': 'euw1', '[KR]': 'kr', '[EUNE]': 'eun1'}
+subdomains = {'[NA]': 'na1', '[EU]': 'euw1', '[EUW]': 'euw1', '[KR]': 'kr', '[EUNE]': 'eun1', '[BR]': 'br1'}
+time_response_codes = [429, 504]
+last_requests_timestamps = []
 
 
 def get_subdomain_for_region(region):
     return subdomains[region]
 
 
+def time_to_wait():
+    global last_requests_timestamps
+    result = 0
+    now = datetime.utcnow()
+    short_time_limit = [x for x in last_requests_timestamps if x + timedelta(seconds=1) > now]
+    long_time_limit = [x for x in last_requests_timestamps if x + timedelta(minutes=2) > now]
+    last_requests_timestamps = [x for x in last_requests_timestamps if x in short_time_limit or x in long_time_limit]
+    if len(short_time_limit) >= 20:
+        result = (timedelta(seconds=1)-(now - short_time_limit[0])).total_seconds()
+    elif len(long_time_limit) >= 100:
+        long_time_waiting_time = (timedelta(minutes=2)-(now - long_time_limit[0])).total_seconds()
+        if long_time_waiting_time > result:
+            result = long_time_waiting_time
+    return result
+
+
+def make_request(url):
+    time.sleep(time_to_wait())
+    last_requests_timestamps.append(datetime.utcnow())
+    return requests.get(url)
+
+
 def get_json_from_url(url):
-    # todo ratelimit_control
-    time_response_codes = [429, 504]
-    r = requests.get(url)
-    is_first_time = True
+    r = make_request(url)
     while r.status_code != 200:
         if r.status_code in time_response_codes:
-            if is_first_time:
-                time.sleep(1)
-            else:
-                time.sleep(20)
-            r = requests.get(url)
+            r = make_request(url)
         else:
             if r.status_code == 404:
                 return {'matches': [], 'endIndex': 0, 'totalGames': 0}
