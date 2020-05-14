@@ -13,35 +13,13 @@ import statistics
 import numpy as np
 import tensorflow as tf
 
-DBReader = DBReader()
-DBWriter = DBWriter()
-
 
 def get_random_matches_batch(batch_size):
-	db, collection = get_connection_for_collection_name('matches')
-	matches = list(collection.find({}))
-	random.shuffle(matches)
-	db.close()
-	return matches[:batch_size]
-
-
-def get_particpant_id(match):
-	participant_id = 0
-	player = DBReader.get_player_for_id(match['player_id'])
-	player_account_ids = [x['account_id'] for x in player['soloq_ids']]
-	for participant in match['data']['participantIdentities']:
-		if participant['player']['accountId'] in player_account_ids:
-			participant_id = participant['participantId']
-	return participant_id
-
-
-def get_processed_stats(stats, items_to_be_kept):
-	result = {}
-	for key in stats:
-		if key in items_to_be_kept:
-			result[key] = stats[key]
-	return result
-
+    db, collection = get_connection_for_collection_name('matches')
+    matches = list(collection.find({}))
+    random.shuffle(matches)
+    db.close()
+    return matches[:batch_size]
 
 def get_processed_timeline_data(match, items_to_be_kept):
 	offset = 2
