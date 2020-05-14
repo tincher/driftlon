@@ -1,3 +1,6 @@
+import pymongo
+
+
 # flatten dict
 def flatten(d, sep="_"):
     obj = collections.OrderedDict()

@@ -4,13 +4,12 @@ import pymongo
 import json
 import collections
 
-# todo: maybe in different files
-
 
 def get_random_matches_batch(batch_size):
     db, collection = get_connection_for_collection_name('matches')
     matches = list(collection.find({}))
     random.shuffle(matches)
+    db.close()
     return matches[:batch_size]
 
 
