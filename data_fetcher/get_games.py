@@ -65,7 +65,7 @@ def get_match_list_batch(account_id, region, begin_index, timestamp=0):
     return get_json_from_url(complete_url)
 
 
-def get_full_match_list_for_account(account_id, region, timestamp=0):
+def get_match_list_for_account(account_id, region, timestamp=0):
     result, start_index = [], 0
     response = get_match_list_batch(account_id, region, 0, timestamp)
     result.extend(response['matches'])
@@ -97,16 +97,16 @@ def get_timestamp_for_last_number_of_patches(number_of_patches):
     return patch_as_datetime.timestamp() * 1000
 
 
-def get_matchlist_for_player_since_number_of_patches(name, region, patch_count):
+def get_matchlist_for_player_since_number_of_patches(accound_id, patch_count):
+    #todo only ranked!
     timestamp = int(get_timestamp_for_last_number_of_patches(patch_count))
-    account_id = get_account_id_for_name(name, region)
-    return get_full_match_list_for_account(account_id, region, timestamp)
+    return get_match_list_for_account(account_id, region, timestamp)
 
 
 if __name__ == '__main__':
     subdomain = '[EU]'
     account_id = get_account_id_for_name('bigmcjoe', subdomain)
-    matchlist = get_full_match_list_for_account(account_id, subdomain)
+    matchlist = get_match_list_for_account(account_id, subdomain)
     match = get_match_for_match_id(matchlist[11]['gameId'], server=subdomain)
     current_patch = get_timestamp_for_last_number_of_patches(3)
     my_matchlist = get_matchlist_for_player_since_number_of_patches('bigmcjoe', subdomain, 2)

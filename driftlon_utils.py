@@ -1,8 +1,8 @@
 import pymongo
-
+import collections
 
 # flatten dict
-def flatten(d, sep="_"):
+def my_flatten(d, sep="_"):
     obj = collections.OrderedDict()
 
     def recurse(t, parent_key=""):
@@ -15,7 +15,7 @@ def flatten(d, sep="_"):
         else:
             obj[parent_key] = t
     recurse(d)
-    return obj
+    return dict(obj)
 
 
 # db
