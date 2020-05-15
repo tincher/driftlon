@@ -1,17 +1,13 @@
 import sys
-
 sys.path.append(".")
 sys.path.append("/Users/joelewig/projects/driftlon")
 sys.path.append("/Users/joelewig/projects/driftlon/data_fetcher")
 
+
 from driftlon_utils import *
-from get_from_db import *
-from write_to_db import *
+from get_from_db import get_player_for_id
 import random
 import json
-import statistics
-import numpy as np
-import tensorflow as tf
 
 
 def get_random_matches_batch(batch_size):
@@ -51,17 +47,32 @@ def transform_match_by_config(match, config, participant_id):
 	result['game'] = get_processed_stats(match['data'], config['game'])
 	return result
 
+def get_particpant_id(match):
+    participant_id = 0
+    player = get_player_for_id(match['player_id'])
+    player_account_ids = [x['account_id'] for x in player['soloq_ids']]
+    for participant in match['data']['participantIdentities']:
+        if participant['player']['accountId'] in player_account_ids:
+            participant_id = participant['participantId']
+    return participant_id
+
 def get_transformed_match(match):
-	participant_id = get_particpant_id(match)
-	if participant_id == 0:
-		return []
-	config = json.loads(open('./preprocessor/config.json').read())
-	return transform_match_by_config(match, config, participant_id)
-
-
-def get_match_as_vector(match):
-	match_as_list = list(my_flatten(match).values())
-	return np.array(match_as_list)
+    # participant stats nur von spieler
+    # participantIdentities -> participants -> teamId
+    # keep timestamp
+    participant_id = get_particpant_id(match)
+    if participant_id == 0:
+        #todo raise error
+        return []
+    match['participant_stats'] = match['data']['participants'][participant_id-1]
+    match['data'].pop('participants')
+    match['data'].pop('participantIdentities')
+    flat_match = my_flatten(match)
+    # todo filter relevant infos
+    irrelevant_info = ['_id']
+    for key in irrelevant_info:
+        flat_match.pop(key)
+    return flat_match
 
 def get_match_vector_batch(batch_size):
 	matches = get_random_matches_batch(batch_size)
@@ -73,12 +84,6 @@ def get_match_vector_batch(batch_size):
 		targets.append(get_target_for_match(match))
 	return data, targets
 
-def get_bucketized_match(match):
-    bucket_list = [0, 4, 27, 28]
-    for entry in bucket_list:
-        value = tf.strings.to_hash_bucket_strong(list(str(match[entry])), 20, [0, 0]).numpy()
-        match[entry] = value[0]
-    return match
 
 def transform_batch(batch_size):
 	matches = get_random_matches_batch(batch_size)
@@ -91,4 +96,6 @@ def transform_batch(batch_size):
 			DBWriter.write_processed_game(bucketized_vector, target, match['player_id'], match['data']['gameCreation'])
 
 if __name__ == '__main__':
-	transform_batch(250)
+    match = get_random_matches_batch(1)[0]
+    # print(json.dumps(tmp))
+    print(get_transformed_match(match))

@@ -1,5 +1,5 @@
 import pymongo
-
+import collections
 
 # flatten dict
 def my_flatten(d, sep="_"):
