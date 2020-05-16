@@ -1,5 +1,4 @@
-[
-    {
+[{
         "queueId": 0,
         "map": "Custom games",
         "description": null,
@@ -195,49 +194,49 @@
         "queueId": 100,
         "map": "Butcher's Bridge",
         "description": "5v5 ARAM games",
-        "notes": null        
+        "notes": null
     },
     {
         "queueId": 300,
         "map": "Howling Abyss",
         "description": "Legend of the Poro King games",
-        "notes": "Deprecated in patch 7.19 in favor of queueId 920"        
+        "notes": "Deprecated in patch 7.19 in favor of queueId 920"
     },
     {
         "queueId": 310,
         "map": "Summoner's Rift",
         "description": "Nemesis games",
-        "notes": null        
+        "notes": null
     },
     {
         "queueId": 313,
         "map": "Summoner's Rift",
         "description": "Black Market Brawlers games",
-        "notes": null        
+        "notes": null
     },
     {
         "queueId": 315,
         "map": "Summoner's Rift",
         "description": "Nexus Siege games",
-        "notes": "Deprecated in patch 7.19 in favor of queueId 940"        
+        "notes": "Deprecated in patch 7.19 in favor of queueId 940"
     },
     {
         "queueId": 317,
         "map": "Crystal Scar",
         "description": "Definitely Not Dominion games",
-        "notes": null        
+        "notes": null
     },
     {
         "queueId": 318,
         "map": "Summoner's Rift",
         "description": "ARURF games",
-        "notes": "Deprecated in patch 7.19 in favor of queueId 900"        
+        "notes": "Deprecated in patch 7.19 in favor of queueId 900"
     },
     {
         "queueId": 325,
         "map": "Summoner's Rift",
         "description": "All Random games",
-        "notes": null        
+        "notes": null
     },
     {
         "queueId": 400,

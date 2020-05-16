@@ -56,22 +56,25 @@ def get_account_id_for_name(name, region):
     return get_json_from_url(complete_url)['accountId']
 
 
-def get_match_list_batch(account_id, region, begin_index, timestamp=0):
+def get_match_list_batch(account_id, region, begin_index, timestamp=0, queues=[420,440]):
     timestamp_url = ''
     if timestamp > 0:
         timestamp_url = '&beginTime=' + str(int(timestamp))
+    queues_url = ''
+    for queue in queues:
+        queues_url = '&queue=' + str(queue)
     matchlist_url = '/lol/match/v4/matchlists/by-account/{}'.format(account_id) + api_key + timestamp_url
     complete_url = api_url.format(url_path=matchlist_url, server=get_subdomain_for_region(region)) + '&beginIndex={}'.format(begin_index)
     return get_json_from_url(complete_url)
 
 
-def get_match_list_for_account(account_id, region, timestamp=0):
+def get_match_list_for_account(account_id, region, timestamp=0, queues=[420, 440]):
     result, start_index = [], 0
-    response = get_match_list_batch(account_id, region, 0, timestamp)
+    response = get_match_list_batch(account_id, region, 0, timestamp, queues)
     result.extend(response['matches'])
     while response['endIndex'] < response['totalGames']:
         start_index = response['endIndex']
-        response = get_match_list_batch(account_id, region, start_index, timestamp)
+        response = get_match_list_batch(account_id, region, start_index, timestamp, queues)
         result.extend(response['matches'])
     return result
 
@@ -97,8 +100,7 @@ def get_timestamp_for_last_number_of_patches(number_of_patches):
     return patch_as_datetime.timestamp() * 1000
 
 
-def get_matchlist_for_player_since_number_of_patches(accound_id, patch_count):
-    #todo only ranked!
+def get_matchlist_for_player_since_number_of_patches(account_id, region, patch_count):
     timestamp = int(get_timestamp_for_last_number_of_patches(patch_count))
     return get_match_list_for_account(account_id, region, timestamp)
 
