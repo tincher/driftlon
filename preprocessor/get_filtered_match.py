@@ -5,10 +5,12 @@ sys.path.append("/Users/joelewig/projects/driftlon/data_fetcher")
 
 
 from driftlon_utils import *
-from get_from_db import get_player_for_id
+from get_from_db import *
 import random
 import pymongo
 import json
+
+DBReader = DBReader()
 
 
 def get_random_matches_batch(batch_size):
@@ -21,7 +23,7 @@ def get_random_matches_batch(batch_size):
 
 def get_particpant_id(match):
     participant_id = 0
-    player = get_player_for_id(match['player_id'])
+    player = DBReader.get_player_for_id(match['player_id'])
     player_account_ids = [x['account_id'] for x in player['soloq_ids']]
     for participant in match['data']['participantIdentities']:
         if participant['player']['accountId'] in player_account_ids:

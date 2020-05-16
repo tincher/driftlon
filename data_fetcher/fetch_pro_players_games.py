@@ -13,6 +13,7 @@ batch_size = 20
 patch_count = 2
 top_leagues = ["LoL European Championship", "League Championship Series", "LoL Champions Korea", "LoL Pro League"]
 DBWriter = DBWriter()
+DBReader = DBReader()
 
 
 def fetch_all_users():
@@ -31,15 +32,15 @@ def fetch_user_batch(batch_size):
         player['soloq_ids'] = get_soloq_ids_from_trackingthepros(player['name'])
         if player['soloq_ids'] is not None:
             for soloq_id in player['soloq_ids']:
-                soloq_id['account_id'] = get_account_id_for_name(soloq_id['name'], soloq_id['server'])
+                soloq_id['account_id'] = get_account_id_for_name(soloq_id['account_name'], soloq_id['server'])
         DBWriter.write_user(player)
 
 
 def fetch_games_for_oldest_batch(batch_size):
-    players = get_oldest_updated_batch_of_players(batch_size)
+    players = DBReader.get_oldest_updated_batch_of_players(batch_size)
     for player in players:
         for soloq_id in player['soloq_ids']:
-            match_list = get_matchlist_for_player_since_number_of_patches(soloq_id['account_id'], 1)
+            match_list = get_matchlist_for_player_since_number_of_patches(soloq_id['account_id'], soloq_id['server'], 1)
             for match in match_list:
                 result = get_match_for_match_id(match['gameId'], soloq_id['server'])
                 DBWriter.write_game(result, player)
