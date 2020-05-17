@@ -1,0 +1,36 @@
+{
+    "game_remove": ["teams", "participants", "participantIdentities", "gameId", "queueId", "gameType", "gameCreation", "seasonId", "mapId", "gameMode", "gameVersion"],
+    "game": ["gameDuration"],
+    "player": [],
+    "team_stats": ["towerKills", "dragonKills", "baronKills", "firstRiftHerald"],
+    "participant": ["championId"],
+    "participant_stats": ["
+        goldEarned ", "
+        damageDealtToObjectives ", "
+        totalDamageTaken ", "
+        neutralMinionsKilled ", "
+        deaths ", "
+        wardsKilled ",
+        "totalTimeCrowdControlDealt",
+        "wardsPlaced",
+        "totalDamageDealt",
+        "timeCCingOthers",
+        "largestKillingSpree",
+        "totalDamageDealtToChampions",
+        "neutralMinionsKilled",
+        "totalMinionsKilled",
+        "visionWardsBoughtInGame",
+        "kills",
+        "inhibitorKills",
+        "turretKills",
+        "damageDealtToTurrets",
+        "win",
+        "totalHeal",
+        "visionScore",
+        "longestTimeSpentLiving",
+        "assists",
+        "neutralMinionsKilled"
+    ],
+    "participant_timeline_keep": ["role", "lane", "csDiffPerMinDeltas", "damageTakenPerMinDeltas", "damageTakenDiffPerMinDeltas", "creepsPerMinDeltas", "goldPerMinDeltas"],
+    "after": ["_id", "player_id"]
+}
