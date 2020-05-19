@@ -6,12 +6,14 @@ sys.path.append("/Users/joelewig/projects/driftlon/data_fetcher")
 
 from driftlon_utils import *
 from get_from_db import *
+from write_to_db import *
 import random
 import json
 import statistics
 import numpy as np
 
 DBReader = DBReader()
+DBWriter = DBWriter()
 
 
 def get_random_matches_batch(batch_size):
@@ -58,31 +60,34 @@ def get_target_for_match(match, threshold=20):
     return int(match['pro_games_count'] > threshold)
 
 
-def get_transformed_match(match):
+def transform_match_by_config(match, config, participant_id):
 	result = {}
-	participant_id = get_particpant_id(match)
-	if participant_id == 0:
-		return []
 	match['participant_stats'] = match['data']['participants'][participant_id - 1]
-	config = json.loads(open('./preprocessor/config.json').read())
 	match['team_stats'] = match['data']['teams'][int((int(match['participant_stats']['teamId']) / 100)) - 1]
+
 	result['team_stats'] = get_processed_stats(match['team_stats'], config['team_stats'])
 	result['participant_stats'] = get_processed_stats(match['participant_stats']['stats'], config['participant_stats'])
 	result['timeline_data'] = get_processed_timeline_data(match, config['participant_timeline_keep'])
 	result['participant'] = get_processed_stats(match['participant_stats'], config['participant'])
-	result['game']=get_processed_stats(match['data'], config['game'])
+	result['game'] = get_processed_stats(match['data'], config['game'])
 	return result
+
+def get_transformed_match(match):
+	participant_id = get_particpant_id(match)
+	if participant_id == 0:
+		return []
+	config = json.loads(open('./preprocessor/config.json').read())
+	return transform_match_by_config(match, config, participant_id)
 
 
 def get_match_as_vector(match):
 	match_as_list = list(my_flatten(match).values())
 	return np.array(match_as_list)
 
-
 if __name__ == '__main__':
-	match = get_random_matches_batch(1)[0]
-	transformed_match = get_transformed_match(match)
-	vector = get_match_as_vector(transformed_match)
-	# print(json.dumps(match, default=str))
-	# print(json.dumps(get_transformed_match(match), default=str))
-	# print(json.dumps(get_match_as_vector(transformed_match), default=str))
+	matches = get_random_matches_batch(100)
+	for match in matches:
+		transformed_match = get_transformed_match(match)
+		vector = get_match_as_vector(transformed_match)
+		target = get_target_for_match(match)
+		DBWriter.write_processed_game(vector, target, match['timestamp'])
