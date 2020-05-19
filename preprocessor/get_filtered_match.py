@@ -9,6 +9,7 @@ from get_from_db import *
 import random
 import json
 import statistics
+import numpy as np
 
 DBReader = DBReader()
 
@@ -66,19 +67,22 @@ def get_transformed_match(match):
 	config = json.loads(open('./preprocessor/config.json').read())
 	match['team_stats'] = match['data']['teams'][int((int(match['participant_stats']['teamId']) / 100)) - 1]
 	result['team_stats'] = get_processed_stats(match['team_stats'], config['team_stats'])
-	result['participant_stats'] = get_processed_stats(match['participant_stats']['stats'], config['participant_stats_keep'])
-	result['timeline_data'] = get_processed_timeline_data(match, config['timeline_data'])
+	result['participant_stats'] = get_processed_stats(match['participant_stats']['stats'], config['participant_stats'])
+	result['timeline_data'] = get_processed_timeline_data(match, config['participant_timeline_keep'])
 	result['participant'] = get_processed_stats(match['participant_stats'], config['participant'])
 	result['game']=get_processed_stats(match['data'], config['game'])
 	return result
 
 
 def get_match_as_vector(match):
-	# todo check final length
-	pass
+	match_as_list = list(my_flatten(match).values())
+	return np.array(match_as_list)
 
 
 if __name__ == '__main__':
 	match = get_random_matches_batch(1)[0]
+	transformed_match = get_transformed_match(match)
+	vector = get_match_as_vector(transformed_match)
 	# print(json.dumps(match, default=str))
-	print(json.dumps(get_transformed_match(match), default=str))
+	# print(json.dumps(get_transformed_match(match), default=str))
+	# print(json.dumps(get_match_as_vector(transformed_match), default=str))

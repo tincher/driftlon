@@ -4,13 +4,7 @@
     "player": [],
     "team_stats": ["towerKills", "dragonKills", "baronKills", "firstRiftHerald"],
     "participant": ["championId"],
-    "participant_stats": ["
-        goldEarned ", "
-        damageDealtToObjectives ", "
-        totalDamageTaken ", "
-        neutralMinionsKilled ", "
-        deaths ", "
-        wardsKilled ",
+    "participant_stats": ["goldEarned ", "damageDealtToObjectives ", "totalDamageTaken ", "neutralMinionsKilled ", "deaths ", "wardsKilled ",
         "totalTimeCrowdControlDealt",
         "wardsPlaced",
         "totalDamageDealt",
