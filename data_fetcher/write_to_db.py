@@ -10,10 +10,7 @@ class DBWriter:
     def __init__(self):
         self.db_player, self.player_collection = get_connection_for_collection_name('player')
         self.db_matches, self.matches_collection = get_connection_for_collection_name('matches')
-
-    # def __del__(self):
-    #     db_player.close()
-    #     db_matches.close()
+        self.db_processed, self.processed_collection = get_connection_for_collection_name('processed_matches')
 
     @staticmethod
     def get_hash(value):
@@ -45,6 +42,11 @@ class DBWriter:
         query = {'game_id': game['gameId']}
         self.insert_or_update(self.matches_collection, query, data)
 
+    def write_processed_game(self, processed_game, target, timestamp=datetime.utcnow()):
+        processed_game_list = processed_game.tolist()
+        data = {'data': processed_game_list, 'target': target, 'timestamp': timestamp.timestamp()}
+        query = {'data': processed_game_list, 'timestamp': timestamp}
+        self.insert_or_update(self.processed_collection, query, data)
 
 if __name__ == '__main__':
     player = {'name': 'WildTurtle'}
