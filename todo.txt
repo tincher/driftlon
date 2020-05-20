@@ -1,0 +1,2 @@
+- write to tf record
+- make classes for every data src
