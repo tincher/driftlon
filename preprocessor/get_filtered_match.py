@@ -84,6 +84,25 @@ def get_match_as_vector(match):
 	match_as_list = list(my_flatten(match).values())
 	return np.array(match_as_list)
 
+def get_match_vector_batch(batch_size):
+	matches = get_random_matches_batch(batch_size)
+	data, targets = [], []
+	for match in matches:
+		transformed_match = get_transformed_match(match)
+
+			data.append(transformed_match)
+			targets.append(get_target_for_match(match))
+	return data, targets
+
+def transform_batch(batch_size):
+	matches = get_random_matches_batch(100)
+	for match in matches:
+		transformed_match = get_transformed_match(match)
+		if transformed_match != []:
+			vector = get_match_as_vector(transformed_match)
+			target = get_target_for_match(match)
+			DBWriter.write_processed_game(vector, target, match['timestamp'])
+
 if __name__ == '__main__':
 	matches = get_random_matches_batch(100)
 	for match in matches:
