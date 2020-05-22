@@ -11,6 +11,7 @@ import random
 import json
 import statistics
 import numpy as np
+import tensorflow as tf
 
 DBReader = DBReader()
 DBWriter = DBWriter()
@@ -102,19 +103,14 @@ def get_bucketized_match(match):
     return match
 
 def transform_batch(batch_size):
-	matches = get_random_matches_batch(100)
+	matches = get_random_matches_batch(batch_size)
 	for match in matches:
 		transformed_match = get_transformed_match(match)
 		if transformed_match != []:
 			vector = get_match_as_vector(transformed_match)
+			bucketized_vector = get_bucketized_match(vector)
 			target = get_target_for_match(match)
-			DBWriter.write_processed_game(vector, target, match['timestamp'])
+			DBWriter.write_processed_game(bucketized_vector, target, match['player_id'], match['data']['gameCreation'])
 
 if __name__ == '__main__':
-	# matches = get_random_matches_batch(100)
-	# for match in matches:
-	# 	transformed_match = get_transformed_match(match)
-	# 	vector = get_match_as_vector(transformed_match)
-	# 	target = get_target_for_match(match)
-	# 	DBWriter.write_processed_game(vector, target, match['timestamp'])
-	transform_batch(10)
+	transform_batch(250)
