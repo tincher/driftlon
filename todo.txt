@@ -1,1 +1,2 @@
 TODO make classes for every data src
+TODO save subdomain for pro players at first time!
