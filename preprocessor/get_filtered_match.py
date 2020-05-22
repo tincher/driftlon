@@ -89,10 +89,17 @@ def get_match_vector_batch(batch_size):
 	data, targets = [], []
 	for match in matches:
 		transformed_match = get_transformed_match(match)
-
-			data.append(transformed_match)
-			targets.append(get_target_for_match(match))
+		bucketized_match = get_bucketized_match(transformed_match)
+		data.append(bucketized_match)
+		targets.append(get_target_for_match(match))
 	return data, targets
+
+def get_bucketized_match(match):
+    bucket_list = [0, 4, 27, 28]
+    for entry in bucket_list:
+        value = tf.strings.to_hash_bucket_strong(list(str(match[entry])), 20, [0, 0]).numpy()
+        match[entry] = value[0]
+    return match
 
 def transform_batch(batch_size):
 	matches = get_random_matches_batch(100)
@@ -104,9 +111,10 @@ def transform_batch(batch_size):
 			DBWriter.write_processed_game(vector, target, match['timestamp'])
 
 if __name__ == '__main__':
-	matches = get_random_matches_batch(100)
-	for match in matches:
-		transformed_match = get_transformed_match(match)
-		vector = get_match_as_vector(transformed_match)
-		target = get_target_for_match(match)
-		DBWriter.write_processed_game(vector, target, match['timestamp'])
+	# matches = get_random_matches_batch(100)
+	# for match in matches:
+	# 	transformed_match = get_transformed_match(match)
+	# 	vector = get_match_as_vector(transformed_match)
+	# 	target = get_target_for_match(match)
+	# 	DBWriter.write_processed_game(vector, target, match['timestamp'])
+	transform_batch(10)
