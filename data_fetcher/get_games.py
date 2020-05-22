@@ -1,10 +1,13 @@
 import json
 from datetime import datetime, timedelta
 import time
-
+import yaml
 import requests
 
-api_key = '?api_key=RGAPI-a35c93a9-3dc3-42da-8846-3149295755d7'
+config = {}
+with open('./data_fetcher/config.yml', 'r') as configfile:
+    config = yaml.safe_load(configfile)
+api_key = '?api_key=' + config['riot']['api_key']
 api_url = 'https://{server}.api.riotgames.com{url_path}'
 
 subdomains = {'[NA]': 'na1', '[EU]': 'euw1', '[EUW]': 'euw1', '[KR]': 'kr', '[EUNE]': 'eun1', '[BR]': 'br1'}
@@ -109,7 +112,7 @@ if __name__ == '__main__':
     subdomain = '[EU]'
     account_id = get_account_id_for_name('bigmcjoe', subdomain)
     matchlist = get_match_list_for_account(account_id, subdomain)
-    match = get_match_for_match_id(matchlist[11]['gameId'], server=subdomain)
+    match = get_match_for_match_id(matchlist[11]['gameId'], region=subdomain)
     current_patch = get_timestamp_for_last_number_of_patches(3)
     my_matchlist = get_matchlist_for_player_since_number_of_patches('bigmcjoe', subdomain, 2)
     print(json.dumps(my_matchlist))
