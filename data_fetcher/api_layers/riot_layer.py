@@ -1,7 +1,8 @@
 import time
-
+import json
 import requests
 import yaml
+from datetime import datetime, timedelta
 
 
 class RiotLayer:
@@ -9,7 +10,7 @@ class RiotLayer:
         with open('./data_fetcher/api_layers/config.yml', 'r') as configfile:
             self.config = yaml.safe_load(configfile)
 
-        self.api_key = '?api_key=' + config['riot']['api_key']
+        self.api_key = '?api_key=' + self.config['riot']['api_key']
         self.api_url = 'https://{server}.api.riotgames.com{url_path}'
 
         self.last_requests_timestamps = []
@@ -31,7 +32,7 @@ class RiotLayer:
         return result
 
     def make_request(self, url):
-        time.sleep(time_to_wait())
+        time.sleep(self.time_to_wait())
         self.last_requests_timestamps.append(datetime.utcnow())
         return requests.get(url)
 
@@ -47,9 +48,9 @@ class RiotLayer:
                 raise Exception('Can not handle response code: ', r.text)
         return json.loads(r.text)
 
-    def get_account_id_for_name(self, name, region):
+    def get_account_id_for_name(self, name, subdomain):
         summoner_url = '/lol/summoner/v4/summoners/by-name/{}'.format(name) + self.api_key
-        complete_url = self.api_url.format(url_path=summoner_url, server=get_subdomain_for_region(region))
+        complete_url = self.api_url.format(url_path=summoner_url, server=subdomain)
         return self.get_json_from_url(complete_url)['accountId']
 
     def get_match_list_batch(self, account_id, subdomain, begin_index, timestamp=0, queues=[420, 440]):
@@ -60,8 +61,7 @@ class RiotLayer:
         for queue in queues:
             queues_url = '&queue=' + str(queue)
         matchlist_url = '/lol/match/v4/matchlists/by-account/{}'.format(account_id) + self.api_key + timestamp_url
-        complete_url = self.api_url.format(url_path=matchlist_url, server=subdomain) + \
-            '&beginIndex={}'.format(begin_index)
+        complete_url = self.api_url.format(url_path=matchlist_url, server=subdomain) + '&beginIndex={}'.format(begin_index)
         return self.get_json_from_url(complete_url)
 
     def get_match_list_for_account(self, account_id, region, timestamp=0, queues=[420, 440]):

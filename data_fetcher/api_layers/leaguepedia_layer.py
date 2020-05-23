@@ -6,9 +6,9 @@ import mwclient
 
 
 class LPLayer:
-    def __init__(self, min_games):
+    def __init__(self):
         self.site = mwclient.Site('lol.gamepedia.com', path='/')
-        self.min_games = min_games
+        self.min_games = 20
         self.top_leagues = {
             "LoL European Championship": 'LEC',
             "League Championship Series": 'LCS',
@@ -23,7 +23,7 @@ class LPLayer:
     def get_next_player_batch(self, current_offset):
         request = self.site.api('cargoquery', offset=current_offset, limit=500, tables="PlayerLeagueHistory=PLH",
                                 fields="PLH.TotalGames, PLH.Player, PLH.League", order_by="PLH.TotalGames desc",
-                                where="PLH.TotalGames>={}".format(min_games))
+                                where="PLH.TotalGames>={}".format(self.min_games))
         result = []
         for entry in request['cargoquery']:
             player = {'pro_games': entry['title']['TotalGames'],
