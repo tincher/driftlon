@@ -88,6 +88,7 @@ class RiotLayer:
         timestamp = int(self.get_timestamp_for_last_number_of_patches(patch_count))
         return self.get_match_list_for_account(account_id, region, timestamp)
 
+    #todo get all from division handler
     def get_players_from_division(self, division, tier, queue, subdomain):
         division = '/lol/league/v4/entries/{}/{}/{}'.format(queue, tier, divison) + self.api_key
         complete_url = self.api_url.format(url_path=match_url, server=subdomain)
