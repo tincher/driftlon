@@ -5,8 +5,9 @@ sys.path.append("..")
 from datetime import datetime
 from get_from_db import *
 from write_to_db import DBWriter
-from leaguepedia_layer import LPLayer
-from trackingthepros_layer import TTPLayer
+from data_fetcher.api_layers.leaguepedia_layer import LPLayer
+from data_fetcher.api_layers.trackingthepros_layer import TTPLayer
+from data_fetcher.api_layers.riot_layer import RiotLayer
 
 
 batch_size = 20
@@ -28,7 +29,7 @@ def fetch_all_users():
         DBWriter.write_user(player)
 
 
-def fetch_user_batch(batch_size):
+def fetch_user_batch(batch_size=20):
     player_batch = LPLayer.get_random_batch_of_players(batch_size)
     for player in player_batch:
         player['soloq_ids'] = TTPLayer.get_soloq_ids_from_trackingthepros(player['name'])
@@ -38,7 +39,7 @@ def fetch_user_batch(batch_size):
         DBWriter.write_user(player)
 
 
-def fetch_games_for_oldest_batch(batch_size):
+def fetch_games_for_oldest_batch(batch_size=20):
     players = DBReader.get_oldest_updated_batch_of_players(batch_size)
     for player in players:
         for soloq_id in player['soloq_ids']:
@@ -46,10 +47,16 @@ def fetch_games_for_oldest_batch(batch_size):
             for match in match_list:
                 result = RiotLayer.get_match_for_match_id(match['gameId'], soloq_id['server'])
                 DBWriter.write_game(result, player)
-        # DBWriter.update_user_timestamp(player)
+        DBWriter.update_user_timestamp(player)
 
 
 if __name__ == '__main__':
-    # fetch_user_batch(batch_size)
-    fetch_all_users()
-    # fetch_games_for_oldest_batch(batch_size)
+    given_arg = sys.argv[1]
+    if given_arg == 'pros_batch':
+        fetch_user_batch(int(sys.argv[2]))
+    elif given_arg == 'pros':
+        fetch_all_users()
+    elif given_arg == 'oldest_batch_games':
+        fetch_games_for_oldest_batch(int(sys.argv[2]))
+    else:
+        print('HELP: pros, pros_batch batch_size, oldest_batch_games batch_size')

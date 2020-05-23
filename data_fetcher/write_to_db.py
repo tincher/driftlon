@@ -26,7 +26,7 @@ class DBWriter:
     def update_user_timestamp(self, player):
         query = {'id': self.get_hash(player['name'])}
         new_timestamp = {"$set": {"timestamp": datetime.utcnow()}}
-        answer = player_collection.update_one(query, new_timestamp)
+        answer = self.player_collection.update_one(query, new_timestamp)
 
     def write_user(self, player):
         name, soloq_ids, pro_games = player['name'], player['soloq_ids'], player['pro_games']
