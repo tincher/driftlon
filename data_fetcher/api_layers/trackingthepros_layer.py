@@ -7,7 +7,7 @@ class TTPLayer:
         self.subdomains = {'[NA]': 'na1', '[EU]': 'euw1', '[EUW]': 'euw1',
                            '[KR]': 'kr', '[EUNE]': 'eun1', '[BR]': 'br1'}
 
-    # todo refactor
+    # todo refactor: too big
     def get_soloq_ids_from_trackingthepros(self, name):
         result = []
         r = requests.get('https://www.trackingthepros.com/player/{}'.format(name))
