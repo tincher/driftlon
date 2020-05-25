@@ -4,6 +4,7 @@ import requests
 import yaml
 from datetime import datetime, timedelta
 
+#todo refactor all url creation
 class RiotLayer:
     def __init__(self):
         with open('/Users/joelewig/projects/driftlon/data_fetcher/api_layers/config.yml', 'r') as configfile:
@@ -50,7 +51,8 @@ class RiotLayer:
         return self.api_url.format(server=subdomain, url_path=generated_url)
 
     def get_account_id_for_name(self, name, subdomain):
-        complete_url = self.generate_url(subdomain, '/lol/summoner/v4/summoners/by-name/{}?{}', name)
+        summoner_url = '/lol/summoner/v4/summoners/by-name/{}'.format(name) + self.api_key
+        complete_url = self.api_url.format(url_path=summoner_url, server=subdomain)
         result = self.get_json_from_url(complete_url)
         if 'accountId' not in result.keys():
             return None
@@ -92,20 +94,28 @@ class RiotLayer:
         return self.get_match_list_for_account(account_id, region, timestamp)
 
     def get_players_from_higher_tier(self, queue, tier, subdomain):
-        complete_url = self.generate_url(subdomain, '/lol/league/v4/{}leagues/by-queue/{}?{}', tier, queue)
+        tier_url = '/lol/league/v4/{}leagues/by-queue/{}'.format(tier, queue) + self.api_key
+        complete_url = self.api_url.format(url_path=tier_url, server=subdomain)
         return self.get_json_from_url(complete_url)['entries']
 
-    def get_all_players_from_division(self, tier, division, subdomain, queue, page_limit=1):
-        result, page_count = [], 1
-        next_batch = self.get_player_page_from_division(queue, tier, division, subdomain, page_count)
-        while len(next_batch) > 0 and page_count <= page_limit:
+    def get_all_players_from_division(self, tier, division, subdomain, queue):
+        result, page_count = [], 0
+        next_batch = get_player_page_from_division(queue, tier, division, subdomain, page_count)
+        while len(next_batch) > 0:
             page_count += 1
             result.extend(next_batch)
-            next_batch = self.get_player_page_from_division(queue, tier, division, subdomain, page_count)
+            next_batch = get_player_page_from_division(queue, tier, division, subdomain, page_count)
         return result
 
     def get_player_page_from_division(self, queue, tier, division, subdomain, page):
-        complete_url = self.generate_url(subdomain, '/lol/league/v4/entries/{}/{}/{}?page={}&{}', queue, tier, division, page)
+        tier_url = '/lol/league/v4/entries/{}/{}/{}'.format(queue, tier, division) + self.api_key
+        complete_url = self.api_url.format(url_path=tier_url, server=subdomain)
+        result = self.get_json_from_url(complete_url)
+
+    #todo get all from division handler
+    def get_players_from_division(self, division, tier, queue, subdomain):
+        division = '/lol/league/v4/entries/{}/{}/{}'.format(queue, tier, divison) + self.api_key
+        complete_url = self.api_url.format(url_path=match_url, server=subdomain)
         return self.get_json_from_url(complete_url)
 
     def get_players_from_division(self, queue, tier, division, subdomain):
