@@ -19,7 +19,7 @@ LPLayer = LPLayer()
 TTPLayer = TTPLayer()
 RiotLayer = RiotLayer()
 
-def fetch_all_users():
+def fetch_all_pros():
     players = LPLayer.get_all_eligible_players()
     for player in players:
         player['soloq_ids'] = TTPLayer.get_soloq_ids_from_trackingthepros(player['name'])
@@ -29,7 +29,7 @@ def fetch_all_users():
         DBWriter.write_user(player)
 
 
-def fetch_user_batch(batch_size=20):
+def fetch_pro_batch(batch_size=20):
     player_batch = LPLayer.get_random_batch_of_players(batch_size)
     for player in player_batch:
         player['soloq_ids'] = TTPLayer.get_soloq_ids_from_trackingthepros(player['name'])
@@ -49,13 +49,22 @@ def fetch_games_for_oldest_batch(batch_size=20):
                 DBWriter.write_game(result, player)
         DBWriter.update_user_timestamp(player)
 
+def fetch_casuals(config_number):
+    configs = [{'tier': 'DIAMOND', 'division': 'I'}]
+    queue ='RANKED_SOLO_5x5'
+    subdomain = 'euw1'
+    player_batch = RiotLayer.get_players_from_division(queue, configs[config_number]['tier'], configs[config_number]['division'], subdomain)
+    for player in player_batch:
+        DBWriter.write_user(player)
 
 if __name__ == '__main__':
     given_arg = sys.argv[1]
     if given_arg == 'pros_batch':
-        fetch_user_batch(int(sys.argv[2]))
+        fetch_pro_batch(int(sys.argv[2]))
     elif given_arg == 'pros':
-        fetch_all_users()
+        fetch_all_pros()
+    elif given_arg == 'casuals':
+        fetch_casuals(int(sys.argv[2]))
     elif given_arg == 'oldest_batch_games':
         fetch_games_for_oldest_batch(int(sys.argv[2]))
     else:
