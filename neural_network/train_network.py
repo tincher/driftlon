@@ -12,6 +12,8 @@ from datetime import datetime
 train_images = train_images / 255.0
 
 
+
+
 model = Sequential()
 model.add(LSTM(128, input_shape=(28, 28), activation='relu', return_sequences=True))
 model.add(Dropout(0.2))
