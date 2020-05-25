@@ -4,7 +4,7 @@ import requests
 import yaml
 from datetime import datetime, timedelta
 
-
+#todo refactor all url creation
 class RiotLayer:
     def __init__(self):
         with open('./data_fetcher/api_layers/config.yml', 'r') as configfile:
@@ -19,10 +19,9 @@ class RiotLayer:
     def time_to_wait(self):
         result = 0
         now = datetime.utcnow()
-        short_time_limit = [x for x in self.last_requests_timestamps if x + timedelta(seconds=1) > now]
-        long_time_limit = [x for x in self.last_requests_timestamps if x + timedelta(minutes=2) > now]
-        self.last_requests_timestamps = [
-            x for x in self.last_requests_timestamps if x in short_time_limit or x in long_time_limit]
+        short_time_limit = [x for x in self.last_requests_timestamps if x + timedelta(seconds=1) >= now]
+        long_time_limit = [x for x in self.last_requests_timestamps if x + timedelta(minutes=2) >= now]
+        self.last_requests_timestamps = [x for x in self.last_requests_timestamps if x in short_time_limit or x in long_time_limit]
         if len(short_time_limit) >= 20:
             result = (timedelta(seconds=1) - (now - short_time_limit[0])).total_seconds()
         elif len(long_time_limit) >= 100:
@@ -36,7 +35,6 @@ class RiotLayer:
         self.last_requests_timestamps.append(datetime.utcnow())
         return requests.get(url)
 
-    # todo rename to make request
     def get_json_from_url(self, url):
         r = self.make_request(url)
         while r.status_code != 200:
@@ -51,7 +49,11 @@ class RiotLayer:
     def get_account_id_for_name(self, name, subdomain):
         summoner_url = '/lol/summoner/v4/summoners/by-name/{}'.format(name) + self.api_key
         complete_url = self.api_url.format(url_path=summoner_url, server=subdomain)
-        return self.get_json_from_url(complete_url)['accountId']
+        result = self.get_json_from_url(complete_url)
+        if 'accountId' not in result.keys():
+            return None
+        else:
+            return result
 
     def get_match_list_batch(self, account_id, subdomain, begin_index, timestamp=0, queues=[420, 440]):
         timestamp_url = ''
@@ -87,6 +89,25 @@ class RiotLayer:
     def get_matchlist_for_player_since_number_of_patches(self, account_id, region, patch_count):
         timestamp = int(self.get_timestamp_for_last_number_of_patches(patch_count))
         return self.get_match_list_for_account(account_id, region, timestamp)
+
+    def get_players_from_higher_tier(self, queue, tier, subdomain):
+        tier_url = '/lol/league/v4/{}leagues/by-queue/{}'.format(tier, queue) + self.api_key
+        complete_url = self.api_url.format(url_path=tier_url, server=subdomain)
+        return self.get_json_from_url(complete_url)['entries']
+
+    def get_all_players_from_division(self, tier, division, subdomain, queue):
+        result, page_count = [], 0
+        next_batch = get_player_page_from_division(queue, tier, division, subdomain, page_count)
+        while len(next_batch) > 0:
+            page_count += 1
+            result.extend(next_batch)
+            next_batch = get_player_page_from_division(queue, tier, division, subdomain, page_count)
+        return result
+
+    def get_player_page_from_division(self, queue, tier, division, subdomain, page):
+        tier_url = '/lol/league/v4/entries/{}/{}/{}'.format(queue, tier, division) + self.api_key
+        complete_url = self.api_url.format(url_path=tier_url, server=subdomain)
+        result = self.get_json_from_url(complete_url)
 
     #todo get all from division handler
     def get_players_from_division(self, division, tier, queue, subdomain):
