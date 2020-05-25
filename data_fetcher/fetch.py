@@ -51,21 +51,23 @@ def fetch_games_for_oldest_batch(batch_size=20):
         DBWriter.update_user_timestamp(player)
 
 def fetch_casuals(config_number):
-    configs = [{'tier': 'challenger', 'division': ''}, {'tier': 'grandmaster', 'division': ''}, {'tier': 'master', 'division': ''}, {'tier': 'DIAMOND', 'division': 'I'}, {'tier': 'DIAMOND', 'division': 'II'}]
+    configs = [{'tier': 'DIAMOND', 'division': 'I'}]
     queue ='RANKED_SOLO_5x5'
     subdomain = 'euw1'
     player_batch = RiotLayer.get_players_from_division(queue, configs[config_number]['tier'], configs[config_number]['division'], subdomain)
     for player in player_batch:
         DBWriter.write_user(player)
 
-
-def main(args):
-    if args.type == 'pros':
-        fetch_pro_batch(args.batch_size)
-    elif args.type == 'casuals':
-        fetch_casuals(args.batch_size)
-    elif args.type == 'games':
-        fetch_games_for_oldest_batch(args.batch_size)
+if __name__ == '__main__':
+    given_arg = sys.argv[1]
+    if given_arg == 'pros_batch':
+        fetch_pro_batch(int(sys.argv[2]))
+    elif given_arg == 'pros':
+        fetch_all_pros()
+    elif given_arg == 'casuals':
+        fetch_casuals(int(sys.argv[2]))
+    elif given_arg == 'oldest_batch_games':
+        fetch_games_for_oldest_batch(int(sys.argv[2]))
     else:
         return False
 

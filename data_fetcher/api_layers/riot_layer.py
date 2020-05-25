@@ -99,23 +99,18 @@ class RiotLayer:
         return self.get_json_from_url(complete_url)['entries']
 
     def get_all_players_from_division(self, tier, division, subdomain, queue):
-        result, page_count = [], 0
-        next_batch = get_player_page_from_division(queue, tier, division, subdomain, page_count)
+        result, page_count = [], 1
+        next_batch = self.get_player_page_from_division(queue, tier, division, subdomain, page_count)
         while len(next_batch) > 0:
             page_count += 1
             result.extend(next_batch)
-            next_batch = get_player_page_from_division(queue, tier, division, subdomain, page_count)
+            break
+            next_batch = self.get_player_page_from_division(queue, tier, division, subdomain, page_count)
         return result
 
     def get_player_page_from_division(self, queue, tier, division, subdomain, page):
-        tier_url = '/lol/league/v4/entries/{}/{}/{}'.format(queue, tier, division) + self.api_key
+        tier_url = '/lol/league/v4/entries/{}/{}/{}'.format(queue, tier, division) + self.api_key + '&page={}'.format(page)
         complete_url = self.api_url.format(url_path=tier_url, server=subdomain)
-        result = self.get_json_from_url(complete_url)
-
-    #todo get all from division handler
-    def get_players_from_division(self, division, tier, queue, subdomain):
-        division = '/lol/league/v4/entries/{}/{}/{}'.format(queue, tier, divison) + self.api_key
-        complete_url = self.api_url.format(url_path=match_url, server=subdomain)
         return self.get_json_from_url(complete_url)
 
     def get_players_from_division(self, queue, tier, division, subdomain):
