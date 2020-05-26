@@ -11,6 +11,7 @@ import tensorflow as tf
 from datetime import datetime, timedelta
 
 
+
 def get_player_ids_in_timespan(batch_size, timespan):
     db, collection = get_connection_for_collection_name('processed_matches')
     timestamp_for_span = int((datetime.utcnow() - timespan).timestamp())
