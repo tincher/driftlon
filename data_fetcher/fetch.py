@@ -51,7 +51,8 @@ def fetch_games_for_oldest_batch(batch_size=20):
         DBWriter.update_user_timestamp(player)
 
 def fetch_casuals(config_number):
-    configs = [{'tier': 'DIAMOND', 'division': 'I'}]
+    #todo pagewise?
+    configs = [{'tier': 'DIAMOND', 'division': 'II'}]
     queue ='RANKED_SOLO_5x5'
     subdomain = 'euw1'
     player_batch = RiotLayer.get_players_from_division(queue, configs[config_number]['tier'], configs[config_number]['division'], subdomain)

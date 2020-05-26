@@ -20,6 +20,11 @@ def clean_collection(collection_name):
     db.close()
 
 
+def clean_players_wrt_pros():
+    #todo - get all pros-ids, search for objs with soloq_ids, remove those with pro_games == 0
+    pass
+
+
 def clean_matches_from_duplicates():
     clean_collection('matches')
 
