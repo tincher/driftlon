@@ -83,7 +83,7 @@ class RiotLayer:
 
     def get_timestamp_for_last_number_of_patches(self, number_of_patches):
         raw_date = self.get_number_of_patches(number_of_patches)['date']
-        patch_as_datetime = datetime.strptime(raw_date, "%d. %B %Y") + timedelta(hours=6)
+        patch_as_datetime = datetime.strptime(raw_date, '%d. %B %Y') + timedelta(hours=6)
         return patch_as_datetime.timestamp() * 1000
 
     def get_matchlist_for_player_since_number_of_patches(self, account_id, region, patch_count):
@@ -130,6 +130,6 @@ class RiotLayer:
         patches = json.loads(open('./data_fetcher/json_files/patches.json').read())
         now = datetime.now()
         for i in range(patch_count, len(patches)):
-            if datetime.strptime(patches[i]['date'], "%d. %B %Y") > now:
+            if datetime.strptime(patches[i]['date'], '%d. %B %Y') > now:
                 return patches[i - patch_count]
                 return patches[-1]

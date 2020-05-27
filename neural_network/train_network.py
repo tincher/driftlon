@@ -32,7 +32,7 @@ model.compile(loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=Tru
               metrics=['accuracy'])
 
 
-logdir="tb_logs/fit/" + datetime.now().strftime("%Y%m%d-%H%M%S")
+logdir='tb_logs/fit/' + datetime.now().strftime('%Y%m%d-%H%M%S')
 tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=logdir)
 
 # Train the model.
