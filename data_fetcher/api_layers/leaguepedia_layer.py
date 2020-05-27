@@ -10,10 +10,10 @@ class LPLayer:
         self.site = mwclient.Site('lol.gamepedia.com', path='/')
         self.min_games = 20
         self.top_leagues = {
-            "LoL European Championship": 'LEC',
-            "League Championship Series": 'LCS',
-            "LoL Champions Korea": 'LCK',
-            "LoL Pro League": 'LPL'
+            'LoL European Championship': 'LEC',
+            'League Championship Series': 'LCS',
+            'LoL Champions Korea': 'LCK',
+            'LoL Pro League': 'LPL'
         }
 
     def get_abbreviated_league_player(self, player):
@@ -21,9 +21,9 @@ class LPLayer:
         return player
 
     def get_next_player_batch(self, current_offset):
-        request = self.site.api('cargoquery', offset=current_offset, limit=500, tables="PlayerLeagueHistory=PLH",
-                                fields="PLH.TotalGames, PLH.Player, PLH.League", order_by="PLH.TotalGames desc",
-                                where="PLH.TotalGames>={}".format(self.min_games))
+        request = self.site.api('cargoquery', offset=current_offset, limit=500, tables='PlayerLeagueHistory=PLH',
+                                fields='PLH.TotalGames, PLH.Player, PLH.League', order_by='PLH.TotalGames desc',
+                                where='PLH.TotalGames>={}'.format(self.min_games))
         result = []
         for entry in request['cargoquery']:
             player = {'pro_games': entry['title']['TotalGames'],
@@ -45,8 +45,8 @@ class LPLayer:
         return result
 
     def get_soloq_ids_from_leaguepedie(self, name):
-        response = self.site.api('cargoquery', tables="Players=P", fields="P.ID, P.SoloqueueIds, P.IsRetired",
-                                 where="P.ID='{}'".format(name))
+        response = self.site.api('cargoquery', tables='Players=P', fields='P.ID, P.SoloqueueIds, P.IsRetired',
+                                 where='P.ID='{}''.format(name))
         response['cargoquery'] = json.loads(html.unescape(json.dumps(response['cargoquery'])))
         return response['cargoquery']
 

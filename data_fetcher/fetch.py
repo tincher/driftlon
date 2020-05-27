@@ -1,6 +1,6 @@
 import sys
-sys.path.append(".")
-sys.path.append("..")
+sys.path.append('.')
+sys.path.append('..')
 
 from datetime import datetime
 from get_from_db import *
@@ -12,7 +12,7 @@ from data_fetcher.api_layers.riot_layer import RiotLayer
 
 batch_size = 20
 patch_count = 2
-top_leagues = ["LoL European Championship", "League Championship Series", "LoL Champions Korea", "LoL Pro League"]
+top_leagues = ['LoL European Championship', 'League Championship Series', 'LoL Champions Korea', 'LoL Pro League']
 DBWriter = DBWriter()
 DBReader = DBReader()
 LPLayer = LPLayer()
