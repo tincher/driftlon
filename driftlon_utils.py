@@ -1,8 +1,8 @@
 # flatten dict
-def flatten(d, sep="_"):
+def my_flatten(d, sep='_'):
     obj = collections.OrderedDict()
 
-    def recurse(t, parent_key=""):
+    def recurse(t, parent_key=''):
         if isinstance(t, list):
             for i in range(len(t)):
                 recurse(t[i], parent_key + sep + str(i) if parent_key else str(i))

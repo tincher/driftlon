@@ -46,7 +46,7 @@ class LPLayer:
 
     def get_soloq_ids_from_leaguepedie(self, name):
         response = self.site.api('cargoquery', tables='Players=P', fields='P.ID, P.SoloqueueIds, P.IsRetired',
-                                 where='P.ID=\'{}\''.format(name))
+                                 where='P.ID='{}''.format(name))
         response['cargoquery'] = json.loads(html.unescape(json.dumps(response['cargoquery'])))
         return response['cargoquery']
 

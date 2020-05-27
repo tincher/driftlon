@@ -1,6 +1,6 @@
 import sys
-sys.path.append('/Users/joelewig/projects/driftlon/')
 sys.path.append('.')
+sys.path.append('..')
 
 import argparse
 from datetime import datetime
