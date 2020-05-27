@@ -1,7 +1,7 @@
 import sys
 
-sys.path.append(".")
-sys.path.append("/Users/joelewig/projects/driftlon")
+sys.path.append('.')
+sys.path.append('/Users/joelewig/projects/driftlon')
 
 import pymongo
 import random

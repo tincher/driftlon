@@ -1,7 +1,8 @@
 import sys
-sys.path.append(".")
-sys.path.append("/Users/joelewig/projects/driftlon")
-sys.path.append("/Users/joelewig/projects/driftlon/data_fetcher")
+
+sys.path.append('.')
+sys.path.append('/Users/joelewig/projects/driftlon')
+sys.path.append('/Users/joelewig/projects/driftlon/data_fetcher')
 
 
 from driftlon_utils import *
