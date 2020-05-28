@@ -1,2 +1,3 @@
+TODO make classes for every data src
+TODO save subdomain for pro players at first time!
 TODO introduce log file
-TODO save division for casuals
