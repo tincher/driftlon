@@ -28,7 +28,7 @@ def get_random_matches_batch(batch_size):
 def get_particpant_id(match):
 	participant_id = 0
 	player = DBReader.get_player_for_id(match['player_id'])
-	player_account_ids = [x['account_id'] for x in player['soloq_ids']]
+	player_account_ids = [x['account_id']['accountId'] for x in player['soloq_ids']]
 	for participant in match['data']['participantIdentities']:
 		if participant['player']['accountId'] in player_account_ids:
 			participant_id = participant['participantId']
@@ -113,4 +113,5 @@ def transform_batch(batch_size):
 			DBWriter.write_processed_game(bucketized_vector, target, match['player_id'], match['data']['gameCreation'])
 
 if __name__ == '__main__':
-	transform_batch(250)
+	batch_size = int(sys.argv[1])
+	transform_batch(batch_size)
