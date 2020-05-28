@@ -32,7 +32,7 @@ class DBWriter:
         name, soloq_ids, pro_games = player['name'], player['soloq_ids'], player['pro_games']
         hash_name = self.get_hash(name)
         query = {'id': hash_name}
-        data = {'id': hash_name, 'name': name, 'soloq_ids': soloq_ids, 'pro_games': pro_games,
+        data = {'id': hash_name, 'name': name, 'soloq_ids': soloq_ids, 'pro_games': int(pro_games),
                 'timestamp': datetime.utcnow()}
         self.insert_or_update(self.player_collection, query, data)
 
