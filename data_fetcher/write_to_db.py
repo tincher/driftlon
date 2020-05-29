@@ -81,6 +81,9 @@ class DBWriter:
     def write_game(self, game, player):
         data = {'data': game, 'timestamp': datetime.utcnow(), 'player_id': self.get_hash(
             player['name']), 'pro_games_count': int(player['pro_games'])}
+        if 'gameId' not in game.keys():
+            print(game)
+            return
         query = {'game_id': game['gameId']}
         self.insert_or_update(self.matches_collection, query, data)
 

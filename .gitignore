@@ -5,3 +5,4 @@ __pycache__/
 **/tmp*.*
 **/config.yml
 **/tb_logs/
+*/.ipynb_checkpoints/*
