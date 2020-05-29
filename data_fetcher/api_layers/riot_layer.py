@@ -4,7 +4,6 @@ import requests
 import yaml
 from datetime import datetime, timedelta
 
-#todo refactor all url creation
 class RiotLayer:
     def __init__(self):
         with open('/Users/joelewig/projects/driftlon/data_fetcher/api_layers/config.yml', 'r') as configfile:
@@ -15,6 +14,11 @@ class RiotLayer:
 
         self.last_requests_timestamps = []
         self.time_response_codes = [429, 504]
+
+    def generate_url(self, endpoint_url, *request_values):
+        #todo not finished
+        summoner_url = endpoint_url.format(*request_values, self.api_key)
+        return self.api_url.format(url_path=summoner_url, server=subdomain)
 
     def time_to_wait(self):
         result = 0
@@ -51,6 +55,7 @@ class RiotLayer:
         return self.api_url.format(server=subdomain, url_path=generated_url)
 
     def get_account_id_for_name(self, name, subdomain):
+        # complete_url = self.generate_url('/lol/summoner/v4/summoners/by-name/{}?{}', name)
         summoner_url = '/lol/summoner/v4/summoners/by-name/{}'.format(name) + self.api_key
         complete_url = self.api_url.format(url_path=summoner_url, server=subdomain)
         result = self.get_json_from_url(complete_url)

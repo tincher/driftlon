@@ -1,4 +1,8 @@
 **/.DS_Store
 .idea/
 __pycache__/
-*.pyc
+**/*.pyc
+**/tmp*.*
+**/config.yml
+**/tb_logs/
+*/.ipynb_checkpoints/*
