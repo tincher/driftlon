@@ -1,6 +1,6 @@
 import sys
+sys.path.append('/Users/joelewig/projects/driftlon/')
 sys.path.append('.')
-sys.path.append('..')
 
 from datetime import datetime
 from get_from_db import *
@@ -43,15 +43,16 @@ def fetch_games_for_oldest_batch(batch_size=20):
     players = DBReader.get_oldest_updated_batch_of_players(batch_size)
     for player in players:
         for soloq_id in player['soloq_ids']:
-            match_list = RiotLayer.get_matchlist_for_player_since_number_of_patches(soloq_id['account_id'], soloq_id['server'], 1)
-            for match in match_list:
-                result = RiotLayer.get_match_for_match_id(match['gameId'], soloq_id['server'])
-                DBWriter.write_game(result, player)
+            if soloq_id['account_id'] is not None:
+                match_list = RiotLayer.get_matchlist_for_player_since_number_of_patches(soloq_id['account_id']['accountId'], soloq_id['server'], 1)
+                for match in match_list:
+                    result = RiotLayer.get_match_for_match_id(match['gameId'], soloq_id['server'])
+                    DBWriter.write_game(result, player)
         DBWriter.update_user_timestamp(player)
 
 def fetch_casuals(config_number):
     #todo pagewise?
-    configs = [{'tier': 'DIAMOND', 'division': 'II'}]
+    configs = [{'tier': 'challenger', 'division': ''}, {'tier': 'grandmaster', 'division': ''}, {'tier': 'master', 'division': ''}, {'tier': 'DIAMOND', 'division': 'I'}, {'tier': 'DIAMOND', 'division': 'II'}]
     queue ='RANKED_SOLO_5x5'
     subdomain = 'euw1'
     player_batch = RiotLayer.get_players_from_division(queue, configs[config_number]['tier'], configs[config_number]['division'], subdomain)
@@ -69,4 +70,4 @@ if __name__ == '__main__':
     elif given_arg == 'oldest_batch_games':
         fetch_games_for_oldest_batch(int(sys.argv[2]))
     else:
-        print('HELP: pros, pros_batch batch_size, oldest_batch_games batch_size')
+        print('HELP: pros, pros_batch batch_size, oldest_batch_games batch_size, casuals config')
