@@ -4,10 +4,9 @@ import requests
 import yaml
 from datetime import datetime, timedelta
 
-#todo refactor all url creation
 class RiotLayer:
     def __init__(self):
-        with open('./data_fetcher/api_layers/config.yml', 'r') as configfile:
+        with open('/Users/joelewig/projects/driftlon/data_fetcher/api_layers/config.yml', 'r') as configfile:
             self.config = yaml.safe_load(configfile)
 
         self.api_key = '?api_key=' + self.config['riot']['api_key']
@@ -15,6 +14,11 @@ class RiotLayer:
 
         self.last_requests_timestamps = []
         self.time_response_codes = [429, 504]
+
+    def generate_url(self, endpoint_url, *request_values):
+        #todo not finished
+        summoner_url = endpoint_url.format(*request_values, self.api_key)
+        return self.api_url.format(url_path=summoner_url, server=subdomain)
 
     def time_to_wait(self):
         result = 0
@@ -43,10 +47,11 @@ class RiotLayer:
             else:
                 if r.status_code == 404:
                     return {'matches': [], 'endIndex': 0, 'totalGames': 0}
-                raise Exception('Can not handle response code: ', r.text)
+                raise Exception('Can not handle response code! Text: ', r.text)
         return json.loads(r.text)
 
     def get_account_id_for_name(self, name, subdomain):
+        # complete_url = self.generate_url('/lol/summoner/v4/summoners/by-name/{}?{}', name)
         summoner_url = '/lol/summoner/v4/summoners/by-name/{}'.format(name) + self.api_key
         complete_url = self.api_url.format(url_path=summoner_url, server=subdomain)
         result = self.get_json_from_url(complete_url)
@@ -127,7 +132,7 @@ class RiotLayer:
 
     @staticmethod
     def get_number_of_patches(patch_count):
-        patches = json.loads(open('./data_fetcher/json_files/patches.json').read())
+        patches = json.loads(open('/Users/joelewig/projects/driftlon/data_fetcher/json_files/patches.json').read())
         now = datetime.now()
         for i in range(patch_count, len(patches)):
             if datetime.strptime(patches[i]['date'], '%d. %B %Y') > now:
