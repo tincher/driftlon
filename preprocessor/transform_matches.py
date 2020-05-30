@@ -28,7 +28,8 @@ def get_random_matches_batch(batch_size):
 def get_particpant_id(match):
 	participant_id = 0
 	player = DBReader.get_player_for_id(match['player_id'])
-	player_account_ids = [x['account_id']['accountId'] for x in player['soloq_ids']]
+	player_account_ids = []
+	player_account_ids = [x['account_id']['accountId'] for x in player['soloq_ids'] if x['account_id'] is not None]
 	for participant in match['data']['participantIdentities']:
 		if participant['player']['accountId'] in player_account_ids:
 			participant_id = participant['participantId']
@@ -37,9 +38,12 @@ def get_particpant_id(match):
 
 def get_processed_stats(stats, items_to_be_kept):
 	result = {}
-	for key in stats:
-		if key in items_to_be_kept:
+	for key in items_to_be_kept:
+		if key in stats.keys():
 			result[key] = stats[key]
+		else:
+			#todo maybe medium
+			result[key] = 0
 	return result
 
 
@@ -96,7 +100,7 @@ def get_match_vector_batch(batch_size):
 	return data, targets
 
 def get_bucketized_match(match):
-    bucket_list = [0, 4, 27, 28]
+    bucket_list = [0, 4, 31, 32]
     for entry in bucket_list:
         value = tf.strings.to_hash_bucket_strong(list(str(match[entry])), 20, [0, 0]).numpy()
         match[entry] = value[0]
@@ -109,6 +113,8 @@ def transform_batch(batch_size):
 		if transformed_match != []:
 			vector = get_match_as_vector(transformed_match)
 			bucketized_vector = get_bucketized_match(vector)
+			if len(bucketized_vector) != 35:
+				print(transformed_match)
 			target = get_target_for_match(match)
 			DBWriter.write_processed_game(bucketized_vector, target, match['player_id'], match['data']['gameCreation'])
 

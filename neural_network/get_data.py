@@ -35,8 +35,9 @@ def get_batch(batch_size, timespan=timedelta(weeks=2)):
     db_result = get_matches_batch(player_ids, batch_size, timespan)
     data, target = [], []
     for i in range(len(db_result)):
-        data.append([np.array(match['data']) for match in db_result[i]])
+        data.append([match['data'] for match in db_result[i]])
         target.append(db_result[i][0]['target'])
+    #todo make proper matrix
     return data, target
 
 
@@ -44,5 +45,12 @@ if __name__ == '__main__':
     batch_size = 10
     timespan = timedelta(weeks=2)
     data, target = get_batch(batch_size, timespan)
-    print(data)
-    print(target)
+    for match_list in data:
+        for match in match_list:
+            # print(len(match))
+            if (len(match)!=31):
+                print(match)
+
+
+    # print(type(data))
+    # print(type(target))
