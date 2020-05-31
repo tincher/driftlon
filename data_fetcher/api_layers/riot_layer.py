@@ -63,10 +63,9 @@ class RiotLayer:
             timestamp_url = '&beginTime=' + str(int(timestamp))
         queues_url = ''
         for queue in queues:
-            queues_url = '&queue=' + str(queue)
-        #todo
-        matchlist_url = '/lol/match/v4/matchlists/by-account/{}'.format(account_id) + self.api_key + timestamp_url
-        complete_url = self.api_url.format(url_path=matchlist_url, server=subdomain) + '&beginIndex={}'.format(begin_index)
+            queues_url += '&queue=' + str(queue)
+        begin_url = 'beginIndex={}'.format(begin_index)
+        complete_url = self.generate_url(subdomain, '/lol/match/v4/matchlists/by-account/{}?{}{}{}&{}', account_id, begin_url, timestamp_url, queues_url)
         return self.get_json_from_url(complete_url)
 
     def get_match_list_for_account(self, account_id, region, timestamp=0, queues=[420, 440]):
