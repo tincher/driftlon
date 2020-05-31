@@ -22,12 +22,15 @@ def clean_collection(collection_name):
             result = collection.delete_one(query)
     db.close()
 
-def get_all_pro_ids():
+def get_players_by_query(query):
     db, collection = get_connection_for_collection_name('player')
-    query = {'pro_games': {'$gt': 0}}
-    pros = list(collection.find(query))
+    result = list(collection.find(query))
     db.close()
-    # print(pros)
+    return result
+
+def get_all_pro_ids():
+    query = {'pro_games': {'$gt': 0}}
+    pros = get_players_by_query(query)
     result = []
     for pro in pros:
         if pro['soloq_ids'] is not None:
@@ -37,16 +40,11 @@ def get_all_pro_ids():
     return result
 
 def get_all_casuals():
-    #todo duplicate
-    db, collection = get_connection_for_collection_name('player')
     query = {'pro_games': 0}
-    pros = collection.find(query)
-    db.close()
-    return list(pros)
+    return get_players_by_query(query)
 
 
 def remove_casual(casual):
-    #todo duplicate
     db, collection = get_connection_for_collection_name('player')
     query = {'id': casual['id']}
     pros = collection.delete_one(query)
@@ -54,7 +52,6 @@ def remove_casual(casual):
 
 
 def clean_players_from_pros():
-    #todo - get all pros-ids, search for objs with soloq_ids, remove those with pro_games == 0
     pro_ids = get_all_pro_ids()
     casuals = get_all_casuals()
     for casual in casuals:
