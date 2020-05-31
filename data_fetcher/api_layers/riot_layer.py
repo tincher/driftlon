@@ -15,11 +15,6 @@ class RiotLayer:
         self.last_requests_timestamps = []
         self.time_response_codes = [429, 504]
 
-    def generate_url(self, endpoint_url, *request_values):
-        #todo not finished
-        summoner_url = endpoint_url.format(*request_values, self.api_key)
-        return self.api_url.format(url_path=summoner_url, server=subdomain)
-
     def time_to_wait(self):
         result = 0
         now = datetime.utcnow()
@@ -55,9 +50,7 @@ class RiotLayer:
         return self.api_url.format(server=subdomain, url_path=generated_url)
 
     def get_account_id_for_name(self, name, subdomain):
-        # complete_url = self.generate_url('/lol/summoner/v4/summoners/by-name/{}?{}', name)
-        summoner_url = '/lol/summoner/v4/summoners/by-name/{}'.format(name) + self.api_key
-        complete_url = self.api_url.format(url_path=summoner_url, server=subdomain)
+        complete_url = self.generate_url(subdomain, '/lol/summoner/v4/summoners/by-name/{}?{}', name)
         result = self.get_json_from_url(complete_url)
         if 'accountId' not in result.keys():
             return None
@@ -70,9 +63,10 @@ class RiotLayer:
             timestamp_url = '&beginTime=' + str(int(timestamp))
         queues_url = ''
         for queue in queues:
-            queues_url += '&queue=' + str(queue)
-        begin_url = 'beginIndex={}'.format(begin_index)
-        complete_url = self.generate_url(subdomain, '/lol/match/v4/matchlists/by-account/{}?{}{}{}&{}', account_id, begin_url, timestamp_url, queues_url)
+            queues_url = '&queue=' + str(queue)
+        #todo
+        matchlist_url = '/lol/match/v4/matchlists/by-account/{}'.format(account_id) + self.api_key + timestamp_url
+        complete_url = self.api_url.format(url_path=matchlist_url, server=subdomain) + '&beginIndex={}'.format(begin_index)
         return self.get_json_from_url(complete_url)
 
     def get_match_list_for_account(self, account_id, region, timestamp=0, queues=[420, 440]):
@@ -99,8 +93,7 @@ class RiotLayer:
         return self.get_match_list_for_account(account_id, region, timestamp)
 
     def get_players_from_higher_tier(self, queue, tier, subdomain):
-        tier_url = '/lol/league/v4/{}leagues/by-queue/{}'.format(tier, queue) + self.api_key
-        complete_url = self.api_url.format(url_path=tier_url, server=subdomain)
+        complete_url = self.generate_url(subdomain, '/lol/league/v4/{}leagues/by-queue/{}?{}', tier, queue)
         return self.get_json_from_url(complete_url)['entries']
 
     def get_all_players_from_division(self, tier, division, subdomain, queue):
@@ -114,8 +107,7 @@ class RiotLayer:
         return result
 
     def get_player_page_from_division(self, queue, tier, division, subdomain, page):
-        tier_url = '/lol/league/v4/entries/{}/{}/{}'.format(queue, tier, division) + self.api_key + '&page={}'.format(page)
-        complete_url = self.api_url.format(url_path=tier_url, server=subdomain)
+        complete_url = self.generate_url(subdomain, '/lol/league/v4/entries/{}/{}/{}?page={}&{}', queue, tier, division, page)
         return self.get_json_from_url(complete_url)
 
     def get_players_from_division(self, queue, tier, division, subdomain):
