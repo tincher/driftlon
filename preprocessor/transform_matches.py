@@ -11,7 +11,8 @@ import random
 import json
 import statistics
 import numpy as np
-import tensorflow as tf
+# import tensorflow as tf
+from tensorflow import strings as tfs
 
 DBReader = DBReader()
 DBWriter = DBWriter()
@@ -42,7 +43,7 @@ def get_processed_stats(stats, items_to_be_kept):
 		if key in stats.keys():
 			result[key] = stats[key]
 		else:
-			#todo maybe medium
+			#todo maybe median
 			result[key] = 0
 	return result
 
@@ -100,9 +101,9 @@ def get_match_vector_batch(batch_size):
 	return data, targets
 
 def get_bucketized_match(match):
-    bucket_list = [0, 4, 31, 32]
+    bucket_list = [3, 21, 31, 32]
     for entry in bucket_list:
-        value = tf.strings.to_hash_bucket_strong(list(str(match[entry])), 20, [0, 0]).numpy()
+        value = tfs.to_hash_bucket_strong(list(str(match[entry])), 20, [0, 0]).numpy()
         match[entry] = value[0]
     return match
 
