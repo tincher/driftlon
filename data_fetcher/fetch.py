@@ -51,7 +51,6 @@ def fetch_games_for_oldest_batch(batch_size=20):
         DBWriter.update_user_timestamp(player)
 
 def fetch_casuals(config_number):
-    #todo pagewise?
     configs = [{'tier': 'challenger', 'division': ''}, {'tier': 'grandmaster', 'division': ''}, {'tier': 'master', 'division': ''}, {'tier': 'DIAMOND', 'division': 'I'}, {'tier': 'DIAMOND', 'division': 'II'}]
     queue ='RANKED_SOLO_5x5'
     subdomain = 'euw1'

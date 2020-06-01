@@ -10,7 +10,10 @@ from write_to_db import *
 import random
 import pymongo
 import json
-import collections
+import statistics
+import numpy as np
+# import tensorflow as tf
+from tensorflow import strings as tfs
 
 # todo: maybe in different files
 
@@ -39,7 +42,7 @@ def get_processed_stats(stats, items_to_be_kept):
 		if key in stats.keys():
 			result[key] = stats[key]
 		else:
-			#todo maybe medium
+			#todo maybe median
 			result[key] = 0
 	return result
 
@@ -82,9 +85,9 @@ def get_transformed_match(match):
 
 
 def get_bucketized_match(match):
-    bucket_list = [0, 4, 31, 32]
+    bucket_list = [3, 21, 31, 32]
     for entry in bucket_list:
-        value = tf.strings.to_hash_bucket_strong(list(str(match[entry])), 20, [0, 0]).numpy()
+        value = tfs.to_hash_bucket_strong(list(str(match[entry])), 20, [0, 0]).numpy()
         match[entry] = value[0]
     return match
 
