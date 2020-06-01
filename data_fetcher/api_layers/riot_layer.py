@@ -95,13 +95,12 @@ class RiotLayer:
         complete_url = self.generate_url(subdomain, '/lol/league/v4/{}leagues/by-queue/{}?{}', tier, queue)
         return self.get_json_from_url(complete_url)['entries']
 
-    def get_all_players_from_division(self, tier, division, subdomain, queue):
+    def get_all_players_from_division(self, tier, division, subdomain, queue, page_limit=1):
         result, page_count = [], 1
         next_batch = self.get_player_page_from_division(queue, tier, division, subdomain, page_count)
-        while len(next_batch) > 0:
+        while len(next_batch) > 0 and page_count <= page_limit:
             page_count += 1
             result.extend(next_batch)
-            break
             next_batch = self.get_player_page_from_division(queue, tier, division, subdomain, page_count)
         return result
 
