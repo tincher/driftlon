@@ -88,7 +88,7 @@ class DBWriter:
         self.insert_or_update(self.matches_collection, query, data)
 
     def write_processed_game(self, processed_game, target, player_id, timestamp=int(datetime.utcnow().timestamp())):
-        processed_game_list = processed_game.tolist()
+        processed_game_list = processed_game
         data = {'data': processed_game_list, 'target': target, 'timestamp': timestamp, 'player_id': player_id}
         query = {'player_id': player_id, 'timestamp': timestamp}
         self.insert_or_update(self.processed_collection, query, data)
