@@ -85,11 +85,12 @@ def get_transformed_match(match):
 
 
 def get_bucketized_match(match):
-    bucket_list = [3, 21, 31, 32]
-    for entry in bucket_list:
-        value = tfs.to_hash_bucket_strong(list(str(match[entry])), 20, [0, 0]).numpy()
-        match[entry] = value[0]
-    return match
+	bucket_list = [3, 21, 31, 32]
+	for entry in bucket_list:
+		value = tfs.to_hash_bucket_strong(list(str(match[entry])), 20, [0, 0]).numpy()
+		match[entry] = value[0]
+	match = list(map(int, match))
+	return match
 
 def transform_batch(batch_size):
 	matches = get_random_matches_batch(batch_size)

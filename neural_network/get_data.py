@@ -38,7 +38,15 @@ def get_batch(batch_size, timespan=timedelta(weeks=2)):
     for i in range(len(db_result)):
         data.append([match['data'] for match in db_result[i]])
         target.append(db_result[i][0]['target'])
-    #todo make proper matrix
+    return data, target
+
+def get_data_batch(batch_size, timespan=timedelta(weeks=2)):
+    matches_count = 10
+    data, target = get_batch(batch_size)
+    for index in range(len(data)):
+        data[index] = data[index][-matches_count:]
+        if len(data[index]) < matches_count:
+            data[index].extend([[0] * 35 for _ in range(matches_count - len(data[index]))])
     return data, target
 
 def get_data_batch(batch_size, matches_count=50, timespan=timedelta(weeks=2)):
@@ -59,7 +67,3 @@ if __name__ == '__main__':
             # print(len(match))
             if (len(match)!=31):
                 print(match)
-
-
-    # print(type(data))
-    # print(type(target))
