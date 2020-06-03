@@ -41,7 +41,7 @@ def get_batch(batch_size, timespan=timedelta(weeks=2)):
     return data, target
 
 def get_data_batch(batch_size, timespan=timedelta(weeks=2)):
-    matches_count = 10
+    matches_count = 50
     data, target = get_batch(batch_size)
     for index in range(len(data)):
         data[index] = data[index][-matches_count:]
