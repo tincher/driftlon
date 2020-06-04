@@ -6,3 +6,4 @@ __pycache__/
 **/config.yml
 **/tb_logs/
 */.ipynb_checkpoints/
+*/saved_models/
