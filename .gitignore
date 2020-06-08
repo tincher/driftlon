@@ -7,3 +7,4 @@ __pycache__/
 **/tb_logs/
 */.ipynb_checkpoints/
 */saved_models/
+dump/
