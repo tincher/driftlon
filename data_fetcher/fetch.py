@@ -2,13 +2,13 @@ import sys
 sys.path.append('/Users/joelewig/projects/driftlon/')
 sys.path.append('.')
 
+import argparse
 from datetime import datetime
 from get_from_db import *
 from write_to_db import DBWriter
 from data_fetcher.api_layers.leaguepedia_layer import LPLayer
 from data_fetcher.api_layers.trackingthepros_layer import TTPLayer
 from data_fetcher.api_layers.riot_layer import RiotLayer
-
 
 batch_size = 20
 patch_count = 2
@@ -58,15 +58,23 @@ def fetch_casuals(config_number):
     for player in player_batch:
         DBWriter.write_user(player)
 
-if __name__ == '__main__':
-    given_arg = sys.argv[1]
-    if given_arg == 'pros_batch':
-        fetch_pro_batch(int(sys.argv[2]))
-    elif given_arg == 'pros':
-        fetch_all_pros()
-    elif given_arg == 'casuals':
-        fetch_casuals(int(sys.argv[2]))
-    elif given_arg == 'oldest_batch_games':
-        fetch_games_for_oldest_batch(int(sys.argv[2]))
+
+def main(args):
+    if args.type == 'pros':
+        fetch_pro_batch(args.batch_size)
+    elif args.type == 'casuals':
+        fetch_casuals(args.batch_size)
+    elif args.type == 'games':
+        fetch_games_for_oldest_batch(args.batch_size)
     else:
-        print('HELP: pros, pros_batch batch_size, oldest_batch_games batch_size, casuals config')
+        return False
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--type', type=str ,help='What do you want to fetch? (games, pros, casuals)')
+    parser.add_argument('--batch_size', type=int, default=10, help='What is the batch size?')
+    parser.add_argument('--config', type=int, default=1,  help='What config type for casuals? (1-5)')
+    args = parser.parse_args()
+    if main(args) == False:
+        parser.print_help()
