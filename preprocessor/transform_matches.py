@@ -104,6 +104,8 @@ def transform_batch(batch_size):
 			target = get_target_for_match(match)
 			DBWriter.write_processed_game(bucketized_vector, target, match['player_id'], match['data']['gameCreation'])
 
-match = get_random_matches_batch(1)[0]
-# print(json.dumps(get_transformed_match(match)))
-# print(get_transformed_match(match))
+
+
+if __name__ == '__main__':
+	batch_size = int(sys.argv[1])
+	transform_batch(batch_size)
