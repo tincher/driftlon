@@ -1,7 +1,3 @@
-import sys
-sys.path.append('/Users/joelewig/projects/driftlon/')
-sys.path.append('.')
-
 import argparse
 from datetime import datetime
 from get_from_db import *
@@ -61,9 +57,9 @@ def fetch_casuals(config_number):
 
 def main(args):
     if args.type == 'pros':
-        fetch_pro_batch(args.batch_size)
+        fetch_pro_batch(args.batch_site)
     elif args.type == 'casuals':
-        fetch_casuals(args.batch_size)
+        fetch_casuals(args.config)
     elif args.type == 'games':
         fetch_games_for_oldest_batch(args.batch_size)
     else:

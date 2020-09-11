@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 
 class RiotLayer:
     def __init__(self):
-        with open('/Users/joelewig/projects/driftlon/data_fetcher/api_layers/config.yml', 'r') as configfile:
+        with open('./config.yml', 'r') as configfile:
             self.config = yaml.safe_load(configfile)
 
         self.api_key = 'api_key=' + self.config['riot']['api_key']
@@ -125,7 +125,7 @@ class RiotLayer:
 
     @staticmethod
     def get_number_of_patches(patch_count):
-        patches = json.loads(open('/Users/joelewig/projects/driftlon/data_fetcher/json_files/patches.json').read())
+        patches = json.loads(open('/home/tincher/projects/driftlon/data_fetcher/json_files/patches.json').read())
         now = datetime.now()
         for i in range(patch_count, len(patches)):
             if datetime.strptime(patches[i]['date'], '%d. %B %Y') > now:

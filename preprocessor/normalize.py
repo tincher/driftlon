@@ -1,9 +1,3 @@
-import sys
-
-sys.path.append('.')
-sys.path.append('/home/joel/projects/driftlon')
-sys.path.append('/home/joel/projects/driftlon/data_fetcher')
-
 from driftlon_utils import *
 from write_to_db import *
 import random
