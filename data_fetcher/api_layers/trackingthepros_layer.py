@@ -25,10 +25,12 @@ class TTPLayer:
         account_name = td.getText().split(']')[-1].strip()
         return {'server': server, 'account_name': account_name}
 
-    def get_soloq_ids_from_trackingthepros(self, name):
+    def get_soloq_ids(self, name):
         result = []
+        logging.info('TTP: get soloq ids - ' + name)
         soup = self.get_player(name)
         if soup == None:
+            logging.info('TTP: not found - ' + name)
             return None
         element = self.get_first_account_element(soup)
         while element is not None and not (element.has_attr('id') and 'inactive_link' in element['id']):
@@ -37,6 +39,7 @@ class TTPLayer:
                 continue
             result.append(self.get_account(element))
             element = element.next_sibling
+        logging.info('TTP: soloq ids for {} - {}'.format(name, result))
         return result
 
     def get_subdomain_for_region(self, region):
