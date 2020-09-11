@@ -1,2 +1,1 @@
-TODO introduce log file
 TODO save division for casuals

@@ -1,4 +1,5 @@
 import argparse
+import logging
 from datetime import datetime
 from get_from_db import *
 from write_to_db import DBWriter
@@ -15,10 +16,12 @@ LPLayer = LPLayer()
 TTPLayer = TTPLayer()
 RiotLayer = RiotLayer()
 
+
+# TODO logging
 def fetch_all_pros():
     players = LPLayer.get_all_eligible_players()
     for player in players:
-        player['soloq_ids'] = TTPLayer.get_soloq_ids_from_trackingthepros(player['name'])
+        player['soloq_ids'] = TTPLayer.get_soloq_ids(player['name'])
         if player['soloq_ids'] is not None:
             for soloq_id in player['soloq_ids']:
                 soloq_id['account_id'] = RiotLayer.get_account_id_for_name(soloq_id['account_name'], soloq_id['server'])
@@ -28,7 +31,7 @@ def fetch_all_pros():
 def fetch_pro_batch(batch_size=20):
     player_batch = LPLayer.get_random_batch_of_players(batch_size)
     for player in player_batch:
-        player['soloq_ids'] = TTPLayer.get_soloq_ids_from_trackingthepros(player['name'])
+        player['soloq_ids'] = TTPLayer.get_soloq_ids(player['name'])
         if player['soloq_ids'] is not None:
             for soloq_id in player['soloq_ids']:
                 soloq_id['account_id'] = RiotLayer.get_account_id_for_name(soloq_id['account_name'], soloq_id['server'])
@@ -43,7 +46,8 @@ def fetch_games_for_oldest_batch(batch_size=20):
                 match_list = RiotLayer.get_matchlist_for_player_since_number_of_patches(soloq_id['account_id']['accountId'], soloq_id['server'], 1)
                 for match in match_list:
                     result = RiotLayer.get_match_for_match_id(match['gameId'], soloq_id['server'])
-                    DBWriter.write_game(result, player)
+                    if result is not None:
+                        DBWriter.write_game(result, player)
         DBWriter.update_user_timestamp(player)
 
 def fetch_casuals(config_number):
@@ -56,8 +60,10 @@ def fetch_casuals(config_number):
 
 
 def main(args):
+    logging.basicConfig(filename='driftlon.log',level=logging.INFO, format='%(asctime)s %(message)s')
+    logging.info('start fetching - {}'.format(args))
     if args.type == 'pros':
-        fetch_pro_batch(args.batch_site)
+        fetch_pro_batch(args.batch_size)
     elif args.type == 'casuals':
         fetch_casuals(args.config)
     elif args.type == 'games':

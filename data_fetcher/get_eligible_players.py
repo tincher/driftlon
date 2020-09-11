@@ -52,7 +52,7 @@ def get_all_eligible_players():
     return result
 
 
-def get_soloq_ids_from_trackingthepros(name):
+def get_soloq_ids(name):
     result = []
     r = requests.get('https://www.trackingthepros.com/player/{}'.format(name))
     if 'players' in r.url:
@@ -74,7 +74,7 @@ def get_soloq_ids_from_trackingthepros(name):
     return result
 
 
-def get_soloq_ids_from_leaguepedie(name):
+def get_soloq_ids(name):
     response = site.api('cargoquery', tables='Players=P', fields='P.ID, P.SoloqueueIds, P.IsRetired',
                         where='P.ID='{}''.format(name))
     response['cargoquery'] = json.loads(html.unescape(json.dumps(response['cargoquery'])))
@@ -89,4 +89,4 @@ def get_random_batch_of_players(batch_size):
 
 if __name__ == '__main__':
     players = get_all_eligible_players()
-    print(get_soloq_ids_from_trackingthepros('PerkZ'))
+    print(get_soloq_ids('PerkZ'))

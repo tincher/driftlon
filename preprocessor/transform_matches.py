@@ -36,7 +36,6 @@ def get_processed_stats(stats, items_to_be_kept):
 		if key in stats.keys():
 			result[key] = stats[key]
 		else:
-			#todo maybe median
 			result[key] = 0
 	return result
 
