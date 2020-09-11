@@ -1,9 +1,3 @@
-import sys
-
-sys.path.append('.')
-sys.path.append('/Users/joelewig/projects/driftlon')
-sys.path.append('/Users/joelewig/projects/driftlon/data_fetcher')
-
 from driftlon_utils import get_connection_for_collection_name
 from datetime import datetime, timedelta
 import random
