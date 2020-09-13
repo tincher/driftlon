@@ -1,6 +1,7 @@
 import html
 import json
 import random
+import logging
 
 import mwclient
 

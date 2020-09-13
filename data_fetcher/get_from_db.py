@@ -1,6 +1,7 @@
 from datetime import datetime
 from driftlon_utils import get_connection_for_collection_name
 import pymongo
+import logging
 
 
 class DBReader:

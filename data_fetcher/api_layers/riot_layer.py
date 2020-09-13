@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 
 class RiotLayer:
     def __init__(self):
-        with open('./config.yml', 'r') as configfile:
+        with open('/home/tincher/projects/driftlon/config.yml', 'r') as configfile:
             self.config = yaml.safe_load(configfile)
 
         self.api_key = 'api_key=' + self.config['riot']['api_key']
@@ -30,7 +30,7 @@ class RiotLayer:
             if long_time_waiting_time > result:
                 result = long_time_waiting_time
         result += 0.01
-        logging.info('RIOT: waiting - seconds: {}'.format(result))
+        logging.debug('RIOT: waiting - seconds: {}'.format(result))
         return result
 
     def make_request(self, url):
@@ -120,7 +120,7 @@ class RiotLayer:
             page_count += 1
             result.extend(next_batch)
             next_batch = self.get_player_page_from_division(queue, tier, division, subdomain, page_count)
-        logging.info('RIOT: players (lower tier) - tier {} {} - {} - queue: {} - #players: {}'.format(tier, division, sudomain, queue, len(result)))
+        logging.info('RIOT: players (lower tier) - tier {} {} - {} - queue: {} - #players: {}'.format(tier, division, subdomain, queue, len(result)))
         return result
 
     def get_player_page_from_division(self, queue, tier, division, subdomain, page):
@@ -136,7 +136,7 @@ class RiotLayer:
             players = self.get_all_players_from_division(tier, division, subdomain, queue)
         for player in players:
             player_dto = {}
-            soloq_ids = [{'account_id': self.get_account_id_for_name(player['summonerName'], subdomain), 'server': subdomain, 'account_name': player['summonerName']}]
+            soloq_ids = [{'account_id': self.get_account_id_for_name(player['summonerName'], subdomain), 'server': subdomain, 'account_name': player['summonerName'], rank: {'tier': tier, 'division': division}}]
             player_dto['soloq_ids'] = soloq_ids
             player_dto['name'] = player['summonerName']
             player_dto['pro_games'] = 0

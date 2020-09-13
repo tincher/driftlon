@@ -1,1 +1,2 @@
 TODO save division for casuals
+TODO check current division for casuals
