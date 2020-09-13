@@ -1,6 +1,7 @@
 from driftlon_utils import get_connection_for_collection_name
 from datetime import datetime
 import hashlib
+import logging
 
 class DBWriter:
     player_collection, matches_collection = None, None
