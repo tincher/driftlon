@@ -1,1 +1,3 @@
-/usr/local/bin/python3 /home/tincher/projects/driftlon/data_fetcher/fetch.py oldest_batch_games 50
+path="/home/tincher"
+export PYTHONPATH="$path/projects/driftlon:$PYTHONPATH"
+python3 $path/projects/driftlon/data_fetcher/fetch.py --type games --batch_size 40

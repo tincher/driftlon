@@ -57,12 +57,26 @@ class RiotLayer:
     def get_account_id_for_name(self, name, subdomain):
         complete_url = self.generate_url(subdomain, '/lol/summoner/v4/summoners/by-name/{}?{}', name)
         result = self.get_json_from_url(complete_url)
-        if 'accountId' not in result.keys():
+        if result is None :
+            logging.warning('RIOT: accountId not found - name: {} - {}'.format(name, subdomain))
+            return None
+        elif  'accountId' not in result.keys():
             logging.warning('RIOT: accountId not found - name: {} - {}'.format(name, subdomain))
             return None
         else:
             logging.debug('RIOT: accountId - name: {} - {}'.format(name, subdomain))
             return result
+
+    def get_rank_for_account_id(self, account_id, subdomain, queue='RANKED_SOLO_5x5'):
+        complete_url = self.generate_url(subdomain, '/lol/league/v4/entries/by-summoner/{}?{}', account_id)
+        result = self.get_json_from_url(complete_url)
+        rank = list(filter(lambda x: x['queueType'] == queue, result))
+        logging.info('RIOT: rank - accountId: {} - subdomain: {} - queue: {} - rank: {}'.format(account_id, subdomain, queue, rank))
+        if len(rank) > 0:
+            return rank[0]
+        else:
+            return {'tier': 'unranked', 'rank': 'unranked'}
+
 
     def get_match_list_batch(self, account_id, subdomain, begin_index, timestamp=0, queues=[420, 440]):
         timestamp_url = ''
@@ -79,6 +93,8 @@ class RiotLayer:
     def get_match_list_for_account(self, account_id, region, timestamp=0, queues=[420, 440]):
         result, start_index = [], 0
         response = self.get_match_list_batch(account_id, region, 0, timestamp, queues)
+        if response is None:
+            return []
         result.extend(response['matches'])
         while response['endIndex'] < response['totalGames']:
             start_index = response['endIndex']
@@ -92,8 +108,8 @@ class RiotLayer:
         result = self.get_json_from_url(complete_url)
         if 'gameId' not in result.keys():
             logging.warning('RIOT: gameId not found - match id: {} - {} - keys: {}'.format(match_id, subdomain, game.keys()))
-            return
-        logging.info('RIOT: match - match id: {} - {} - gameId: {}'.format(match_id, subdomain, result[gameId]))
+            return Nonw
+        logging.info('RIOT: match - match id: {} - {} - gameId: {}'.format(match_id, subdomain, result['gameId']))
         return result
 
     def get_timestamp_for_last_number_of_patches(self, number_of_patches):
@@ -129,19 +145,24 @@ class RiotLayer:
         return result
 
     def get_players_from_division(self, queue, tier, division, subdomain):
-        players, result = [], []
+        players = []
         if tier in ['master', 'challenger', 'grandmaster']:
             players = self.get_players_from_higher_tier(queue, tier, subdomain)
         else:
             players = self.get_all_players_from_division(tier, division, subdomain, queue)
         for player in players:
             player_dto = {}
-            soloq_ids = [{'account_id': self.get_account_id_for_name(player['summonerName'], subdomain), 'server': subdomain, 'account_name': player['summonerName'], rank: {'tier': tier, 'division': division}}]
+            soloq_ids = [{'account_id': self.get_account_id_for_name(player['summonerName'], subdomain),
+                    'server': subdomain,
+                    'account_name': player['summonerName']}]
+            if soloq_ids[0]['account_id'] is None:
+                continue
+            soloq_ids[0]['ranking'] =  self.get_rank_for_account_id(soloq_ids[0]['account_id']['id'], soloq_ids[0]['server'])
+            soloq_ids[0]['ranking']['last_checked'] = datetime.utcnow()
             player_dto['soloq_ids'] = soloq_ids
             player_dto['name'] = player['summonerName']
             player_dto['pro_games'] = 0
-            result.append(player_dto)
-        return result
+            yield player_dto
 
     @staticmethod
     def get_number_of_patches(patch_count):

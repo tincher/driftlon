@@ -34,7 +34,7 @@ class DBWriter:
         hash_name = self.get_hash(name)
         query = {'id': hash_name}
         data = {'id': hash_name, 'name': name, 'soloq_ids': soloq_ids, 'pro_games': int(pro_games),
-                'timestamp': datetime.utcnow()}
+                'timestamp': datetime.utcnow() - datetime.timespan(weeks=4)}
         result = self.insert_or_update(self.player_collection, query, data)
         logging.info('MONGO: write user - name: {}'.format(player['name']))
 
