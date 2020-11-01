@@ -108,7 +108,7 @@ class RiotLayer:
         result = self.get_json_from_url(complete_url)
         if 'gameId' not in result.keys():
             logging.warning('RIOT: gameId not found - match id: {} - {} - keys: {}'.format(match_id, subdomain, game.keys()))
-            return Nonw
+            return None
         logging.info('RIOT: match - match id: {} - {} - gameId: {}'.format(match_id, subdomain, result['gameId']))
         return result
 
