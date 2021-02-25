@@ -1,5 +1,5 @@
 from driftlon_utils import get_connection_for_collection_name
-from datetime import datetime
+from datetime import datetime, timedelta
 import hashlib
 import logging
 
@@ -34,7 +34,7 @@ class DBWriter:
         hash_name = self.get_hash(name)
         query = {'id': hash_name}
         data = {'id': hash_name, 'name': name, 'soloq_ids': soloq_ids, 'pro_games': int(pro_games),
-                'timestamp': datetime.utcnow() - datetime.timespan(weeks=4)}
+                'timestamp': datetime.utcnow() - timedelta(weeks=4)}
         result = self.insert_or_update(self.player_collection, query, data)
         logging.info('MONGO: write user - name: {}'.format(player['name']))
 

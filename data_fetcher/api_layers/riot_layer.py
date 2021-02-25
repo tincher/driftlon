@@ -1,4 +1,5 @@
 import time
+import os
 import json
 import requests
 import yaml
@@ -8,7 +9,9 @@ from datetime import datetime, timedelta
 
 class RiotLayer:
     def __init__(self):
-        with open('/home/tincher/projects/driftlon/config.yml', 'r') as configfile:
+
+        pwd = os.getcwd()
+        with open(os.path.join(pwd, 'config.yml'), 'r') as configfile:
             self.config = yaml.safe_load(configfile)
 
         self.api_key = 'api_key=' + self.config['riot']['api_key']
