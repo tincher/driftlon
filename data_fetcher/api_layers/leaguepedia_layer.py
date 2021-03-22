@@ -1,6 +1,7 @@
 import html
 import json
 import random
+import logging
 
 import mwclient
 
@@ -42,12 +43,14 @@ class LPLayer:
             result.extend(player_batch)
             current_offset += 500
             player_batch = self.get_next_player_batch(current_offset)
+        logging.info('LP: #eligible players: {}'.format(len(result)))
         return result
 
-    def get_soloq_ids_from_leaguepedie(self, name):
+    def get_soloq_ids(self, name):
         response = self.site.api('cargoquery', tables='Players=P', fields='P.ID, P.SoloqueueIds, P.IsRetired',
                                  where='P.ID=\'{}\''.format(name))
         response['cargoquery'] = json.loads(html.unescape(json.dumps(response['cargoquery'])))
+        logging.debug('LP: soloq ids - name: {} - #: {}'.format(name, len(response['cargoquery'])))
         return response['cargoquery']
 
     def get_random_batch_of_players(self, batch_size):

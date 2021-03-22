@@ -3,8 +3,10 @@
 __pycache__/
 **/*.pyc
 **/tmp*.*
-**/config.yml
+*.yml
 **/tb_logs/
 */.ipynb_checkpoints/
 */saved_models/
 dump/
+*.log
+setup.sh

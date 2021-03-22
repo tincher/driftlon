@@ -1,15 +1,9 @@
-import sys
-
-sys.path.append('.')
-sys.path.append('/Users/joelewig/projects/driftlon')
-
 import pymongo
 import random
 import numpy as np
 from driftlon_utils import *
 import tensorflow as tf
 from datetime import datetime, timedelta
-
 
 
 def get_player_ids_in_timespan(batch_size, timespan):

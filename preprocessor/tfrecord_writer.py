@@ -1,16 +1,10 @@
-import sys
-
-sys.path.append('.')
-sys.path.append('/Users/joelewig/projects/driftlon')
-sys.path.append('/Users/joelewig/projects/driftlon/data_fetcher')
-
 from driftlon_utils import get_connection_for_collection_name
 from datetime import datetime, timedelta
 import random
 import tensorflow as tf
 
 
-#todo these 4 are a duplicate (get_data)
+#TODO these 4 are a duplicate (get_data)
 def get_player_ids_in_timespan(batch_size, timespan):
 	db, collection = get_connection_for_collection_name('processed_matches')
 	timestamp_for_span = int((datetime.utcnow() - timespan).timestamp())
