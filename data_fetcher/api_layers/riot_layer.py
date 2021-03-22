@@ -169,7 +169,8 @@ class RiotLayer:
 
     @staticmethod
     def get_number_of_patches(patch_count):
-        patches = json.loads(open('/home/tincher/projects/driftlon/data_fetcher/json_files/patches.json').read())
+        patches = json.loads(open('/home/ubuntu/projects/driftlon/data_fetcher/json_files/patches.json').read())
+        print(patches)
         now = datetime.now()
         for i in range(patch_count, len(patches)):
             if datetime.strptime(patches[i]['date'], '%d. %B %Y') > now:
