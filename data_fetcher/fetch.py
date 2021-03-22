@@ -28,6 +28,7 @@ def fetch_pros(batch_size=0):
         if player['soloq_ids'] is not None:
             for soloq_id in player['soloq_ids']:
                 soloq_id['account_id'] = RiotLayer.get_account_id_for_name(soloq_id['account_name'], soloq_id['server'])
+                if soloq_id['account_id'] is None: continue
                 soloq_id['ranking'] = RiotLayer.get_rank_for_account_id(soloq_id['account_id']['id'], soloq_id['server'])
                 soloq_id['ranking']['last_checked'] = datetime.utcnow()
         DBWriter.write_user(player)
