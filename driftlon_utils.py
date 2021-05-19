@@ -20,5 +20,5 @@ def my_flatten(d, sep='_'):
 
 # db
 def get_connection_for_collection_name(collection_name):
-    db = pymongo.MongoClient('mongodb://localhost:27017')
+    db = pymongo.MongoClient('mongodb://192.168.0.223:27017')
     return db, db['driftlon'][collection_name]
