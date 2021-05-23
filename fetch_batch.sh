@@ -1,3 +1,3 @@
 path=$(pwd)
-export PYTHONPATH="$path:$PYTHONPATH"
-python3 $path/data_fetcher/fetch.py --type games --batch_size 40
+export PYTHONPATH="$path/projects/driftlon:$PYTHONPATH"
+python3 $path/projects/driftlon/data_fetcher/fetch.py --type games --batch_size 20

@@ -11,7 +11,7 @@ class RiotLayer:
     def __init__(self):
 
         pwd = os.getcwd()
-        with open(os.path.join(pwd, 'config.yml'), 'r') as configfile:
+        with open(os.path.join(pwd, 'projects/driftlon/config.yml'), 'r') as configfile:
             self.config = yaml.safe_load(configfile)
 
         self.api_key = 'api_key=' + self.config['riot']['api_key']
@@ -170,7 +170,6 @@ class RiotLayer:
     @staticmethod
     def get_number_of_patches(patch_count):
         patches = json.loads(open('/home/ubuntu/projects/driftlon/data_fetcher/json_files/patches.json').read())
-        print(patches)
         now = datetime.now()
         for i in range(patch_count, len(patches)):
             if datetime.strptime(patches[i]['date'], '%d. %B %Y') > now:
