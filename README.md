@@ -37,3 +37,10 @@ The experiments using a LSTM and GRU cell have yet to deliver a good model.
 Old models have been lost, so currently I plan to rewrite the Neural Nets using PyTorch.
 Conventional losses could reach their limits, as the data is heavily unbalanced.
 An idea could be to balance by pro games played.
+
+
+###### roadmap
+- [ ] correlation analysis
+- [ ] lstm model in torch
+- [ ] custom loss
+- [ ] gru model in torch
