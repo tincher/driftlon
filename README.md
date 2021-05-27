@@ -42,5 +42,5 @@ An idea could be to balance by pro games played.
 ###### roadmap
 - [ ] correlation analysis
 - [ ] lstm model in torch
-- [ ] custom loss
+- [ ] custom loss?
 - [ ] gru model in torch
