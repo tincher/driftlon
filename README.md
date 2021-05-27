@@ -38,6 +38,11 @@ Old models have been lost, so currently I plan to rewrite the Neural Nets using 
 Conventional losses could reach their limits, as the data is heavily unbalanced.
 An idea could be to balance by pro games played.
 
+## Weaknesses
+The ability to function well in a team is not at all measured using this approach.
+LoL does have some indication in the honor level, but the data is not retrievable in the API.
+Prominent counter examples are the twitch streamer [Tyler1](https://www.twitch.tv/loltyler1) who is known for his extreme behaviour towards his teammates.
+Another one who is on the opposite side of being extreme are those pros who never reach a higher rank than diamond but excel as a team member.
 
 ###### roadmap
 - [ ] correlation analysis
