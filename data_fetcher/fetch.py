@@ -41,8 +41,8 @@ def fetch_games_for_oldest_batch(batch_size=20):
     for player in tqdm(players):
         for soloq_id in player['soloq_ids']:
             if soloq_id['account_id'] is not None:
-                for match_batch in RiotLayer.get_matchlist_for_player_since_number_of_patches(soloq_id['account_id']['accountId'], soloq_id['server'], 1)
-                    for match in match_list:
+                for match_batch in RiotLayer.get_matchlist_for_player_since_number_of_patches(soloq_id['account_id']['accountId'], soloq_id['server'], 1):
+                    for match in match_batch:
                         result = RiotLayer.get_match_for_match_id(match['gameId'], soloq_id['server'])
                         if result is not None:
                             DBWriter.write_game(result, player)
@@ -58,6 +58,7 @@ def fetch_casuals(config_number):
 
 
 def main(args):
+
     logging.basicConfig(filename='/var/log/driftlon/driftlon.log',level=logging.DEBUG, format='%(asctime)s %(message)s')
     logging.info('start fetching - {}'.format(args))
     if args.type == 'pros':
