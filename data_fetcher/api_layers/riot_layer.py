@@ -98,13 +98,12 @@ class RiotLayer:
         response = self.get_match_list_batch(account_id, region, 0, timestamp, queues)
         if response is None:
             return []
-        result.extend(response['matches'])
+        yield response['matches']
         while response['endIndex'] < response['totalGames']:
             start_index = response['endIndex']
             response = self.get_match_list_batch(account_id, region, start_index, timestamp, queues)
-            result.extend(response['matches'])
-        logging.info('RIOT: match list - name: {} - timestamp: {} - length: {}'.format(account_id, timestamp, len(result)))
-        return result
+            yield response['matches']
+        logging.info('RIOT: match list - name: {} - timestamp: {} - length: {}'.format(account_id, timestamp, response['totalGames']))
 
     def get_match_for_match_id(self, match_id, subdomain):
         complete_url = self.generate_url(subdomain, '/lol/match/v4/matches/{}?{}', match_id)
@@ -122,9 +121,9 @@ class RiotLayer:
 
     def get_matchlist_for_player_since_number_of_patches(self, account_id, region, patch_count):
         timestamp = int(self.get_timestamp_for_last_number_of_patches(patch_count))
-        result = self.get_match_list_for_account(account_id, region, timestamp)
-        logging.info('RIOT: matches - account id: {} - {} - #patches: {} - #matches: {}'.format(account_id, region, patch_count, len(result)))
-        return result
+        for i, match_list_batch in enumerate(self.get_match_list_for_account(account_id, region, timestamp)):
+            yield match_list_batch
+            logging.info('RIOT: matches - account id: {} - {} - #patches: {} - batch_no: {}'.format(account_id, region, patch_count, i))
 
     def get_players_from_higher_tier(self, queue, tier, subdomain):
         complete_url = self.generate_url(subdomain, '/lol/league/v4/{}leagues/by-queue/{}?{}', tier, queue)
