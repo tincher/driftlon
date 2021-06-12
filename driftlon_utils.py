@@ -1,5 +1,5 @@
 # flatten dict
-def my_flatten(d, sep='_'):
+def flatten_dict(d, sep='_'):
     obj = collections.OrderedDict()
 
     def recurse(t, parent_key=''):
@@ -16,6 +16,16 @@ def my_flatten(d, sep='_'):
 
 
 # db
-def get_connection_for_collection_name(collection_name):
-    db = pymongo.MongoClient('mongodb://192.168.0.223:27017')
+def get_connection_for_collection_name(collection_name, ip='localhost'):
+    db = pymongo.MongoClient('mongodb://{}:27017'.format(ip))
     return db, db['driftlon'][collection_name]
+
+def get_particpant_id(match):
+	participant_id = 0
+	player = DBReader.get_player_for_id(match['player_id'])
+	player_account_ids = []
+	player_account_ids = [x['account_id']['accountId'] for x in player['soloq_ids'] if x['account_id'] is not None]
+	for participant in match['data']['participantIdentities']:
+		if participant['player']['accountId'] in player_account_ids:
+			participant_id = participant['participantId']
+	return participant_id

@@ -6,7 +6,6 @@ import pymongo
 import json
 import statistics
 import numpy as np
-# import tensorflow as tf
 from tensorflow import strings as tfs
 
 # todo: maybe in different files
@@ -17,18 +16,6 @@ def get_random_matches_batch(batch_size):
     matches = list(collection.find({}))
     random.shuffle(matches)
     return matches[:batch_size]
-
-
-def get_particpant_id(match):
-	participant_id = 0
-	player = DBReader.get_player_for_id(match['player_id'])
-	player_account_ids = []
-	player_account_ids = [x['account_id']['accountId'] for x in player['soloq_ids'] if x['account_id'] is not None]
-	for participant in match['data']['participantIdentities']:
-		if participant['player']['accountId'] in player_account_ids:
-			participant_id = participant['participantId']
-	return participant_id
-
 
 def get_processed_stats(stats, items_to_be_kept):
 	result = {}
@@ -76,6 +63,20 @@ def get_transformed_match(match):
     flat_match.pop('_id')
     return flat_match
 
+
+def get_match_as_vector(match):
+	match_as_list = list(flatten_dict(match).values())
+	return np.array(match_as_list)
+
+def get_match_vector_batch(batch_size):
+	matches = get_random_matches_batch(batch_size)
+	data, targets = [], []
+	for match in matches:
+		transformed_match = get_transformed_match(match)
+		bucketized_match = get_bucketized_match(transformed_match)
+		data.append(bucketized_match)
+		targets.append(get_target_for_match(match))
+	return data, targets
 
 def get_bucketized_match(match):
 	bucket_list = [3, 21, 31, 32]
