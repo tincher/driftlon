@@ -5,7 +5,6 @@ import random
 import json
 import statistics
 import numpy as np
-# import tensorflow as tf
 from tensorflow import strings as tfs
 
 DBReader = DBReader()
@@ -18,18 +17,6 @@ def get_random_matches_batch(batch_size):
 	random.shuffle(matches)
 	db.close()
 	return matches[:batch_size]
-
-
-def get_particpant_id(match):
-	participant_id = 0
-	player = DBReader.get_player_for_id(match['player_id'])
-	player_account_ids = []
-	player_account_ids = [x['account_id']['accountId'] for x in player['soloq_ids'] if x['account_id'] is not None]
-	for participant in match['data']['participantIdentities']:
-		if participant['player']['accountId'] in player_account_ids:
-			participant_id = participant['participantId']
-	return participant_id
-
 
 def get_processed_stats(stats, items_to_be_kept):
 	result = {}
@@ -80,7 +67,7 @@ def get_transformed_match(match):
 
 
 def get_match_as_vector(match):
-	match_as_list = list(my_flatten(match).values())
+	match_as_list = list(flatten_dict(match).values())
 	return np.array(match_as_list)
 
 def get_match_vector_batch(batch_size):

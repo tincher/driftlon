@@ -1,17 +1,16 @@
-import time
 import os
-import json
-import requests
 import yaml
+import json
+import time
+import getpass
 import logging
+import requests
 from datetime import datetime, timedelta
-
 
 class RiotLayer:
     def __init__(self):
 
-        pwd = os.getcwd()
-        with open(os.path.join(pwd, 'config.yml'), 'r') as configfile:
+        with open('/home/{}/projects/driftlon/config.yml'.format(getpass.getuser()), 'r') as configfile:
             self.config = yaml.safe_load(configfile)
 
         self.api_key = 'api_key=' + self.config['riot']['api_key']
@@ -169,7 +168,7 @@ class RiotLayer:
 
     @staticmethod
     def get_number_of_patches(patch_count):
-        patches = json.loads(open('/home/ubuntu/projects/driftlon/data_fetcher/json_files/patches.json').read())
+        patches = json.loads(open('/home/{}/projects/driftlon/data_fetcher/json_files/patches.json'.format(getpass.getuser())).read())
         print(patches)
         now = datetime.now()
         for i in range(patch_count, len(patches)):
