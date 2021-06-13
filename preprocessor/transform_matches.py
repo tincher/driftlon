@@ -10,6 +10,16 @@ from tensorflow import strings as tfs
 
 # todo: maybe in different files
 
+def get_particpant_id(match):
+	participant_id = 0
+	player = DBReader.get_player_for_id(match['player_id'])
+	player_account_ids = []
+	player_account_ids = [x['account_id']['accountId'] for x in player['soloq_ids'] if x['account_id'] is not None]
+	for participant in match['data']['participantIdentities']:
+		if participant['player']['accountId'] in player_account_ids:
+			participant_id = participant['participantId']
+	return participant_id
+
 
 def get_random_matches_batch(batch_size):
     db, collection = get_connection_for_collection_name('matches')
