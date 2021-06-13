@@ -78,9 +78,8 @@ def get_match_vector_batch(batch_size):
 		targets.append(get_target_for_match(match))
 	return data, targets
 
-def get_bucketized_match(match):
-	bucket_list = [3, 21, 31, 32]
-	for entry in bucket_list:
+def get_bucketized_match(match, categories_to_bucketize=[3, 21, 31, 32]):
+	for entry in categories_to_bucketize:
 		value = tfs.to_hash_bucket_strong(list(str(match[entry])), 20, [0, 0]).numpy()
 		match[entry] = value[0]
 	match = list(map(int, match))
