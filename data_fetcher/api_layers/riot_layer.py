@@ -5,12 +5,14 @@ import time
 import getpass
 import logging
 import requests
+import platform
 from datetime import datetime, timedelta
 
 class RiotLayer:
     def __init__(self):
-
-        with open('/home/{}/projects/driftlon/config.yml'.format(getpass.getuser()), 'r') as configfile:
+        project_dir = '/Users/' if platform.system() == 'Darwin' else '/home/'
+	
+        with open(project_dir + '{}/projects/driftlon/config.yml'.format(getpass.getuser()), 'r') as configfile:
             self.config = yaml.safe_load(configfile)
 
         self.api_key = 'api_key=' + self.config['riot']['api_key']
