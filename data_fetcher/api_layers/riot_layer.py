@@ -90,7 +90,7 @@ class RiotLayer:
         for queue in queues:
             queues_url += '&queue=' + str(queue)
         begin_url = 'beginIndex={}'.format(begin_index)
-        endindex_url = 'endIndex={}'.format(end_index if (end_index - begin_index) <= 100 else 100)
+        endindex_url = 'endIndex={}'.format(end_index if (end_index - begin_index) <= 100 else 100) if end_index != 0 else ''
         complete_url = self.generate_url(subdomain, '/lol/match/v4/matchlists/by-account/{}?{}{}{}&{}&{}', account_id, begin_url, timestamp_url, queues_url, endindex_url)
         result = self.get_json_from_url(complete_url)
         return result
