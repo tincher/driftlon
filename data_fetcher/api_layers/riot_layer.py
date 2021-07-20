@@ -95,8 +95,8 @@ class RiotLayer:
         result = self.get_json_from_url(complete_url)
         return result
 
-    def get_match_list_for_account(self, account_id, region, timestamp=0, queues=[420, 440]):
-        result, start_index, end_index = [], 0, 0
+    def get_match_list_for_account(self, account_id, region, timestamp=0, queues=[420, 440], end_index=0):
+        result, start_index = [], 0
         response = self.get_match_list_batch(account_id, region, 0, timestamp, queues, end_index)
         if response is None:
             return []
@@ -123,7 +123,7 @@ class RiotLayer:
 
     def get_matchlist_for_player_since_number_of_patches(self, account_id, region, patch_count, max_nr=0):
         timestamp = int(self.get_timestamp_for_last_number_of_patches(patch_count))
-        for i, match_list_batch in enumerate(self.get_match_list_for_account(account_id, region, timestamp, max_nr)):
+        for i, match_list_batch in enumerate(self.get_match_list_for_account(account_id, region, timestamp, end_index=max_nr)):
             yield match_list_batch
             logging.info('RIOT: matches - account id: {} - {} - #patches: {} - batch_no: {}'.format(account_id, region, patch_count, i))
 
