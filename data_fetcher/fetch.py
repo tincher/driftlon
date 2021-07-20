@@ -35,13 +35,13 @@ def fetch_pros(batch_size=0):
         DBWriter.write_user(player)
 
 
-def fetch_games_for_oldest_batch(batch_size=20):
+def fetch_games_for_oldest_batch(batch_size=20, max_nr=30):
     logging.info('FETCH: fetching games for oldest - batch_size: {}'.format(batch_size))
     players = DBReader.get_oldest_updated_batch_of_players(batch_size)
     for player in tqdm(players):
         for soloq_id in player['soloq_ids']:
             if soloq_id['account_id'] is not None:
-                for match_batch in RiotLayer.get_matchlist_for_player_since_number_of_patches(soloq_id['account_id']['accountId'], soloq_id['server'], 1):
+                for match_batch in RiotLayer.get_matchlist_for_player_since_number_of_patches(soloq_id['account_id']['accountId'], soloq_id['server'], 1, max_nr):
                     for match in match_batch:
                         result = RiotLayer.get_match_for_match_id(match['gameId'], soloq_id['server'])
                         if result is not None:

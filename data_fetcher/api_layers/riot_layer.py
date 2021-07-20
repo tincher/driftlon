@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 class RiotLayer:
     def __init__(self):
         project_dir = '/Users/' if platform.system() == 'Darwin' else '/home/'
-	
+
         with open(project_dir + '{}/projects/driftlon/config.yml'.format(getpass.getuser()), 'r') as configfile:
             self.config = yaml.safe_load(configfile)
 
@@ -82,7 +82,7 @@ class RiotLayer:
             return {'tier': 'unranked', 'rank': 'unranked'}
 
 
-    def get_match_list_batch(self, account_id, subdomain, begin_index, timestamp=0, queues=[420, 440]):
+    def get_match_list_batch(self, account_id, subdomain, begin_index, timestamp=0, queues=[420, 440], end_index=0):
         timestamp_url = ''
         if timestamp > 0:
             timestamp_url = '&beginTime=' + str(int(timestamp))
@@ -90,13 +90,14 @@ class RiotLayer:
         for queue in queues:
             queues_url += '&queue=' + str(queue)
         begin_url = 'beginIndex={}'.format(begin_index)
-        complete_url = self.generate_url(subdomain, '/lol/match/v4/matchlists/by-account/{}?{}{}{}&{}', account_id, begin_url, timestamp_url, queues_url)
+        endindex_url = 'endIndex={}'.format(end_index if (end_index - begin_index) <= 100 else 100)
+        complete_url = self.generate_url(subdomain, '/lol/match/v4/matchlists/by-account/{}?{}{}{}&{}&{}', account_id, begin_url, timestamp_url, queues_url, endindex_url)
         result = self.get_json_from_url(complete_url)
         return result
 
     def get_match_list_for_account(self, account_id, region, timestamp=0, queues=[420, 440]):
-        result, start_index = [], 0
-        response = self.get_match_list_batch(account_id, region, 0, timestamp, queues)
+        result, start_index, end_index = [], 0, 0
+        response = self.get_match_list_batch(account_id, region, 0, timestamp, queues, end_index)
         if response is None:
             return []
         yield response['matches']
@@ -120,9 +121,9 @@ class RiotLayer:
         patch_as_datetime = datetime.strptime(raw_date, '%d. %B %Y') + timedelta(hours=6)
         return patch_as_datetime.timestamp() * 1000
 
-    def get_matchlist_for_player_since_number_of_patches(self, account_id, region, patch_count):
+    def get_matchlist_for_player_since_number_of_patches(self, account_id, region, patch_count, max_nr=0):
         timestamp = int(self.get_timestamp_for_last_number_of_patches(patch_count))
-        for i, match_list_batch in enumerate(self.get_match_list_for_account(account_id, region, timestamp)):
+        for i, match_list_batch in enumerate(self.get_match_list_for_account(account_id, region, timestamp, max_nr)):
             yield match_list_batch
             logging.info('RIOT: matches - account id: {} - {} - #patches: {} - batch_no: {}'.format(account_id, region, patch_count, i))
 
