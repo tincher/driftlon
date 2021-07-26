@@ -10,9 +10,7 @@ from datetime import datetime, timedelta
 
 class RiotLayer:
     def __init__(self):
-        project_dir = '/Users/' if platform.system() == 'Darwin' else '/home/'
-
-        with open(project_dir + '{}/projects/driftlon/config.yml'.format(getpass.getuser()), 'r') as configfile:
+        with open('/config.yml', 'r') as configfile:
             self.config = yaml.safe_load(configfile)
 
         self.api_key = 'api_key=' + self.config['riot']['api_key']
@@ -170,7 +168,7 @@ class RiotLayer:
 
     @staticmethod
     def get_number_of_patches(patch_count):
-        patches = json.loads(open('/home/{}/projects/driftlon/data_fetcher/json_files/patches.json'.format(getpass.getuser())).read())
+        patches = json.loads(open('/data_fetcher/json_files/patches.json').read())
         now = datetime.now()
         for i in range(patch_count, len(patches)):
             if datetime.strptime(patches[i]['date'], '%d. %B %Y') > now:
