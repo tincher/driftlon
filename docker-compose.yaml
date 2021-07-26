@@ -1,14 +1,22 @@
-# Use root/example as user/password credentials
 version: '3.9'
 
 services:
     mongo:
         image: mongo
-        restart: always
-        environment:
-            MONGO_INITDB_ROOT_USERNAME: root
-            MONGO_INITDB_ROOT_PASSWORD: example
-
+        restart: unless-stopped
+        container_name: mongodb
+        # environment:
+        #     MONGO_INITDB_ROOT_USERNAME: root
+        #     MONGO_INITDB_ROOT_PASSWORD: example
+        volumes:
+            - /data/driftlon:/data/db
+        ports:
+            - 27017:27017
     fetch:
+        depends_on:
+            - "mongo"
         build: .
-        
+        volumes:
+            - /var/log/driftlon:/var/log/driftlon
+        environment:
+            MONGODB_ADDRESS: mongodb
