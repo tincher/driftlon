@@ -4,13 +4,10 @@ import hashlib
 import logging
 
 class DBWriter:
-    player_collection, matches_collection = None, None
-    db_player, db_matches = None, None
-
-    def __init__(self):
-        self.db_player, self.player_collection = get_connection_for_collection_name('player')
-        self.db_matches, self.matches_collection = get_connection_for_collection_name('matches')
-        self.db_processed, self.processed_collection = get_connection_for_collection_name('processed_matches')
+    def __init__(self, ip='localhost'):
+        self.db_player, self.player_collection = get_connection_for_collection_name('player', ip)
+        self.db_matches, self.matches_collection = get_connection_for_collection_name('matches', ip)
+        self.db_processed, self.processed_collection = get_connection_for_collection_name('processed_matches', ip)
 
     @staticmethod
     def get_hash(value):

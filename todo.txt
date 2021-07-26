@@ -1,2 +1,3 @@
+TODO docker
 TODO less memory usage
 TODO check/update current division for casuals

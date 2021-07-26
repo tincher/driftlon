@@ -1,6 +1,7 @@
 import argparse
 import logging
 import sys
+import os
 from datetime import datetime
 from get_from_db import *
 from write_to_db import DBWriter
@@ -12,8 +13,8 @@ from tqdm import tqdm
 batch_size = 20
 patch_count = 2
 top_leagues = ['LoL European Championship', 'League Championship Series', 'LoL Champions Korea', 'LoL Pro League']
-DBWriter = DBWriter()
-DBReader = DBReader()
+DBWriter = DBWriter(os.environ['MONGODB_ADDRESS'])
+DBReader = DBReader(os.environ['MONGODB_ADDRESS'])
 LPLayer = LPLayer()
 TTPLayer = TTPLayer()
 RiotLayer = RiotLayer()
@@ -58,7 +59,6 @@ def fetch_casuals(config_number):
 
 
 def main(args):
-
     logging.basicConfig(filename='/var/log/driftlon/driftlon.log',level=logging.DEBUG, format='%(asctime)s %(message)s')
     logging.info('start fetching - {}'.format(args))
     if args.type == 'pros':
