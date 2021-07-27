@@ -7,7 +7,7 @@ from data_fetcher.get_from_db import *
 import pickle
 import argparse
 
-DBReader = DBReader()
+DBReader = DBReader(ip='85.214.100.20')
 
 def get_particpant_id(match):
     participant_id = 0
@@ -25,8 +25,8 @@ def filter_and_flatten_match(match):
     flattened_match = flatten_dict(participant_data)
     return flattened_match
 
-def get_raw_data_batch(limit, offset=0):
-    db, matches_collection = get_connection_for_collection_name('matches')
+def get_raw_data_batch(limit, offset=0, ip='localhost'):
+    db, matches_collection = get_connection_for_collection_name('matches', ip)
 
     matches = list(matches_collection.find(projection=['pro_games_count', 'data', 'player_id'], limit=limit, skip=offset))
 
@@ -37,18 +37,18 @@ def get_raw_data_batch(limit, offset=0):
     db.close()
     return data, target
 
-def get_data(batch_size=10000):
+def get_data(batch_size=10000, ip='localhost'):
     offset = 0
     data, target = [], []
 
-    new_data, new_target = get_raw_data_batch(batch_size, offset)
+    new_data, new_target = get_raw_data_batch(batch_size, offset, ip)
 
     while len(new_target) > 0:
         data.extend(new_data)
         target.extend(new_target)
 
         offset += batch_size
-        new_data, new_target = get_raw_data_batch(batch_size, offset)
+        new_data, new_target = get_raw_data_batch(batch_size, offset, ip)
 
 
         print(len(target))
@@ -62,6 +62,14 @@ def get_common_keys(X):
     keys = list(set(keys))
     result_keys = sorted(list(filter(lambda x: all(x in element.keys() for element in X), keys)))
     return result_keys
+
+
+def get_data_for_keys(common_keys, X):
+    data = []
+    for key in common_keys:
+        values = [element[key] for element in X]
+        data.append(values)
+    return data
 
 def get_pearson_rs(X, Y, common_keys):
     pearsonrs = []
@@ -78,28 +86,36 @@ def remove_outliers(df, column_name):
     high = np.quantile(df[column_name], 0.95)
     return df[df[column_name].between(low, high, inclusive=True)]
 
-def main(load_from_file=False):
+def main(load_from_file=False, ip='localhost'):
     if load_from_file:
-        X, Y = get_data()
+        X, Y = get_data(ip=ip)
 
         pickle.dump(X, open('X.pkl', 'wb+'))
         pickle.dump(Y, open('Y.pkl', 'wb+'))
+        print('data written')
     else:
         X = pickle.load(open('X.pkl', 'rb+'))
         Y = pickle.load(open('Y.pkl', 'rb+'))
+        print('data loaded')
 
     common_keys = get_common_keys(X)
-    pearsonrs = get_pearson_rs(X, Y, common_keys)
+    data = pd.DataFrame(get_data_for_keys(common_keys, X))
+    data.describe()
 
-    result = sorted(pearsonrs, key=lambda elem: elem[0][0])
-    result_pd = pd.DataFrame(result)
 
-    print(result_pd.to_string())
+    # pearsonrs = get_pearson_rs(X, Y, common_keys)
+    #
+    # result = sorted(pearsonrs, key=lambda elem: elem[0][0])
+    # result_pd = pd.DataFrame(result)
+    #
+    # print(result_pd.to_string())
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Analyze dataset')
     parser.add_argument('--load_from_file', action='store_false')
+    parser.add_argument('--ip', default='localhost')
 
     args = parser.parse_args()
+    print(args)
 
-    main(args.load_from_file)
+    main(args.load_from_file, ip=args.ip)
