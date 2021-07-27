@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
     mongo:
-        image: mongo
+        image: mongo:4.4
         restart: unless-stopped
         container_name: mongodb
         # environment:
@@ -15,7 +15,9 @@ services:
     fetch_games:
         depends_on:
             - "mongo"
-        build: .
+        build:
+            context: .
+            dockerfile: ./Dockerfile.games
         volumes:
             - /var/log/driftlon:/var/log/driftlon
         environment:
@@ -23,7 +25,9 @@ services:
     fetch_pros:
         depends_on:
             - "mongo"
-        build: ./Dockerfile_pros
+        build:
+            context: .
+            dockerfile: ./Dockerfile.pros
         volumes:
             - /var/log/driftlon:/var/log/driftlon
         environment:
