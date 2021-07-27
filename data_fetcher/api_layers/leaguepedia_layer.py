@@ -8,7 +8,7 @@ import mwclient
 
 class LPLayer:
     def __init__(self):
-        self.site = mwclient.Site('lol.gamepedia.com', path='/')
+        self.site = mwclient.Site('lol.fandom.com', path='/')
         self.min_games = 20
         self.top_leagues = {
             'LoL European Championship': 'LEC',
