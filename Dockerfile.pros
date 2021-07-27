@@ -7,4 +7,4 @@ COPY ./fetch_batch.sh /
 COPY ./config.yml /
 COPY ./driftlon_utils.py /
 ENV PYTHONPATH "${PYTHONPATH}:/"
-CMD ["python3", "data_fetcher/fetch.py", "--type pros"]
+CMD ["python3", "data_fetcher/fetch.py", "--type", "pros"]
