@@ -15,8 +15,7 @@ def main(path):
     message = 'Subject: {}\n\n{}'.format(disk_usage, disk_usage)
 
 
-    project_dir = '/Users/'
-    with open(project_dir + '{}/projects/driftlon/config.yml'.format(getpass.getuser()), 'r') as configfile:
+    with open('/config.yml', 'r') as configfile:
         config = yaml.safe_load(configfile)
     server = smtplib.SMTP_SSL('smtp.strato.de', 465)
     server.login(config['mail']['username'], config['mail']['password'])

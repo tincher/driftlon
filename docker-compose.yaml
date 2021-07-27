@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+    mongo:
+        image: mongo:4.4
+        restart: unless-stopped
+        container_name: mongodb
+        # environment:
+        #     MONGO_INITDB_ROOT_USERNAME: root
+        #     MONGO_INITDB_ROOT_PASSWORD: example
+        volumes:
+            - /data/driftlon:/data/db
+        ports:
+            - 27017:27017
+    fetch_games:
+        depends_on:
+            - "mongo"
+        build:
+            context: .
+            dockerfile: ./Dockerfile.games
+        volumes:
+            - /var/log/driftlon:/var/log/driftlon
+        environment:
+            MONGODB_ADDRESS: mongodb
+    fetch_pros:
+        depends_on:
+            - "mongo"
+        build:
+            context: .
+            dockerfile: ./Dockerfile.pros
+        volumes:
+            - /var/log/driftlon:/var/log/driftlon
+        environment:
+            MONGODB_ADDRESS: mongodb
