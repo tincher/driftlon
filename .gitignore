@@ -10,3 +10,4 @@ __pycache__/
 dump/
 *.log
 setup.sh
+*.pkl
