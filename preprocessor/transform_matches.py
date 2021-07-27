@@ -8,7 +8,8 @@ import statistics
 import numpy as np
 from tensorflow import strings as tfs
 
-# todo: maybe in different files
+DBReader = DBReader(os.environ['MONGODB_ADDRESS'])
+DBWriter = DBWriter(os.environ['MONGODB_ADDRESS'])
 
 def get_particpant_id(match):
 	participant_id = 0
