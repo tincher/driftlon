@@ -3,7 +3,7 @@ from write_to_db import *
 import random
 import numpy as np
 
-DBWriter = DBWriter()
+DBWriter = DBWriter(os.environ['MONGODB_ADDRESS'])
 
 def get_all_processed_matches():
     db, collection = get_connection_for_collection_name('processed_matches')
