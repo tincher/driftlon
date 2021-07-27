@@ -12,10 +12,18 @@ services:
             - /data/driftlon:/data/db
         ports:
             - 27017:27017
-    fetch:
+    fetch_games:
         depends_on:
             - "mongo"
         build: .
+        volumes:
+            - /var/log/driftlon:/var/log/driftlon
+        environment:
+            MONGODB_ADDRESS: mongodb
+    fetch_pros:
+        depends_on:
+            - "mongo"
+        build: ./Dockerfile_pros
         volumes:
             - /var/log/driftlon:/var/log/driftlon
         environment:
