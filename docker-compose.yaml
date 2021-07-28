@@ -32,3 +32,13 @@ services:
             - /var/log/driftlon:/var/log/driftlon
         environment:
             MONGODB_ADDRESS: mongodb
+    fetch_casuals:
+        depends_on:
+            - "mongo"
+        build:
+            context: .
+            dockerfile: ./Dockerfile.casuals
+        volumes:
+            - /var/log/driftlon:/var/log/driftlon
+        environment:
+            MONGODB_ADDRESS: mongodb
