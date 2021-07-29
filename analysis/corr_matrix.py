@@ -11,7 +11,6 @@ numeric_col = ['temp','atemp','hum','windspeed']
 
 # Correlation Matrix formation
 corr_matrix = BIKE.loc[:,numeric_col].corr()
-print(corr_matrix)
 
 #Using heatmap to visualize the correlation matrix
 sn.heatmap(corr_matrix, annot=True)

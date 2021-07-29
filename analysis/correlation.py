@@ -6,6 +6,7 @@ import pandas as pd
 from data_fetcher.get_from_db import *
 import pickle
 import argparse
+import pdb
 
 DBReader = DBReader(ip='85.214.100.20')
 
@@ -101,6 +102,10 @@ def main(load_from_file=False, ip='localhost'):
     common_keys = get_common_keys(X)
     data = pd.DataFrame(get_data_for_keys(common_keys, X))
     data.describe()
+
+    pdb.set_trace()
+    corr_matrix = data.loc[:,:].corr()
+
 
 
     # pearsonrs = get_pearson_rs(X, Y, common_keys)
