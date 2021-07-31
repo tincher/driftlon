@@ -7,8 +7,4 @@ COPY ./fetch_batch.sh /
 COPY ./config.yml /
 COPY ./driftlon_utils.py /
 ENV PYTHONPATH "${PYTHONPATH}:/"
-<<<<<<< Updated upstream
-CMD ["python3", "data_fetcher/fetch.py", "--type", "casuals", "--config", "1"]
-=======
 CMD ["python3", "data_fetcher/fetch.py", "--type", "casuals", "--config", "0"]
->>>>>>> Stashed changes
