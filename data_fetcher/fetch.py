@@ -9,12 +9,15 @@ from data_fetcher.api_layers.leaguepedia_layer import LPLayer
 from data_fetcher.api_layers.trackingthepros_layer import TTPLayer
 from data_fetcher.api_layers.riot_layer import RiotLayer
 from tqdm import tqdm
+import yaml
 
 batch_size = 20
 patch_count = 2
 top_leagues = ['LoL European Championship', 'League Championship Series', 'LoL Champions Korea', 'LoL Pro League']
-DBWriter = DBWriter(os.environ['MONGODB_ADDRESS'])
-DBReader = DBReader(os.environ['MONGODB_ADDRESS'])
+
+mongo_config = yaml.safe_load(open('/config.yml', 'r'))['mongodb']
+DBWriter = DBWriter(mongo_config['address'], mongo_config['username'], mongo_config['password'])
+DBReader = DBReader(mongo_config['address'], mongo_config['username'], mongo_config['password'])
 LPLayer = LPLayer()
 TTPLayer = TTPLayer()
 RiotLayer = RiotLayer()
