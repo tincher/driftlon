@@ -5,9 +5,9 @@ services:
         image: mongo:4.4
         restart: unless-stopped
         container_name: mongodb
-        #environment:
-        #    MONGO_INITDB_ROOT_USERNAME: root
-        #    MONGO_INITDB_ROOT_PASSWORD: example
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
         volumes:
             - /data/new_driftlon:/data/db
         ports:

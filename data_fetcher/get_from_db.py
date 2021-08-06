@@ -5,8 +5,8 @@ import logging
 
 
 class DBReader:
-    def __init__(self, ip='localhost'):
-        self.db, self.player_collection = get_connection_for_collection_name('player', ip)
+    def __init__(self, ip='localhost', username=None, password=None):
+        self.db, self.player_collection = get_connection_for_collection_name('player', ip, username, password)
 
     def get_oldest_updated_batch_of_players(self, batch_size):
         players = self.player_collection.find({'soloq_ids': {'$ne': None}}).sort('timestamp').limit(batch_size)

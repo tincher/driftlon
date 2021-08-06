@@ -16,6 +16,6 @@ def flatten_dict(d, sep='_'):
     recurse(d)
     return dict(obj)
 
-def get_connection_for_collection_name(collection_name, ip='localhost'):
-    db = pymongo.MongoClient('mongodb://{}:27017'.format(ip))
+def get_connection_for_collection_name(collection_name, ip='localhost', username=None, password=None):
+    db = pymongo.MongoClient('mongodb://{}:27017'.format(ip), username=username, password=password)
     return db, db['driftlon'][collection_name]
