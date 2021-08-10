@@ -11,3 +11,6 @@ dump/
 *.log
 setup.sh
 *.pkl
+data/
+*.png
+*.csv
