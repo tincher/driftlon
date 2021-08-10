@@ -1,5 +1,3 @@
-
-
 def get_data_for_keys(common_keys, X):
     values_list = []
     for key in common_keys:
