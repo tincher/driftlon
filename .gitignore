@@ -12,3 +12,5 @@ dump/
 setup.sh
 *.pkl
 data/
+*.png
+*.csv
