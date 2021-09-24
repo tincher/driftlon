@@ -8,3 +8,5 @@ torch
 numpy
 pyyaml
 seaborn
+tsfresh
+jupyter
