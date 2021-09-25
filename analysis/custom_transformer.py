@@ -7,7 +7,7 @@ class TeamShareAdder(BaseEstimator, TransformerMixin):
     def __init__(self, attribute_names=[], config=[], db_config=None):
         self.attribute_names = attribute_names #all attributes
         self.db_config = db_config
-        self.config = config # [(player_stat, team_stat)] 
+        self.config = config # [(player_stat, team_stat)]
         self.config_idx = []
         self.participant_ids = []
 
@@ -22,10 +22,14 @@ class TeamShareAdder(BaseEstimator, TransformerMixin):
     def transform(self, X):
         result = X
         for current_idx in self.config_idx:
-            new_attribute = X[:, current_idx[0]] / X[:, current_idx[1]]
+            # drin lassen wenn remake,nicht genau feststellbar + weniger overfitting
+            # no division by zero 
+            team_value = X[:, current_idx[1]]
+            team_value = np.where(team_value < 1, np.inf, team_value)
+            new_attribute = X[:, current_idx[0]] / team_value
             result = np.c_[result, new_attribute]
         return result
-    
+
     def get_participant_id(self, match, db_reader):
         participant_id = 0
         print(match)

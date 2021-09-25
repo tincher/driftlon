@@ -20,37 +20,6 @@ class PerMinAdder(BaseEstimator, TransformerMixin):
     def transform(self, X):
         pass
 
-class TeamShareAdder(BaseEstimator, TransformerMixin):
-    def __init__(self, attribute_names=[], wanted_attributes=[], db_connector=None):
-        self.attribute_names = attribute_names #all attributes
-        self.db_connector = db_connector
-        self.wanted_attributes = wanted_attributes # attributes to be summed
-        self.attributes_idx = [[] for wanted_attribute in wanted_attributes]
-        self.participant_ids = []
-
-    def fit(self, X, y=None):
-        print('fit')
-        for wanted_attribute in self.wanted_attributes:
-#             keys = list(filter(lambda x: re.match(f'data_participants_\d_stats_{wanted_attribute}', x), self.attribute_names))
-            keys = [x for x in self.attribute_names if re.match(f'stats_{wanted_attribute}', x)]
-            indices = [element[0] for element in enumerate(self.attribute_names) if element[1] in keys]
-            self.attributes_idx.append(indices)
-        for game in X:
-            self.participant_ids.append(self.db_connector.get_particpant_id(game))
-        return self
-
-    def transform(self, X):
-        print('trans')
-        result = X
-        for attribute_name, attributes_idx in zip(self.attribute_names, self.attributes_idx):
-            team0_sums = np.sum(X[:, attributes_idx[:5]], axis=1, keepdims=True)
-            team1_sums = np.sum(X[:, attributes_idx[5:]], axis=1, keepdims=True)
-            mask = np.c_[self.participant_ids<5, self.participant_ids>=5]
-
-            new_attribute = np.sum(np.c_[team0_sums, team1_sums]*mask, axis=1, keepdims=True)
-
-            result = np.c_[result, new_attribute]
-        return result
 
 class DataFetcher:
     def __init__(self, mongo_address='localhost', mongo_username=None, mongo_password=None):
@@ -81,7 +50,8 @@ class DataFetcher:
         matches = self.db_reader.get_matches_batch(limit, offset=offset)
         data = [self.filter_and_flatten_match(element) for element in matches]
         target = [element['pro_games_count'] for element in matches]
-        return data, target
+        player_ids = [element['player_id'] for element in matches]
+        return data, target, player_ids
 
     def filter_and_flatten_match(self, match):
         participant_id = self.get_particpant_id(match)

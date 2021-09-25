@@ -1,5 +1,5 @@
-from datetime import datetime
 from driftlon_utils import get_connection_for_collection_name
+from datetime import datetime
 import pymongo
 import logging
 
