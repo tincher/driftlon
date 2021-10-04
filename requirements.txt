@@ -8,3 +8,8 @@ torch
 numpy
 pyyaml
 seaborn
+<<<<<<< HEAD
+=======
+tsfresh
+jupyter
+>>>>>>> master

@@ -69,10 +69,11 @@ def transform_match_by_config(match, config, participant_id):
 	return result
 
 def get_transformed_match(match):
-    # todo filter relevant infos
-    flat_match = flatten(match)
-    flat_match.pop('_id')
-    return flat_match
+	participant_id = get_particpant_id(match)
+	if participant_id == 0:
+		return []
+	config = json.loads(open('./preprocessor/config.json').read())
+	return transform_match_by_config(match, config, participant_id)
 
 
 def get_match_as_vector(match):

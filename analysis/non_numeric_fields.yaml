@@ -1,4 +1,5 @@
 - championId
+<<<<<<< HEAD
 - participantId
 - spell1Id
 - spell2Id
@@ -60,3 +61,7 @@
 - stats_perk5Var3
 - stats_objectivePlayerScore
 - stats_sightWardsBoughtInGame
+=======
+- timeline_role
+- timeline_lane
+>>>>>>> master

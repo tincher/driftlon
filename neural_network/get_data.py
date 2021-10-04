@@ -42,6 +42,7 @@ def get_data_batch(batch_size, matches_count=50, timespan=timedelta(weeks=2)):
             data[index].extend([[0] * 35 for _ in range(matches_count - len(data[index]))])
     return data, target
 
+<<<<<<< HEAD
 def get_data_batch(batch_size, matches_count=50, timespan=timedelta(weeks=2)):
     data, target = get_batch(batch_size)
     for index in range(len(data)):
@@ -50,6 +51,8 @@ def get_data_batch(batch_size, matches_count=50, timespan=timedelta(weeks=2)):
             data[index].extend([[0] * 35 for _ in range(matches_count - len(data[index]))])
     return data, target
 
+=======
+>>>>>>> master
 
 if __name__ == '__main__':
     batch_size = 10

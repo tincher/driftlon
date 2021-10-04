@@ -43,13 +43,20 @@ class DBWriter:
         logging.info('MONGO: write game - name: {} - gameId: {}'.format(player['name'], game['gameId']))
 
     def write_processed_game(self, processed_game, target, player_id, timestamp=int(datetime.utcnow().timestamp())):
+<<<<<<< HEAD
         processed_game_list = processed_game
         data = {'data': processed_game_list, 'target': target, 'timestamp': timestamp, 'player_id': player_id}
         query = {'player_id': player_id, 'timestamp': timestamp}
         result = self.insert_or_update(self.processed_collection, query, data)
         logging.info('MONGO: write processed game - name: {} - timestamp: {}'.format(player['name'], timestamp))
+=======
+        data = {'data': processed_game, 'target': target, 'timestamp': timestamp, 'player_id': player_id}
+        query = {'player_id': player_id, 'data': processed_game}
+        result = self.insert_or_update(self.processed_collection, query, data)
+        logging.info('MONGO: write processed game - player_id: {} - timestamp: {}'.format(player_id, timestamp))
+>>>>>>> master
 
 if __name__ == '__main__':
     player = {'name': 'WildTurtle'}
-    update_user_timestamp(player)
-    print(get_hash(player['name']))
+    # update_user_timestamp(player)
+    # print(get_hash(player['name']))
