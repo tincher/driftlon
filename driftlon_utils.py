@@ -14,11 +14,7 @@ def flatten_dict(d, sep='_'):
         else:
             obj[parent_key] = t
     recurse(d)
-<<<<<<< HEAD
-    return obj
-=======
     return dict(obj)
->>>>>>> master
 
 def get_connection_for_collection_name(collection_name, ip='localhost', username=None, password=None):
     db = pymongo.MongoClient('mongodb://{}:27017'.format(ip), username=username, password=password)
