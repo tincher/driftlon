@@ -1,19 +1,11 @@
-import re
-import numpy as np
-from driftlon_utils import *
-from data_fetcher.get_from_db import *
-from sklearn.base import BaseEstimator, TransformerMixin
+from get_from_db import DBReader
+from driftlon_utils import flatten_dict
 
 
-class PerMinAdder(BaseEstimator, TransformerMixin):
-    def __init__(self, attribute_names):
-        pass
-
-    def fit(self, X, y=None):
-        pass
-
-    def transform(self, X):
-        pass
+def transform_data_to_np(data):
+    values = list(data.values())[1:]
+    keys = list(data.keys())[1:]
+    return values, keys
 
 
 class DataFetcher:
@@ -86,33 +78,3 @@ class DataFetcher:
             if participant['player']['accountId'] in player_account_ids:
                 participant_id = participant['participantId']
         return participant_id
-
-
-def get_data_for_keys(common_keys, X):
-    values_list = []
-    for key in common_keys:
-        values = [element[key] for element in X]
-        values_list.append(values)
-    return values_list
-
-
-def get_common_keys(X):
-    keys = []
-    for element in X:
-        keys.extend(element.keys())
-
-    keys = list(set(keys))
-    result_keys = sorted(
-        list(filter(lambda x: all(x in element.keys() for element in X), keys)))
-    return result_keys
-
-
-def get_all_keys(X):
-    keys = []
-    for element in X:
-        keys.extend(element.keys())
-
-    keys = list(set(keys))
-    result_keys = sorted(
-        list(filter(lambda x: any(x in element.keys() for element in X), keys)))
-    return result_keys

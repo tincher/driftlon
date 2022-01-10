@@ -9,20 +9,24 @@ from datetime import datetime, timedelta
 def get_player_ids_in_timespan(batch_size, timespan):
     db, collection = get_connection_for_collection_name('processed_matches')
     timestamp_for_span = int((datetime.utcnow() - timespan).timestamp())
-    players = list(collection.find({'timestamp': {'$gt': timestamp_for_span}}).distinct('player_id'))
+    players = list(collection.find(
+        {'timestamp': {'$gt': timestamp_for_span}}).distinct('player_id'))
     db.close()
     return players[:batch_size]
+
 
 def get_matches_batch(player_ids, batch_size=1, timespan=timedelta(weeks=2)):
     db, collection = get_connection_for_collection_name('processed_matches')
     timestamp_for_span = int((datetime.utcnow() - timespan).timestamp())
     result = []
     for player_id in player_ids:
-        db_result = collection.find({'timestamp': {'$gt': timestamp_for_span}, 'player_id': player_id})
+        db_result = collection.find(
+            {'timestamp': {'$gt': timestamp_for_span}, 'player_id': player_id})
         result.append(list(db_result))
     db.close()
     random.shuffle(result)
     return result[:batch_size]
+
 
 def get_batch(batch_size, timespan=timedelta(weeks=2)):
     players = get_player_ids_in_timespan(batch_size, timespan)
@@ -34,25 +38,26 @@ def get_batch(batch_size, timespan=timedelta(weeks=2)):
         target.append(db_result[i][0]['target'])
     return data, target
 
+
 def get_data_batch(batch_size, matches_count=50, timespan=timedelta(weeks=2)):
     data, target = get_batch(batch_size)
     for index in range(len(data)):
         data[index] = data[index][-matches_count:]
         if len(data[index]) < matches_count:
-            data[index].extend([[0] * 35 for _ in range(matches_count - len(data[index]))])
+            data[index].extend(
+                [[0] * 35 for _ in range(matches_count - len(data[index]))])
     return data, target
 
-<<<<<<< HEAD
+
 def get_data_batch(batch_size, matches_count=50, timespan=timedelta(weeks=2)):
     data, target = get_batch(batch_size)
     for index in range(len(data)):
         data[index] = data[index][-matches_count:]
         if len(data[index]) < matches_count:
-            data[index].extend([[0] * 35 for _ in range(matches_count - len(data[index]))])
+            data[index].extend(
+                [[0] * 35 for _ in range(matches_count - len(data[index]))])
     return data, target
 
-=======
->>>>>>> master
 
 if __name__ == '__main__':
     batch_size = 10
@@ -61,5 +66,5 @@ if __name__ == '__main__':
     for match_list in data:
         for match in match_list:
             # print(len(match))
-            if (len(match)!=31):
+            if (len(match) != 31):
                 print(match)
