@@ -10,7 +10,8 @@ top_leagues = {
     'LoL European Championship': 'LEC',
     'League Championship Series': 'LCS',
     'LoL Champions Korea': 'LCK',
-    'LoL Pro League': 'LPL'}
+    'LoL Pro League': 'LPL'
+}
 
 site = mwclient.Site('lol.gamepedia.com', path='/')
 min_games = 20
@@ -29,12 +30,14 @@ def get_abbreviated_league_player(player):
 def get_next_player_batch(current_offset):
     request = site.api('cargoquery', offset=current_offset, limit=500, tables='PlayerLeagueHistory=PLH',
                        fields='PLH.TotalGames, PLH.Player, PLH.League', order_by='PLH.TotalGames desc',
-                       where='PLH.TotalGames>={}'.format(min_games))
+                       where=f'PLH.TotalGames>={min_games}')
     result = []
     for entry in request['cargoquery']:
-        player = {'pro_games': entry['title']['TotalGames'],
-                  'name': entry['title']['Player'],
-                  'league': entry['title']['League']}
+        player = {
+            'pro_games': entry['title']['TotalGames'],
+            'name': entry['title']['Player'],
+            'league': entry['title']['League']
+        }
         result.append(player)
     result = list(filter(lambda x: x['league'] in top_leagues.keys(), result))
     result = list(map(get_abbreviated_league_player, result))
@@ -54,7 +57,7 @@ def get_all_eligible_players():
 
 def get_soloq_ids(name):
     result = []
-    r = requests.get('https://www.trackingthepros.com/player/{}'.format(name))
+    r = requests.get(f'https://www.trackingthepros.com/player/{name}')
     if 'players' in r.url:
         return None
     soup = BeautifulSoup(r.text, features='lxml')
@@ -76,7 +79,7 @@ def get_soloq_ids(name):
 
 def get_soloq_ids(name):
     response = site.api('cargoquery', tables='Players=P', fields='P.ID, P.SoloqueueIds, P.IsRetired',
-                        where='P.ID='{}''.format(name))
+                        where=f'P.ID="{name}"')
     response['cargoquery'] = json.loads(html.unescape(json.dumps(response['cargoquery'])))
     return response['cargoquery']
 

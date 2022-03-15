@@ -24,12 +24,14 @@ class LPLayer:
     def get_next_player_batch(self, current_offset):
         request = self.site.api('cargoquery', offset=current_offset, limit=500, tables='PlayerLeagueHistory=PLH',
                                 fields='PLH.TotalGames, PLH.Player, PLH.League', order_by='PLH.TotalGames desc',
-                                where='PLH.TotalGames>={}'.format(self.min_games))
+                                where='PLH.TotalGames>={self.min_games}')
         result = []
         for entry in request['cargoquery']:
-            player = {'pro_games': entry['title']['TotalGames'],
-                      'name': entry['title']['Player'],
-                      'league': entry['title']['League']}
+            player = {
+                'pro_games': entry['title']['TotalGames'],
+                'name': entry['title']['Player'],
+                'league': entry['title']['League']
+            }
             result.append(player)
         result = list(filter(lambda x: x['league'] in self.top_leagues.keys(), result))
         result = list(map(self.get_abbreviated_league_player, result))
@@ -43,14 +45,14 @@ class LPLayer:
             result.extend(player_batch)
             current_offset += 500
             player_batch = self.get_next_player_batch(current_offset)
-        logging.info('LP: #eligible players: {}'.format(len(result)))
+        logging.info(f'LP: #eligible players: {len(result)}')
         return result
 
     def get_soloq_ids(self, name):
         response = self.site.api('cargoquery', tables='Players=P', fields='P.ID, P.SoloqueueIds, P.IsRetired',
-                                 where='P.ID=\'{}\''.format(name))
+                                 where=f'P.ID=\'{name}\'')
         response['cargoquery'] = json.loads(html.unescape(json.dumps(response['cargoquery'])))
-        logging.debug('LP: soloq ids - name: {} - #: {}'.format(name, len(response['cargoquery'])))
+        logging.debug(f'LP: soloq ids - name: {name} - #: {len(response["cargoquery"])}')
         return response['cargoquery']
 
     def get_random_batch_of_players(self, batch_size):

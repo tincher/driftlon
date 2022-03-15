@@ -34,7 +34,7 @@ def get_json_from_url(url):
 
 
 def get_account_id_for_name(name, region):
-    summoner_url = '/lol/summoner/v4/summoners/by-name/{}'.format(name) + api_key
+    summoner_url = f'/lol/summoner/v4/summoners/by-name/{name}{api_key}'
     complete_url = api_url.format(url_path=summoner_url, server=get_subdomain_for_region(region))
     return get_json_from_url(complete_url)['accountId']
 
@@ -43,9 +43,11 @@ def get_match_list_batch(account_id, region, begin_index, timestamp=0):
     timestamp_url = ''
     if timestamp > 0:
         timestamp_url = '&beginTime=' + str(int(timestamp))
-    matchlist_url = '/lol/match/v4/matchlists/by-account/{}'.format(account_id) + api_key + timestamp_url
-    complete_url = api_url.format(url_path=matchlist_url, server=get_subdomain_for_region(region)) + '&beginIndex={}'.format(begin_index)
+    matchlist_url = f'/lol/match/v4/matchlists/by-account/{account_id}{api_key}{timestamp_url}'
+    complete_url = api_url.format(url_path=matchlist_url,
+                                  server=get_subdomain_for_region(region)) + '&beginIndex={begin_index}'
     return get_json_from_url(complete_url)
+
 
 def get_match_list_for_account(account_id, region, timestamp=0):
     result, start_index = [], 0
@@ -56,6 +58,7 @@ def get_match_list_for_account(account_id, region, timestamp=0):
         response = get_match_list_batch(account_id, region, start_index, timestamp)
         result.extend(response['matches'])
     return result
+
 
 def get_full_match_list_for_account(account_id, region, timestamp=0):
     result, start_index = [], 0
@@ -69,7 +72,7 @@ def get_full_match_list_for_account(account_id, region, timestamp=0):
 
 
 def get_match_for_match_id(match_id, region):
-    match_url = '/lol/match/v4/matches/{}'.format(match_id) + api_key
+    match_url = f'/lol/match/v4/matches/{match_id}{api_key}'
     complete_url = api_url.format(url_path=match_url, server=get_subdomain_for_region(region))
     return get_json_from_url(complete_url)
 

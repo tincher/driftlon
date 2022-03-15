@@ -8,6 +8,7 @@ import requests
 import platform
 from datetime import datetime, timedelta
 
+
 class RiotLayer:
     def __init__(self):
         with open('/config.yml', 'r') as configfile:
@@ -24,7 +25,9 @@ class RiotLayer:
         now = datetime.utcnow()
         short_time_limit = [x for x in self.last_requests_timestamps if x + timedelta(seconds=1) >= now]
         long_time_limit = [x for x in self.last_requests_timestamps if x + timedelta(minutes=2) >= now]
-        self.last_requests_timestamps = [x for x in self.last_requests_timestamps if x in short_time_limit or x in long_time_limit]
+        self.last_requests_timestamps = [
+            x for x in self.last_requests_timestamps if x in short_time_limit or x in long_time_limit
+        ]
         if len(short_time_limit) >= 20:
             result = (timedelta(seconds=1) - (now - short_time_limit[0])).total_seconds()
         elif len(long_time_limit) >= 100:
@@ -32,7 +35,7 @@ class RiotLayer:
             if long_time_waiting_time > result:
                 result = long_time_waiting_time
         result += 0.01
-        logging.debug('RIOT: waiting - seconds: {}'.format(result))
+        logging.debug('RIOT: waiting - seconds: {result}')
         return result
 
     def make_request(self, url):
@@ -48,7 +51,7 @@ class RiotLayer:
             else:
                 if r.status_code == 404:
                     return None
-                logging.error('RIOT: can not handle response code: {} - {}'.format(r.status_code, r.text))
+                logging.error(f'RIOT: can not handle response code: {r.status_code} - {r.text}')
                 raise Exception('Can not handle response code! Text: ', r.text)
         return json.loads(r.text)
 
@@ -59,26 +62,25 @@ class RiotLayer:
     def get_account_id_for_name(self, name, subdomain):
         complete_url = self.generate_url(subdomain, '/lol/summoner/v4/summoners/by-name/{}?{}', name)
         result = self.get_json_from_url(complete_url)
-        if result is None :
-            logging.warning('RIOT: accountId not found - name: {} - {}'.format(name, subdomain))
+        if result is None:
+            logging.warning(f'RIOT: accountId not found - name: {name} - {subdomain}')
             return None
-        elif  'accountId' not in result.keys():
-            logging.warning('RIOT: accountId not found - name: {} - {}'.format(name, subdomain))
+        elif 'accountId' not in result.keys():
+            logging.warning(f'RIOT: accountId not found - name: {name} - {subdomain}')
             return None
         else:
-            logging.debug('RIOT: accountId - name: {} - {}'.format(name, subdomain))
+            logging.debug(f'RIOT: accountId - name: {name} - {subdomain}')
             return result
 
     def get_rank_for_account_id(self, account_id, subdomain, queue='RANKED_SOLO_5x5'):
         complete_url = self.generate_url(subdomain, '/lol/league/v4/entries/by-summoner/{}?{}', account_id)
         result = self.get_json_from_url(complete_url)
         rank = list(filter(lambda x: x['queueType'] == queue, result))
-        logging.info('RIOT: rank - accountId: {} - subdomain: {} - queue: {} - rank: {}'.format(account_id, subdomain, queue, rank))
+        logging.info(f'RIOT: rank - accountId: {account_id} - subdomain: {subdomain} - queue: {queue} - rank: {rank}')
         if len(rank) > 0:
             return rank[0]
         else:
             return {'tier': 'unranked', 'rank': 'unranked'}
-
 
     def get_match_list_batch(self, account_id, subdomain, begin_index, timestamp=0, queues=[420, 440], end_index=0):
         timestamp_url = ''
@@ -87,9 +89,11 @@ class RiotLayer:
         queues_url = ''
         for queue in queues:
             queues_url += '&queue=' + str(queue)
-        begin_url = 'beginIndex={}'.format(begin_index)
-        endindex_url = 'endIndex={}'.format(end_index if (end_index - begin_index) <= 100 else 100) if end_index != 0 else ''
-        complete_url = self.generate_url(subdomain, '/lol/match/v4/matchlists/by-account/{}?{}{}{}&{}&{}', account_id, begin_url, timestamp_url, queues_url, endindex_url)
+        begin_url = f'beginIndex={begin_index}'
+        endindex_url = 'endIndex={}'.format(end_index if (end_index -
+                                                          begin_index) <= 100 else 100) if end_index != 0 else ''
+        complete_url = self.generate_url(subdomain, '/lol/match/v4/matchlists/by-account/{}?{}{}{}&{}&{}', account_id,
+                                         begin_url, timestamp_url, queues_url, endindex_url)
         result = self.get_json_from_url(complete_url)
         return result
 
@@ -103,15 +107,16 @@ class RiotLayer:
             start_index = response['endIndex']
             response = self.get_match_list_batch(account_id, region, start_index, timestamp, queues)
             yield response['matches']
-        logging.info('RIOT: match list - name: {} - timestamp: {} - length: {}'.format(account_id, timestamp, response['totalGames']))
+        logging.info(
+            f'RIOT: match list - name: {account_id} - timestamp: {timestamp} - length: {response["totalGames"]}')
 
     def get_match_for_match_id(self, match_id, subdomain):
         complete_url = self.generate_url(subdomain, '/lol/match/v4/matches/{}?{}', match_id)
         result = self.get_json_from_url(complete_url)
         if 'gameId' not in result.keys():
-            logging.warning('RIOT: gameId not found - match id: {} - {} - keys: {}'.format(match_id, subdomain, game.keys()))
+            logging.warning(f'RIOT: gameId not found - match id: {match_id} - {subdomain} - keys: {result.keys()}')
             return None
-        logging.info('RIOT: match - match id: {} - {} - gameId: {}'.format(match_id, subdomain, result['gameId']))
+        logging.info(f'RIOT: match - match id: {match_id} - {subdomain} - gameId: {result["gameId"]}')
         return result
 
     def get_timestamp_for_last_number_of_patches(self, number_of_patches):
@@ -121,14 +126,17 @@ class RiotLayer:
 
     def get_matchlist_for_player_since_number_of_patches(self, account_id, region, patch_count, max_nr=0):
         timestamp = int(self.get_timestamp_for_last_number_of_patches(patch_count))
-        for i, match_list_batch in enumerate(self.get_match_list_for_account(account_id, region, timestamp, end_index=max_nr)):
+        for i, match_list_batch in enumerate(
+                self.get_match_list_for_account(account_id, region, timestamp, end_index=max_nr)):
             yield match_list_batch
-            logging.info('RIOT: matches - account id: {} - {} - #patches: {} - batch_no: {}'.format(account_id, region, patch_count, i))
+            logging.info(
+                f'RIOT: matches - account id: {account_id} - {region} - #patches: {patch_count} - batch_no: {i}')
 
     def get_players_from_higher_tier(self, queue, tier, subdomain):
         complete_url = self.generate_url(subdomain, '/lol/league/v4/{}leagues/by-queue/{}?{}', tier, queue)
         result = self.get_json_from_url(complete_url)['entries']
-        logging.info('RIOT: players (higher tier) - tier {} - {} - queue: {}- #players: {}'.format(tier, subdomain, queue, len(result)))
+        logging.info(
+            f'RIOT: players (higher tier) - tier {tier} - {subdomain} - queue: {queue}- #players: {len(result)}')
         return result
 
     def get_all_players_from_division(self, tier, division, subdomain, queue, page_limit=1):
@@ -138,11 +146,14 @@ class RiotLayer:
             page_count += 1
             result.extend(next_batch)
             next_batch = self.get_player_page_from_division(queue, tier, division, subdomain, page_count)
-        logging.info('RIOT: players (lower tier) - tier {} {} - {} - queue: {} - #players: {}'.format(tier, division, subdomain, queue, len(result)))
+        logging.info(
+            f'RIOT: players (lower tier) - tier {tier} {division} - {subdomain} - queue: {queue} - #players: {len(result)}'
+        )
         return result
 
     def get_player_page_from_division(self, queue, tier, division, subdomain, page):
-        complete_url = self.generate_url(subdomain, '/lol/league/v4/entries/{}/{}/{}?page={}&{}', queue, tier, division, page)
+        complete_url = self.generate_url(subdomain, '/lol/league/v4/entries/{}/{}/{}?page={}&{}', queue, tier, division,
+                                         page)
         result = self.get_json_from_url(complete_url)
         return result
 
@@ -154,12 +165,15 @@ class RiotLayer:
             players = self.get_all_players_from_division(tier, division, subdomain, queue)
         for player in players:
             player_dto = {}
-            soloq_ids = [{'account_id': self.get_account_id_for_name(player['summonerName'], subdomain),
-                    'server': subdomain,
-                    'account_name': player['summonerName']}]
+            soloq_ids = [{
+                'account_id': self.get_account_id_for_name(player['summonerName'], subdomain),
+                'server': subdomain,
+                'account_name': player['summonerName']
+            }]
             if soloq_ids[0]['account_id'] is None:
                 continue
-            soloq_ids[0]['ranking'] =  self.get_rank_for_account_id(soloq_ids[0]['account_id']['id'], soloq_ids[0]['server'])
+            soloq_ids[0]['ranking'] = self.get_rank_for_account_id(soloq_ids[0]['account_id']['id'],
+                                                                   soloq_ids[0]['server'])
             soloq_ids[0]['ranking']['last_checked'] = datetime.utcnow()
             player_dto['soloq_ids'] = soloq_ids
             player_dto['name'] = player['summonerName']
@@ -173,4 +187,3 @@ class RiotLayer:
         for i in range(patch_count, len(patches)):
             if datetime.strptime(patches[i]['date'], '%d. %B %Y') > now:
                 return patches[i - patch_count]
-                return patches[-1]

@@ -2,14 +2,21 @@ import requests
 from bs4 import BeautifulSoup
 import logging
 
+
 class TTPLayer:
     def __init__(self):
-        self.subdomains = {'[NA]': 'na1', '[EU]': 'euw1', '[EUW]': 'euw1',
-                           '[KR]': 'kr', '[EUNE]': 'eun1', '[BR]': 'br1'}
+        self.subdomains = {
+            '[NA]': 'na1',
+            '[EU]': 'euw1',
+            '[EUW]': 'euw1',
+            '[KR]': 'kr',
+            '[EUNE]': 'eun1',
+            '[BR]': 'br1'
+        }
         self.soup = None
 
     def get_player(self, name):
-        r = requests.get('https://www.trackingthepros.com/player/{}'.format(name))
+        r = requests.get(f'https://www.trackingthepros.com/player/{name}')
         if 'players' not in r.url:
             return BeautifulSoup(r.text, features='lxml')
 
@@ -39,7 +46,7 @@ class TTPLayer:
                 continue
             result.append(self.get_account(element))
             element = element.next_sibling
-        logging.info('TTP: soloq ids for {} - {}'.format(name, result))
+        logging.info(f'TTP: soloq ids for {name} - {result}')
         return result
 
     def get_subdomain_for_region(self, region):
