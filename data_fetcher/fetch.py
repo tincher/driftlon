@@ -84,7 +84,7 @@ def fetch_casuals(config_number):
 def main(args):
     logging.basicConfig(filename='/var/log/driftlon/driftlon.log', level=logging.DEBUG,
                         format='%(asctime)s %(message)s')
-    logging.info('start fetching - {args}')
+    logging.info(f'start fetching - {args}')
     if args.type == 'pros':
         fetch_pros(args.batch_size)
     elif args.type == 'casuals':

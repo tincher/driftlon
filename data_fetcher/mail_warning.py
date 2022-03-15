@@ -13,7 +13,7 @@ def main(path):
 
     disk_usage = f'Disk Usage of {path}: used: {stat.used / (1024**3)}, free: {stat.free / (1024**3)}'
 
-    message = 'Subject: {disk_usage}\n\n{disk_usage}'
+    message = f'Subject: {disk_usage}\n\n{disk_usage}'
 
     with open('/config.yml', 'r') as configfile:
         config = yaml.safe_load(configfile)
