@@ -2,7 +2,6 @@ pymongo
 mwclient
 bs4
 lxml
-datetime
 tqdm
 numpy
 pyyaml
