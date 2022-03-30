@@ -1,5 +1,4 @@
 #!/usr/bin/python
-import getpass
 import smtplib
 import yaml
 import shutil

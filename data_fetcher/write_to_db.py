@@ -1,11 +1,12 @@
-from driftlon_utils import get_connection_for_collection_name
-from datetime import datetime, timedelta
-import hashlib
 import logging
+import hashlib
+from datetime import datetime, timedelta
+from driftlon_utils import get_connection_for_collection_name
 
 
 class DBWriter:
     def __init__(self, ip='localhost', username=None, password=None):
+        print(ip, username, password)
         self.db_player, self.player_collection = get_connection_for_collection_name('player', ip, username, password)
         self.db_matches, self.matches_collection = get_connection_for_collection_name('matches', ip, username, password)
         self.db_processed, self.processed_collection = get_connection_for_collection_name(
