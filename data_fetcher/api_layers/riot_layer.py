@@ -35,7 +35,7 @@ class RiotLayer:
             if long_time_waiting_time > result:
                 result = long_time_waiting_time
         result += 0.01
-        logging.debug('RIOT: waiting - seconds: {result}')
+        logging.debug(f'RIOT: waiting - seconds: {result}')
         return result
 
     def make_request(self, url):

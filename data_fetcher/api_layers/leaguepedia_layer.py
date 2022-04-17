@@ -24,7 +24,7 @@ class LPLayer:
     def get_next_player_batch(self, current_offset):
         request = self.site.api('cargoquery', offset=current_offset, limit=500, tables='PlayerLeagueHistory=PLH',
                                 fields='PLH.TotalGames, PLH.Player, PLH.League', order_by='PLH.TotalGames desc',
-                                where='PLH.TotalGames>={self.min_games}')
+                                where=f'PLH.TotalGames>={self.min_games}')
         result = []
         for entry in request['cargoquery']:
             player = {
