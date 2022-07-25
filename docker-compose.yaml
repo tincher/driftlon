@@ -9,7 +9,7 @@ services:
             MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
             MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
         volumes:
-            - /data/new_driftlon:/data/db
+            - ./data/new_driftlon:/data/db
             - "/etc/timezone:/etc/timezone:ro"
             - "/etc/localtime:/etc/localtime:ro"
         ports:
@@ -24,8 +24,6 @@ services:
             - /var/log/driftlon:/var/log/driftlon
             - "/etc/timezone:/etc/timezone:ro"
             - "/etc/localtime:/etc/localtime:ro"
-        environment:
-            MONGODB_ADDRESS: mongodb
     fetch_pros:
         depends_on:
             - "mongo"
@@ -36,8 +34,6 @@ services:
             - /var/log/driftlon:/var/log/driftlon
             - "/etc/timezone:/etc/timezone:ro"
             - "/etc/localtime:/etc/localtime:ro"
-        environment:
-            MONGODB_ADDRESS: mongodb
     fetch_casuals:
         depends_on:
             - "mongo"
@@ -48,5 +44,3 @@ services:
             - /var/log/driftlon:/var/log/driftlon
             - "/etc/timezone:/etc/timezone:ro"
             - "/etc/localtime:/etc/localtime:ro"
-        environment:
-            MONGODB_ADDRESS: mongodb

@@ -44,13 +44,14 @@ class RiotLayer:
         return requests.get(url)
 
     def get_json_from_url(self, url):
+        print(url)
         r = self.make_request(url)
         while r.status_code != 200:
             if r.status_code in self.time_response_codes:
                 r = self.make_request(url)
+            elif r.status_code == 404:
+                return None
             else:
-                if r.status_code == 404:
-                    return None
                 logging.error(f'RIOT: can not handle response code: {r.status_code} - {r.text}')
                 raise Exception('Can not handle response code! Text: ', r.text)
         return json.loads(r.text)
@@ -182,7 +183,7 @@ class RiotLayer:
 
     @staticmethod
     def get_number_of_patches(patch_count):
-        patches = json.loads(open('/data_fetcher/json_files/patches.json').read())
+        patches = json.load(open('/data_fetcher/json_files/patches.json'))
         now = datetime.now()
         for i in range(patch_count, len(patches)):
             if datetime.strptime(patches[i]['date'], '%d. %B %Y') > now:
