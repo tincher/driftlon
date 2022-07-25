@@ -22,7 +22,7 @@ class TTPLayer:
 
     def get_first_account_element(self, soup):
         inner_info = soup.find_all('div', class_='player-info-inner')
-        card = [x for x in inner_info if x.find('h4', text='Accounts') is not None][0]
+        card = [x for x in inner_info if x.find('h4', string='Accounts') is not None][0]
         table = card.find('table')
         return table.find('tr')
 
