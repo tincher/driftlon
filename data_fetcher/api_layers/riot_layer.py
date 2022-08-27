@@ -1,11 +1,8 @@
-import os
 import yaml
 import json
 import time
-import getpass
 import logging
 import requests
-import platform
 from datetime import datetime, timedelta
 
 
@@ -19,6 +16,15 @@ class RiotLayer:
 
         self.last_requests_timestamps = []
         self.time_response_codes = [429, 504]
+        self.v5_mapping = {
+            "kr": "asia",
+            'na': 'americas',
+            'na1': 'americas',
+            'eu': 'europe',
+            'euw': 'europe',
+            'eune': 'europe',
+            'br': 'americas'
+        }
 
     def time_to_wait(self):
         result = 0
@@ -83,36 +89,36 @@ class RiotLayer:
         else:
             return {'tier': 'unranked', 'rank': 'unranked'}
 
-    def get_match_list_batch(self, account_id, subdomain, begin_index, timestamp=0, queues=[420, 440], end_index=0):
+    def get_match_list_batch(self, account_id, subdomain, begin_index, timestamp=0, queue=420, end_index=0):
         timestamp_url = ''
         if timestamp > 0:
             timestamp_url = '&beginTime=' + str(int(timestamp))
-        queues_url = ''
-        for queue in queues:
-            queues_url += '&queue=' + str(queue)
+        queues_url = str(queue)
         begin_url = f'beginIndex={begin_index}'
         endindex_url = 'endIndex={}'.format(end_index if (end_index -
                                                           begin_index) <= 100 else 100) if end_index != 0 else ''
-        complete_url = self.generate_url(subdomain, '/lol/match/v4/matchlists/by-account/{}?{}{}{}&{}&{}', account_id,
-                                         begin_url, timestamp_url, queues_url, endindex_url)
+        # /lol/match/v5/matches/by-puuid/{puuid}/ids
+        complete_url = self.generate_url(self.v5_mapping[subdomain],
+                                         '/lol/match/v5/matches/by-puuid/{}/ids?{}{}{}&{}&{}', account_id, begin_url,
+                                         timestamp_url, queues_url, endindex_url)
         result = self.get_json_from_url(complete_url)
         return result
 
-    def get_match_list_for_account(self, account_id, region, timestamp=0, queues=[420, 440], end_index=0):
-        result, start_index = [], 0
-        response = self.get_match_list_batch(account_id, region, 0, timestamp, queues, end_index)
+    def get_match_list_for_account(self, account_id, region, timestamp=0, queues=420, end_index=0):
+        start_index = 0
+        response = self.get_match_list_batch(account_id, region, start_index, timestamp, queues, end_index)
         if response is None:
             return []
-        yield response['matches']
-        while response['endIndex'] < response['totalGames']:
+        yield response
+        while not response:
             start_index = response['endIndex']
             response = self.get_match_list_batch(account_id, region, start_index, timestamp, queues)
-            yield response['matches']
-        logging.info(
-            f'RIOT: match list - name: {account_id} - timestamp: {timestamp} - length: {response["totalGames"]}')
+            yield response
+        logging.info(f'RIOT: match list - name: {account_id} - timestamp: {timestamp}')
 
     def get_match_for_match_id(self, match_id, subdomain):
-        complete_url = self.generate_url(subdomain, '/lol/match/v4/matches/{}?{}', match_id)
+        # complete_url = self.generate_url(subdomain, '/lol/match/v4/matches/{}?{}', match_id)
+        complete_url = self.generate_url(self.v5_mapping[subdomain], '/lol/match/v5/matches/{}?{}', match_id)
         result = self.get_json_from_url(complete_url)
         if 'gameId' not in result.keys():
             logging.warning(f'RIOT: gameId not found - match id: {match_id} - {subdomain} - keys: {result.keys()}')

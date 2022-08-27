@@ -42,9 +42,9 @@ def fetch_games_for_oldest_batch(batch_size=20, max_nr=30):
         for soloq_id in player['soloq_ids']:
             if soloq_id['account_id'] is not None:
                 for match_batch in riot_layer.get_matchlist_for_player_since_number_of_patches(
-                        soloq_id['account_id']['accountId'], soloq_id['server'], 1, max_nr):
+                        soloq_id['account_id']['puuid'], soloq_id['server'], 1, max_nr):
                     for match in match_batch:
-                        result = riot_layer.get_match_for_match_id(match['gameId'], soloq_id['server'])
+                        result = riot_layer.get_match_for_match_id(match, soloq_id['server'])
                         if result is not None:
                             db_writer.write_game(result, player)
         db_writer.update_user_timestamp(player)
