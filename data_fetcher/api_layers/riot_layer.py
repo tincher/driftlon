@@ -22,6 +22,7 @@ class RiotLayer:
             'na1': 'americas',
             'eu': 'europe',
             'euw': 'europe',
+            'euw1': 'europe',
             'eune': 'europe',
             'br': 'americas'
         }
@@ -50,7 +51,7 @@ class RiotLayer:
         return requests.get(url)
 
     def get_json_from_url(self, url):
-        print(url)
+        # print(url)
         r = self.make_request(url)
         while r.status_code != 200:
             if r.status_code in self.time_response_codes:
@@ -120,10 +121,10 @@ class RiotLayer:
         # complete_url = self.generate_url(subdomain, '/lol/match/v4/matches/{}?{}', match_id)
         complete_url = self.generate_url(self.v5_mapping[subdomain], '/lol/match/v5/matches/{}?{}', match_id)
         result = self.get_json_from_url(complete_url)
-        if 'gameId' not in result.keys():
-            logging.warning(f'RIOT: gameId not found - match id: {match_id} - {subdomain} - keys: {result.keys()}')
+        if result is not None:
+            logging.warning(f'RIOT: gameId not found - match id: {match_id} - {subdomain}')
             return None
-        logging.info(f'RIOT: match - match id: {match_id} - {subdomain} - gameId: {result["gameId"]}')
+        logging.info(f'RIOT: match - match id: {match_id} - {subdomain} - gameId: {result}')
         return result
 
     def get_timestamp_for_last_number_of_patches(self, number_of_patches):
